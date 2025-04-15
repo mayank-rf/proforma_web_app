@@ -1,223 +1,276 @@
 "use client";
 
-import React, { useState } from "react";
 import {
     Box,
-    Grid,
+    Button,
     Card,
     CardContent,
-    Typography,
-    TextField,
-    Button,
-    Slide,
-    Drawer,
-    IconButton,
-    MenuItem,
-    Accordion,
-    AccordionSummary,
-    AccordionDetails,
-    InputLabel,
-    FormControl,
-    RadioGroup,
-    FormControlLabel,
-    Radio,
-    Select,
+    Typography
 } from "@mui/material";
-import LocationAnalysis from "./LocationAnalysis";
-import CloseIcon from "@mui/icons-material/Close";
 import Stack from "@mui/system/Stack";
-import InputAccordion from "./InputAccordion";
-import InvestmentGrid from "./InvestmentGrid";
+import { useRouter } from "next/navigation";
+import { useEffect, useState, useTransition } from "react";
+import { useForm, useWatch } from "react-hook-form";
+import startAnalysis from "./actions";
+import CarWashWorkingHours from "./InputComponents/CarWashWorkingHours";
+import CustomerInformation from "./InputComponents/CustomerInformation";
+import FinancialInput from "./InputComponents/FinancialInput";
+import LaborInformation from "./InputComponents/LaborInformation";
+import SiteFactors from "./InputComponents/SiteFactors";
+import WashPackages from "./InputComponents/WashPackages";
+import ProformaInputs from "./proforma-inputs.type";
+
+const defaultValues: ProformaInputs = {
+    customerName: "",
+    companyName: "",
+    siteAddress: {
+        address: "",
+        city: "",
+        state: "",
+        zip_code: ""
+    },
+    // 
+    weeklyHoursOfOperation: null,
+    averageDailyWashHours: null,
+    // 
+    laborHours: {
+        manager: null,
+        assistantManager: null,
+        attendants: null
+    },
+    hourlyWages: {
+        manager: null,
+        assistantManager: null,
+        attendants: null
+    },
+    burdenRate: {
+        manager: null,
+        assistantManager: null,
+        attendants: null
+    },
+    count: {
+        manager: null,
+        assistantManager: null,
+        attendants: null
+    },
+    // 
+    basicPackage: 0,
+    menuPackageOne: 0,
+    menuPackageTwo: 0,
+    menuPackageThree: 0,
+    menuPackageFour: 0,
+    //
+    siteFactors: {
+        areaProfile: "",
+        nearestCompetition: "",
+        typeOfSite: "",
+        siteAccessibility: "",
+        visibility: "",
+        entranceStackUpArea: "",
+        numberOfFreeVacuumSlots: "",
+        numberOfPayStations: "",
+        trafficSpeed: ""
+    },
+    //
+    acquisitionBudget: {
+        building: {
+            totalInvestment: 0,
+            percentOwner: 0,
+            percentBank: 0
+        },
+        equipment: {
+            totalInvestment: 0,
+            percentOwner: 0,
+            percentBank: 0
+        },
+        land: {
+            totalInvestment: 0,
+            percentOwner: 0,
+            percentBank: 0
+        },
+        site: {
+            totalInvestment: 0,
+            percentOwner: 0,
+            percentBank: 0
+        },
+        soft_costs: {
+            totalInvestment: 0,
+            percentOwner: 0,
+            percentBank: 0
+        }
+    },
+    //
+    bankDebtAllocation: {
+        building: {
+            bankDebtTotal: 0,
+            interestRate: 0,
+            termOfLoan: 0
+        },
+        equipment: {
+            bankDebtTotal: 0,
+            interestRate: 0,
+            termOfLoan: 0
+        },
+        land: {
+            bankDebtTotal: 0,
+            interestRate: 0,
+            termOfLoan: 0
+        },
+        site: {
+            bankDebtTotal: 0,
+            interestRate: 0,
+            termOfLoan: 0
+        },
+        soft_costs: {
+            bankDebtTotal: 0,
+            interestRate: 0,
+            termOfLoan: 0
+        }
+    }
+}
 
 export default function SiteAnalysisPage() {
+    const router = useRouter()
     const [showAnalysis, setShowAnalysis] = useState(false);
+    const {
+        control,
+        handleSubmit,
+        setValue,
+        formState: { errors }
+    } = useForm<ProformaInputs>({
+        defaultValues: defaultValues,
+    });
+    const [isPending, startTransition] = useTransition();
 
-    const handleStartAnalysis = () => {
-        setShowAnalysis(true);
-    };
+    useEffect(() => {
+        setValue("basicPackage", 10);
+        setValue("menuPackageOne", 15);
+        setValue("menuPackageTwo", 22);
+        setValue("menuPackageThree", 27);
+        setValue("menuPackageFour", 30);
+
+        const defaultAcquisitionBudget = {
+            building: {
+                totalInvestment: 360000,
+                percentOwner: 20,
+                percentBank: 80
+            },
+            equipment: {
+                totalInvestment: 725000,
+                percentOwner: 20,
+                percentBank: 80
+            },
+            land: {
+                totalInvestment: 7475000,
+                percentOwner: 20,
+                percentBank: 80
+            },
+            site: {
+                totalInvestment: 45000,
+                percentOwner: 20,
+                percentBank: 80
+            },
+            soft_costs: {
+                totalInvestment: 50000,
+                percentOwner: 20,
+                percentBank: 80
+            }
+        }
+
+        setValue("acquisitionBudget", defaultAcquisitionBudget)
+
+        setValue('bankDebtAllocation', {
+            building: {
+                bankDebtTotal: defaultAcquisitionBudget.building.totalInvestment * (defaultAcquisitionBudget.building.percentBank / 100),
+                interestRate: 0,
+                termOfLoan: 0
+            },
+            equipment: {
+                bankDebtTotal: defaultAcquisitionBudget.equipment.totalInvestment * (defaultAcquisitionBudget.equipment.percentBank / 100),
+                interestRate: 0,
+                termOfLoan: 0
+            },
+            land: {
+                bankDebtTotal: defaultAcquisitionBudget.land.totalInvestment * (defaultAcquisitionBudget.land.percentBank / 100),
+                interestRate: 0,
+                termOfLoan: 0
+            },
+            site: {
+                bankDebtTotal: defaultAcquisitionBudget.site.totalInvestment * (defaultAcquisitionBudget.site.percentBank / 100),
+                interestRate: 0,
+                termOfLoan: 0
+            },
+            soft_costs: {
+                bankDebtTotal: defaultAcquisitionBudget.soft_costs.totalInvestment * (defaultAcquisitionBudget.soft_costs.percentBank / 100),
+                interestRate: 0,
+                termOfLoan: 0
+            }
+        })
+    }, [])
 
     const handleCloseAnalysis = () => {
         setShowAnalysis(false);
     };
+
+    function onSubmit(data: ProformaInputs) {
+        console.log({ data })
+
+        startTransition(async () => {
+            const analysisResponse = await startAnalysis(data);
+            console.log({ analysisResponse })
+            setShowAnalysis(true);
+        })
+
+        router.push('/pro-forma');
+    }
+
+    const formValues = useWatch({ control });
+    const allFilled = Object.values(formValues).every(
+        (val) => val !== undefined && val !== null && val !== ''
+    );
 
     return (
         <Box sx={{ p: 4, maxWidth: 1200, margin: "auto" }}>
             {/* Input Section */}
             <Card sx={{ mb: 4, boxShadow: '0 0 6px rgba(0, 0, 0, 0.25)', borderRadius: '8px' }}>
                 <CardContent>
-                    <Typography variant="h5" fontWeight="700" align="center" sx={{ mb: 2, color: '#3A4F5F' }}>Site Analysis Input</Typography>
-                    <Stack sx={{ mb: 2 }}>
-                        <Stack spacing={2}>
-                            <InputAccordion title="Customer Information">
-                                <Grid container>
-                                    <Grid item xs={12} md={4}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Customer Name</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px', width: '25ch' }} />
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item xs={12} md={4}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Company Name</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px', width: '25ch' }} />
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item xs={12} md={4}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Site Address</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px', width: '25ch' }} />
-                                        </Stack>
-                                    </Grid>
-                                </Grid>
-                            </InputAccordion>
+                    <Typography variant="h6" fontWeight="600" align="left" sx={{ mb: 2, color: '#3A4F5F' }}>Provide the following details to generate Pro Forma:</Typography>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <Stack sx={{ mb: 2 }} spacing={2}>
+                            {/* Customer Information */}
+                            <CustomerInformation control={control} />
 
-                            <InputAccordion title="Car Wash Working Hours">
-                                <Grid container>
-                                    <Grid item xs={12} md={4}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Weekly Hours Of Operation</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px', width: '25ch' }} />
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item xs={12} md={4}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Average Daily Wash Hours</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px', width: '25ch' }} />
-                                        </Stack>
-                                    </Grid>
-                                </Grid>
-                            </InputAccordion>
+                            {/* Car Wash Working Hours */}
+                            <CarWashWorkingHours control={control} />
 
-                            <InputAccordion title="Labor Information">
-                                <Grid container>
-                                    <Grid item xs={12} md={4}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Labor Hours</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px', width: '25ch' }} />
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item xs={12} md={4}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Hourly Wages</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px', width: '25ch' }} />
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item xs={12} md={4}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Burden Rate</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px', width: '25ch' }} />
-                                        </Stack>
-                                    </Grid>
-                                </Grid>
-                            </InputAccordion>
+                            {/* Labor Information */}
+                            <LaborInformation control={control} />
 
-                            <InputAccordion title="Wash Packages">
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12} md={3}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Basic Package</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" disabled value={"$10"} sx={{ borderRadius: '10px' }} />
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item xs={12} md={3}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Menu Package #1</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" disabled value={"$15"} sx={{ borderRadius: '10px' }} />
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item xs={12} md={3}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Menu Package #2</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" disabled value={"$22"} sx={{ borderRadius: '10px' }} />
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item xs={12} md={3}>
-                                        <Stack gap={1}>
-                                            <InputLabel sx={{ fontWeight: "600", color: "#3A4F5F" }}>Menu Package #3</InputLabel>
-                                            <TextField fullWidth size="small" variant="outlined" disabled value={"$27"} sx={{ borderRadius: '10px' }} />
-                                        </Stack>
-                                    </Grid>
-                                </Grid>
-                            </InputAccordion>
+                            {/* Wash Packages */}
+                            <WashPackages control={control} />
 
-                            <InputAccordion title="Site Specific Factors">
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12} md={3}>
-                                        <Stack gap={1}>
-                                            <InputLabel id="area-profile-label" sx={{ fontWeight: "600", color: "#3A4F5F" }}>
-                                                Area Profile
-                                            </InputLabel>
-                                            <Select
-                                                labelId="area-profile-label"
-                                                id="area-profile-select"
-                                                value={""}
-                                                onChange={() => { }}
-                                                sx={{ borderRadius: '10px' }}
-                                            >
-                                                <MenuItem value="1">Shopping Mall</MenuItem>
-                                                <MenuItem value="2">Industrial</MenuItem>
-                                                <MenuItem value="3">Residential</MenuItem>
-                                                <MenuItem value="4">Other</MenuItem>
-                                            </Select>
-                                        </Stack>
-                                    </Grid>
-                                    <Grid item xs={12} md={3}>
-                                        <Stack gap={1}>
-                                            <InputLabel id="area-profile-label" sx={{ fontWeight: "600", color: "#3A4F5F" }}>
-                                                Area Profile
-                                            </InputLabel>
-                                            <Select
-                                                labelId="area-profile-label"
-                                                id="area-profile-select"
-                                                value={""}
-                                                onChange={() => { }}
-                                                sx={{ borderRadius: '10px' }}
-                                            >
-                                                <MenuItem value="1">Shopping Mall</MenuItem>
-                                                <MenuItem value="2">Industrial</MenuItem>
-                                                <MenuItem value="3">Residential</MenuItem>
-                                                <MenuItem value="4">Other</MenuItem>
-                                            </Select>
-                                        </Stack>
-                                    </Grid>
-                                </Grid>
-                            </InputAccordion>
+                            {/* Site Specific Factors */}
+                            <SiteFactors control={control} />
 
-                            <InputAccordion title="Acquisition Budget">
-                                <InvestmentGrid />
-                            </InputAccordion>
-
-                            <InputAccordion title="Operational Expenses">
-                                Placeholder
-                            </InputAccordion>
+                            {/* Financial Input */}
+                            <FinancialInput control={control} />
                         </Stack>
-                    </Stack>
 
-                    <Box sx={{ display: "flex", justifyContent: "center" }}>
-                        <Button
-                            variant="contained"
-                            onClick={handleStartAnalysis}
-                            sx={{ color: 'white', textTransform: 'capitalize', backgroundColor: 'secondary.main', borderRadius: '8px', fontWeight: '600' }}
-                        >
-                            Start Analysis
-                        </Button>
-                    </Box>
+                        <Box sx={{ display: "flex", justifyContent: "center" }}>
+                            <Button
+                                variant="contained"
+                                sx={{ color: 'white', textTransform: 'capitalize', backgroundColor: 'secondary.main', borderRadius: '8px', fontWeight: '600' }}
+                                type='submit'
+                                disabled={!allFilled}
+                                loading={isPending}
+                                loadingPosition="start"
+                            >
+                                {isPending ? 'Analysing...' : 'Start Analysis'}
+                            </Button>
+                        </Box>
+                    </form>
                 </CardContent>
             </Card>
-
-
-
-            {/* Analysis Report (Full Screen Slide-in from Right) */}
-            <Drawer
-                anchor="right"
-                open={showAnalysis}
-                onClose={handleCloseAnalysis}
-                sx={{ "& .MuiDrawer-paper": { width: "100%", height: "100%" } }}
-            >
-                <Box sx={{ width: "100%", height: "100%", p: 3, position: "relative" }}>
-                    <LocationAnalysis handleCloseAnalysis={handleCloseAnalysis} />
-                </Box>
-            </Drawer>
         </Box>
     );
 }
