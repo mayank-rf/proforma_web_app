@@ -1,6 +1,8 @@
 import { FormControl, Grid, InputLabel, Stack, TextField } from "@mui/material";
 import InputAccordion from "./InputAccordion";
+import useStore from "../../../../store/useStore";
 import { Controller, useWatch } from "react-hook-form";
+import { useEffect } from "react";
 
 export default function CustomerInformation({ control }: any) {
     const customerName = useWatch({ control, name: "customerName" });
@@ -9,6 +11,13 @@ export default function CustomerInformation({ control }: any) {
     const city = useWatch({ control, name: "siteAddress.city" });
     const state = useWatch({ control, name: "siteAddress.state" });
     const zip_code = useWatch({ control, name: "siteAddress.zip_code" });
+    const { setAddress } = useStore();
+
+    useEffect(() => {
+        const addressHeader = `${address || ""}-${city || ""}, ${state || ""}, ${zip_code || ""}`;
+        setAddress(addressHeader);
+      }, [address, city, state, zip_code, setAddress]);
+    
 
     const allFilled = !!customerName && !!companyName && !!city && !!state && !!zip_code && !!address;
 
