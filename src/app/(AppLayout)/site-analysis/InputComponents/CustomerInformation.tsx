@@ -5,9 +5,12 @@ import { Controller, useWatch } from "react-hook-form";
 export default function CustomerInformation({ control }: any) {
     const customerName = useWatch({ control, name: "customerName" });
     const companyName = useWatch({ control, name: "companyName" });
-    const siteAddress = useWatch({ control, name: "siteAddress" });
+    const address = useWatch({ control, name: "siteAddress.address" });
+    const city = useWatch({ control, name: "siteAddress.city" });
+    const state = useWatch({ control, name: "siteAddress.state" });
+    const zip_code = useWatch({ control, name: "siteAddress.zip_code" });
 
-    const allFilled = !!customerName && !!companyName && !!siteAddress;
+    const allFilled = !!customerName && !!companyName && !!city && !!state && !!zip_code && !!address;
 
     return (
         <InputAccordion title="Customer Information" completed={allFilled}>
