@@ -4,6 +4,9 @@ import React from 'react';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
+const retailRevenue = [795749, 933590, 985213, 944008, 982125];
+const memberRevenue = [88417, 233398, 328404, 404575, 472875];
+
 const RevenueBreakoutChart = () => {
     const labels = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
 
@@ -12,11 +15,12 @@ const RevenueBreakoutChart = () => {
         datasets: [
             {
                 label: 'Retail Revenue',
-                data: [795749, 933590, 985213, 944008, 982125],
+                data: retailRevenue,
                 backgroundColor: '#2D9CDB',
+                barThickness: 100,
                 stack: 'revenue',
                 datalabels: {
-                    formatter: (value) => `$${value}`,
+                    formatter: (value) => `$${value.toLocaleString('en-US')}`,
                     color: '#fff',
                     font: {
                         weight: 'bold',
@@ -26,12 +30,32 @@ const RevenueBreakoutChart = () => {
             },
             {
                 label: 'Member Revenue',
-                data: [88417, 233398, 328404, 404575, 472875],
+                data: memberRevenue,
                 backgroundColor: '#174E8C',
+                barThickness: 100,
                 stack: 'revenue',
                 datalabels: {
-                    formatter: (value) => `$${value}`,
+                    formatter: (value: number) => `$${value.toLocaleString('en-US')}`,
                     color: '#fff',
+                    font: {
+                        weight: 'bold',
+                        size: 16,
+                    },
+                },
+            },
+            {
+                label: '',
+                data: memberRevenue,
+                backgroundColor: 'transparent',
+                stack: 'revenue',
+                datalabels: {
+                    formatter: (value: number, context: any) => {
+                        const retail = retailRevenue[context.dataIndex];
+                        const member = value;
+                        const total = retail + member;
+                        return [`$${total.toLocaleString('en-US')}`];
+                    },
+                    color: '#000',
                     font: {
                         weight: 'bold',
                         size: 16,
@@ -74,6 +98,7 @@ const RevenueBreakoutChart = () => {
                     text: 'Revenue ($)',
                 },
                 grid: { drawOnChartArea: false },
+                display: false,
             },
         },
     };

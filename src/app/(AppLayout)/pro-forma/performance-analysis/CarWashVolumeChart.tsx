@@ -19,6 +19,7 @@ const CarWashVolumeChart = () => {
                 data: retailVolume,
                 backgroundColor: '#2D9CDB',
                 stack: 'volume',
+                barThickness: 100,
                 datalabels: {
                     color: '#fff',
                     anchor: 'center',
@@ -34,6 +35,7 @@ const CarWashVolumeChart = () => {
                 data: memberVolume,
                 backgroundColor: '#174E8C',
                 stack: 'volume',
+                barThickness: 100,
                 datalabels: {
                     color: '#fff',
                     anchor: 'center',
@@ -50,7 +52,7 @@ const CarWashVolumeChart = () => {
                 },
             },
             {
-                label: 'Member Volume',
+                label: '',
                 data: memberVolume,
                 backgroundColor: 'transparent',
                 stack: 'volume',
@@ -105,6 +107,7 @@ const CarWashVolumeChart = () => {
                     text: 'Wash Volume',
                 },
                 grid: { drawOnChartArea: false },
+                display: false,
             },
         },
     };

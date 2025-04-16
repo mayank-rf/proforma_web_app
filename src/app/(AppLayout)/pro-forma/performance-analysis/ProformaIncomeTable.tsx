@@ -8,75 +8,98 @@ const data = [
         revenueGrowth: 'N/A',
         netIncome: '$16,338',
         roe: '2%',
+        netIncomeCAGR: null,
+        cashOnCashReturn: null,
     },
     {
         year: 'Year 2',
         revenueGrowth: '32%',
         netIncome: '$230,748',
         roe: '27%',
+        netIncomeCAGR: null,
+        cashOnCashReturn: null,
     },
     {
         year: 'Year 3',
         revenueGrowth: '13%',
         netIncome: '$341,908',
         roe: '40%',
+        netIncomeCAGR: null,
+        cashOnCashReturn: null,
     },
     {
         year: 'Year 4',
         revenueGrowth: '3%',
         netIncome: '$368,416',
         roe: '43%',
+        netIncomeCAGR: null,
+        cashOnCashReturn: null,
     },
     {
         year: 'Year 5',
         revenueGrowth: '7%',
         netIncome: '$449,130',
         roe: '52%',
+        netIncomeCAGR: '129%',
+        cashOnCashReturn: '1.64x',
     },
 ];
 
-export default function ProFormaIncomeTable() {
+export default function ProFormaIncomeTableTransposed() {
     return (
-        <Box mt={4}>
-            <TableContainer component={Paper} elevation={0}>
+        <Box mb={4}>
+            <TableContainer sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
                 <Table size="small">
                     <TableHead>
                         <TableRow>
                             <TableCell />
-                            <TableCell align="center" sx={{ fontStyle: 'italic' }}>
-                                Revenue Growth %
-                            </TableCell>
-                            <TableCell align="center" sx={{ fontStyle: 'italic' }}>
-                                Net Income
-                            </TableCell>
-                            <TableCell align="center" sx={{ fontStyle: 'italic' }}>
-                                ROE %
-                            </TableCell>
+                            {data.map((row, index) => (
+                                <TableCell key={index} align="center" sx={{ fontWeight: 'bold' }}>
+                                    {row.year}
+                                </TableCell>
+                            ))}
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data.map((row, index) => (
-                            <TableRow key={index}>
-                                <TableCell sx={{ fontWeight: 'bold' }}>{row.year}</TableCell>
-                                <TableCell align="center">{row.revenueGrowth}</TableCell>
-                                <TableCell align="center">{row.netIncome}</TableCell>
-                                <TableCell align="center">{row.roe}</TableCell>
-                            </TableRow>
-                        ))}
-
-                        {/* Net Income CAGR */}
                         <TableRow>
-                            <TableCell colSpan={4} align="center" sx={{ fontWeight: 'bold', fontStyle: 'italic' }}>
-                                Net Income CAGR %: <span style={{ fontWeight: 'bold' }}>129%</span>
-                            </TableCell>
+                            <TableCell sx={{ fontStyle: 'italic' }}>Revenue Growth %</TableCell>
+                            {data.map((row, index) => (
+                                <TableCell key={index} align="center">
+                                    {row.revenueGrowth}
+                                </TableCell>
+                            ))}
                         </TableRow>
-
-                        {/* Cash-on-Cash Return */}
                         <TableRow>
-                            <TableCell colSpan={4} align="center" sx={{ fontStyle: 'italic' }}>
-                                Cash-on-Cash Return:&nbsp;
-                                <span style={{ fontWeight: 'bold' }}>1.64x</span>
-                            </TableCell>
+                            <TableCell sx={{ fontStyle: 'italic' }}>Net Income</TableCell>
+                            {data.map((row, index) => (
+                                <TableCell key={index} align="center">
+                                    {row.netIncome}
+                                </TableCell>
+                            ))}
+                        </TableRow>
+                        <TableRow>
+                            <TableCell sx={{ fontStyle: 'italic' }}>ROE %</TableCell>
+                            {data.map((row, index) => (
+                                <TableCell key={index} align="center">
+                                    {row.roe}
+                                </TableCell>
+                            ))}
+                        </TableRow>
+                        <TableRow>
+                            <TableCell sx={{ fontStyle: 'italic', fontWeight: 'bold' }}>Net Income CAGR %</TableCell>
+                            {data.map((row, index) => (
+                                <TableCell key={index} align="center" sx={{ fontWeight: 'bold' }}>
+                                    {row.netIncomeCAGR}
+                                </TableCell>
+                            ))}
+                        </TableRow>
+                        <TableRow>
+                            <TableCell sx={{ fontStyle: 'italic', fontWeight: 'bold' }}>Cash-on-Cash Return</TableCell>
+                            {data.map((row, index) => (
+                                <TableCell key={index} align="center" sx={{ fontWeight: 'bold' }}>
+                                    {row.cashOnCashReturn}
+                                </TableCell>
+                            ))}
                         </TableRow>
                     </TableBody>
                 </Table>
