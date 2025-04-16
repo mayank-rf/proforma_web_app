@@ -1,13 +1,15 @@
 import { Box, Card, Chip, Grid, LinearProgress, Typography, Tooltip } from '@mui/material';
+import useStore from '../../../../store/useStore';
+import { siteFactorsMap } from '@/utils/siteFactorsMap';
 
-const siteFactors = [
+const siteFactors: { label: keyof typeof siteFactorsMap; value: string; score: number }[] = [
     {
-        label: 'Area Profile',
+        label: 'areaProfile',
         value: 'Residential',
         score: 0.15,
     },
     {
-        label: 'Nearest Competition',
+        label: 'nearestCompetition',
         value: 'One in 4 miles',
         score: 0.10,
     },
@@ -17,37 +19,37 @@ const siteFactors = [
         score: -0.25,
     },
     {
-        label: 'Type of Site',
+        label: 'typeOfSite',
         value: 'Inside lot without light',
         score: -0.25,
     },
     {
-        label: 'Site Accessibility',
+        label: 'siteAccessibility',
         value: 'Easy in and out',
         score: 0.15,
     },
     {
-        label: 'Entrance Stack Up Area',
+        label: 'entranceStackUpArea',
         value: '14-10 Vehicles',
         score: 0.075,
     },
     {
-        label: 'Number of Free Vacuum Slots',
+        label: 'numberOfFreeVacuumSlots',
         value: '12-20 Vehicles',
         score: 0.1,
     },
     {
-        label: 'Number of pay stations',
+        label: 'numberOfPayStations',
         value: '2',
         score: 0.1,
     },
     {
-        label: 'Visibility',
+        label: 'visibility',
         value: 'More than 500 feet both directions',
         score: 0.15,
     },
     {
-        label: 'Traffic Speed',
+        label: 'trafficSpeed',
         value: 'Less than 30 mph',
         score: 0.15,
     }
@@ -65,8 +67,9 @@ const getProgressValue = (score) => {
 };
 
 export default function SiteQualitySnapshot() {
+   const { siteFactors:globalSiteFactor } = useStore();
     const totalScore = siteFactors.reduce((acc, factor) => acc + factor.score, 0);
-
+    console.log(siteFactorsMap["areaProfile"], globalSiteFactor["areaProfile"],siteFactorsMap["areaProfile"][globalSiteFactor["areaProfile"]])
     return (
         <Box p={0}>
             <Grid container spacing={2}>
@@ -74,10 +77,10 @@ export default function SiteQualitySnapshot() {
                     <Grid item xs={12} md={6} key={index}>
                         <Card elevation={2} sx={{ p: 2 }}>
                             <Typography variant="body1" fontWeight="bold" fontSize={18} color={'#3A4F5F'}>
-                                {factor.label}
+                             {siteFactorsMap[factor.label]?.label}
                             </Typography>
                             <Chip
-                                label={factor.value}
+                                label={siteFactorsMap[factor.label][globalSiteFactor[factor.label]]}
                                 color={getColor(factor.score)}
                                 variant='outlined'
                                 sx={{ mt: 1, borderRadius: 1, fontSize: 16 }}

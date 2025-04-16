@@ -1,10 +1,20 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material'
 import InputAccordion from './InputAccordion'
 import { Controller, useWatch } from 'react-hook-form'
+import useStore from '../../../../store/useStore';
+import { useEffect } from 'react';
 
 export default function SiteFactors({ control }: any) {
     const siteFactors = useWatch({ control, name: "siteFactors" });
     const allFilled = Object.values(siteFactors).every(value => value !== "");
+    const { setSiteFactors } = useStore()
+
+    useEffect(() => {
+
+        setSiteFactors(siteFactors);
+    }, [siteFactors]);
+
+    console.log('siteFactors', siteFactors)
 
     return (
         <InputAccordion title="Site Specific Factors" completed={allFilled}>
@@ -26,7 +36,7 @@ export default function SiteFactors({ control }: any) {
                                     sx={{ borderRadius: '10px' }}
                                 >
                                     <MenuItem value="0.15">Shopping Mall</MenuItem>
-                                    <MenuItem value="0.1">Business</MenuItem>
+                                    <MenuItem value="0.10">Business</MenuItem>
                                     <MenuItem value="0.05">Residential</MenuItem>
                                     <MenuItem value="-0.25">Industrial</MenuItem>
                                 </Select>
@@ -51,10 +61,10 @@ export default function SiteFactors({ control }: any) {
                                     labelId="nearestCompetition"
                                     sx={{ borderRadius: '10px' }}
                                 >
-                                    <MenuItem value="1">One in 4 Miles</MenuItem>
-                                    <MenuItem value="2">Multiple in 4 Miles</MenuItem>
-                                    <MenuItem value="3">One in 2 Miles</MenuItem>
-                                    <MenuItem value="4">Multiple in 2 Miles</MenuItem>
+                                    <MenuItem value="0.15">One in 4 Miles</MenuItem>
+                                    <MenuItem value="0.125">Multiple in 4 Miles</MenuItem>
+                                    <MenuItem value="0.075">One in 2 Miles</MenuItem>
+                                    <MenuItem value="-0.025">Multiple in 2 Miles</MenuItem>
                                 </Select>
                             </FormControl>
                         )}
@@ -77,10 +87,10 @@ export default function SiteFactors({ control }: any) {
                                     labelId="typeOfSite"
                                     sx={{ borderRadius: '10px' }}
                                 >
-                                    <MenuItem value="1">Corner Lot With Light</MenuItem>
-                                    <MenuItem value="2">Corner Lot With Light</MenuItem>
-                                    <MenuItem value="3">Inside Lot Near Light</MenuItem>
-                                    <MenuItem value="4">Inside Lot Far From Light</MenuItem>
+                                    <MenuItem value="0.15">Corner Lot With Light</MenuItem>
+                                    <MenuItem value="0.125">Corner Lot With Light</MenuItem>
+                                    <MenuItem value="0.075">Inside Lot Near Light</MenuItem>
+                                    <MenuItem value="0.05">Inside Lot Far From Light</MenuItem>
                                 </Select>
                             </FormControl>
                         )}
@@ -103,16 +113,15 @@ export default function SiteFactors({ control }: any) {
                                     labelId="siteAccessibility"
                                     sx={{ borderRadius: '10px' }}
                                 >
-                                    <MenuItem value="1">Easy in and Easy out</MenuItem>
-                                    <MenuItem value="2">Easy in/out with Divided Highway</MenuItem>
-                                    <MenuItem value="3">Easy in or Easy out With One Way</MenuItem>
-                                    <MenuItem value="4">Difficult in and out</MenuItem>
+                                    <MenuItem value="0.15">Easy in and Easy out</MenuItem>
+                                    <MenuItem value="0.10">Easy in/out with Divided Highway</MenuItem>
+                                    <MenuItem value="0.05">Easy in or Easy out With One Way</MenuItem>
+                                    <MenuItem value="0">Difficult in and out</MenuItem>
                                 </Select>
                             </FormControl>
                         )}
                     />
                 </Grid>
-
                 {/* Visibility */}
                 <Grid item xs={12} md={4}>
                     <Controller
@@ -129,10 +138,10 @@ export default function SiteFactors({ control }: any) {
                                     labelId="visibility"
                                     sx={{ borderRadius: '10px' }}
                                 >
-                                    <MenuItem value="1">More than 500 feet Both Directions</MenuItem>
-                                    <MenuItem value="2">400-500 feet Both Directions</MenuItem>
-                                    <MenuItem value="3">300-400 feet Both Directions</MenuItem>
-                                    <MenuItem value="4">Less than 300 feed Both Directions</MenuItem>
+                                    <MenuItem value="0.15">More than 500 feet Both Directions</MenuItem>
+                                    <MenuItem value="0.10">400-500 feet Both Directions</MenuItem>
+                                    <MenuItem value="0.05">300-400 feet Both Directions</MenuItem>
+                                    <MenuItem value="0">Less than 300 feed Both Directions</MenuItem>
                                 </Select>
                             </FormControl>
                         )}
@@ -155,10 +164,10 @@ export default function SiteFactors({ control }: any) {
                                     labelId="entranceStackUpArea"
                                     sx={{ borderRadius: '10px' }}
                                 >
-                                    <MenuItem value="1">More than 20 Vehicles</MenuItem>
-                                    <MenuItem value="2">20-15 Vehicles</MenuItem>
-                                    <MenuItem value="3">14-10 Vehicles</MenuItem>
-                                    <MenuItem value="4">Less than 10 Vehicles</MenuItem>
+                                    <MenuItem value="0.15">More than 20 Vehicles</MenuItem>
+                                    <MenuItem value="0.125">20-15 Vehicles</MenuItem>
+                                    <MenuItem value="0.075">14-10 Vehicles</MenuItem>
+                                    <MenuItem value="0.05">Less than 10 Vehicles</MenuItem>
                                 </Select>
                             </FormControl>
                         )}
@@ -181,10 +190,10 @@ export default function SiteFactors({ control }: any) {
                                     labelId="numberOfFreeVacuumSlots"
                                     sx={{ borderRadius: '10px' }}
                                 >
-                                    <MenuItem value="1">More than 20</MenuItem>
-                                    <MenuItem value="2">12-20</MenuItem>
-                                    <MenuItem value="3">Less than 12</MenuItem>
-                                    <MenuItem value="4">Coin or none</MenuItem>
+                                    <MenuItem value="0.15">More than 20</MenuItem>
+                                    <MenuItem value="0.10">12-20</MenuItem>
+                                    <MenuItem value="0.05">Less than 12</MenuItem>
+                                    <MenuItem value="-0.25">Coin or none</MenuItem>
                                 </Select>
                             </FormControl>
                         )}
@@ -207,10 +216,11 @@ export default function SiteFactors({ control }: any) {
                                     labelId="numberOfPayStations"
                                     sx={{ borderRadius: '10px' }}
                                 >
-                                    <MenuItem value="1">3 or more</MenuItem>
-                                    <MenuItem value="2">2</MenuItem>
-                                    <MenuItem value="3">1</MenuItem>
-                                    <MenuItem value="4">Live Person</MenuItem>
+
+                                    <MenuItem value="0.15">3 or more</MenuItem>
+                                    <MenuItem value="0.10">2</MenuItem>
+                                    <MenuItem value="0.05">1</MenuItem>
+                                    <MenuItem value="0">Live Person</MenuItem>
                                 </Select>
                             </FormControl>
                         )}
@@ -233,10 +243,11 @@ export default function SiteFactors({ control }: any) {
                                     labelId="trafficSpeed"
                                     sx={{ borderRadius: '10px' }}
                                 >
-                                    <MenuItem value="1">Less than 30 mph</MenuItem>
-                                    <MenuItem value="2">30-40 mph</MenuItem>
-                                    <MenuItem value="3">40-50 mph</MenuItem>
-                                    <MenuItem value="4">More than 50 mph</MenuItem>
+
+                                    <MenuItem value="0.15">Less than 30 mph</MenuItem>
+                                    <MenuItem value="0.10">30-40 mph</MenuItem>
+                                    <MenuItem value="0.05">40-50 mph</MenuItem>
+                                    <MenuItem value="0">More than 50 mph</MenuItem>
                                 </Select>
                             </FormControl>
                         )}

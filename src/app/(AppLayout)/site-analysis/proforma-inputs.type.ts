@@ -32,11 +32,31 @@ type ProformaInputs = {
         attendants: number | null;
     };
     // 
-    basicPackage: number;
-    menuPackageOne: number;
-    menuPackageTwo: number;
-    menuPackageThree: number;
-    menuPackageFour: number;
+    basicPackage: {
+        price: number;
+        customerPercent: number;
+        chemicalCost: number;
+    };
+    menuPackageOne: {
+        price: number;
+        customerPercent: number;
+        chemicalCost: number;
+    };
+    menuPackageTwo: {
+        price: number;
+        customerPercent: number;
+        chemicalCost: number;
+    };
+    menuPackageThree: {
+        price: number;
+        customerPercent: number;
+        chemicalCost: number;
+    };
+    menuPackageFour: {
+        price: number;
+        customerPercent: number;
+        chemicalCost: number;
+    };
     // 
     siteFactors: {
         areaProfile: string;
