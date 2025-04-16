@@ -1,23 +1,9 @@
 import React from 'react';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Tooltip,
-    Legend,
-} from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Tooltip,
-    Legend,
-    ChartDataLabels
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend, ChartDataLabels);
 
 const CarWashVolumeChart = () => {
     const labels = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
@@ -33,14 +19,15 @@ const CarWashVolumeChart = () => {
                 data: retailVolume,
                 backgroundColor: '#2D9CDB',
                 stack: 'volume',
+                barThickness: 100,
                 datalabels: {
                     color: '#fff',
                     anchor: 'center',
                     align: 'center',
                     formatter: (value: number) => value.toLocaleString(),
                     font: {
-                        size: 18
-                    }
+                        size: 18,
+                    },
                 },
             },
             {
@@ -48,6 +35,7 @@ const CarWashVolumeChart = () => {
                 data: memberVolume,
                 backgroundColor: '#174E8C',
                 stack: 'volume',
+                barThickness: 100,
                 datalabels: {
                     color: '#fff',
                     anchor: 'center',
@@ -56,17 +44,15 @@ const CarWashVolumeChart = () => {
                         const retail = retailVolume[context.dataIndex];
                         const member = value;
                         const total = retail + member;
-                        return [
-                            member.toLocaleString()
-                        ];
+                        return [member.toLocaleString()];
                     },
                     font: {
-                        size: 18
-                    }
+                        size: 18,
+                    },
                 },
             },
             {
-                label: 'Member Volume',
+                label: '',
                 data: memberVolume,
                 backgroundColor: 'transparent',
                 stack: 'volume',
@@ -78,13 +64,11 @@ const CarWashVolumeChart = () => {
                         const retail = retailVolume[context.dataIndex];
                         const member = value;
                         const total = retail + member;
-                        return [
-                            total.toLocaleString()
-                        ];
+                        return [total.toLocaleString()];
                     },
                     font: {
-                        size: 18
-                    }
+                        size: 18,
+                    },
                 },
             },
         ],
@@ -123,6 +107,7 @@ const CarWashVolumeChart = () => {
                     text: 'Wash Volume',
                 },
                 grid: { drawOnChartArea: false },
+                display: false,
             },
         },
     };

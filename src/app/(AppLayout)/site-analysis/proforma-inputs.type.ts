@@ -2,15 +2,15 @@ type ProformaInputs = {
     customerName: string;
     companyName: string;
     siteAddress: {
-        address: string,
-        city: string,
-        state: string,
-        zip_code: string
+        address: string;
+        city: string;
+        state: string;
+        zip_code: string;
     };
-    // 
+    //
     weeklyHoursOfOperation: number | null;
     averageDailyWashHours: number | null;
-    // 
+    //
     laborHours: {
         manager: number | null;
         assistantManager: number | null;
@@ -31,7 +31,7 @@ type ProformaInputs = {
         assistantManager: number | null;
         attendants: number | null;
     };
-    // 
+    //
     basicPackage: {
         price: number;
         customerPercent: number;
@@ -57,7 +57,7 @@ type ProformaInputs = {
         customerPercent: number;
         chemicalCost: number;
     };
-    // 
+    //
     siteFactors: {
         areaProfile: string;
         nearestCompetition: string;
@@ -68,63 +68,63 @@ type ProformaInputs = {
         numberOfPayStations: string;
         visibility: string;
         trafficSpeed: string;
-    },
+    };
     //
     acquisitionBudget: {
         building: {
             totalInvestment: number;
             percentOwner: number;
             percentBank: number;
-        },
+        };
         equipment: {
             totalInvestment: number;
             percentOwner: number;
             percentBank: number;
-        },
+        };
         land: {
             totalInvestment: number;
             percentOwner: number;
             percentBank: number;
-        },
+        };
         site: {
             totalInvestment: number;
             percentOwner: number;
             percentBank: number;
-        },
+        };
         soft_costs: {
             totalInvestment: number;
             percentOwner: number;
             percentBank: number;
-        }
-    }
+        };
+    };
     //
     bankDebtAllocation: {
         building: {
             bankDebtTotal: number;
             interestRate: number;
             termOfLoan: number;
-        },
+        };
         equipment: {
             bankDebtTotal: number;
             interestRate: number;
             termOfLoan: number;
-        },
+        };
         land: {
             bankDebtTotal: number;
             interestRate: number;
             termOfLoan: number;
-        },
+        };
         site: {
             bankDebtTotal: number;
             interestRate: number;
             termOfLoan: number;
-        },
+        };
         soft_costs: {
             bankDebtTotal: number;
             interestRate: number;
             termOfLoan: number;
-        }
-    }
-}
+        };
+    };
+};
 
 export default ProformaInputs;

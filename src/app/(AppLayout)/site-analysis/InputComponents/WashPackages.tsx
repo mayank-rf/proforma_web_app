@@ -1,6 +1,6 @@
-import {Grid, TextField, Typography } from '@mui/material'
-import InputAccordion from './InputAccordion'
-import { Controller, useForm, useWatch } from 'react-hook-form'
+import { Grid, TextField, Typography } from '@mui/material';
+import InputAccordion from './InputAccordion';
+import { Controller, useForm, useWatch } from 'react-hook-form';
 import React from 'react';
 
 const defaultValues = {
@@ -9,18 +9,18 @@ const defaultValues = {
     menuPackageTwo: { price: 20, customerPercent: 15, chemicalCost: 1.05 },
     menuPackageThree: { price: 25, customerPercent: 10, chemicalCost: 1.09 },
     menuPackageFour: { price: 0, customerPercent: 0, chemicalCost: 0 },
-  };
+};
 
 export default function WashPackages() {
     const { control } = useForm({ defaultValues });
     const packageNames = [
-        { key: "basicPackage", label: "Basic Package", price: 10, customerPercent: 45, chemicalCost: 0.48 },
-        { key: "menuPackageOne", label: "Menu Package One",price: 15, customerPercent: 30, chemicalCost: 0.89  },
-        { key: "menuPackageTwo", label: "Menu Package Two",price: 15, customerPercent: 30, chemicalCost: 0.89  },
-        { key: "menuPackageThree", label: "Menu Package Three",price: 15, customerPercent: 30, chemicalCost: 0.89 },
-        { key: "menuPackageFour", label: "Menu Package Four",price: 15, customerPercent: 30, chemicalCost: 0.89  },
+        { key: 'basicPackage', label: 'Basic Package', price: 10, customerPercent: 45, chemicalCost: 0.48 },
+        { key: 'menuPackageOne', label: 'Menu Package One', price: 15, customerPercent: 30, chemicalCost: 0.89 },
+        { key: 'menuPackageTwo', label: 'Menu Package Two', price: 15, customerPercent: 30, chemicalCost: 0.89 },
+        { key: 'menuPackageThree', label: 'Menu Package Three', price: 15, customerPercent: 30, chemicalCost: 0.89 },
+        { key: 'menuPackageFour', label: 'Menu Package Four', price: 15, customerPercent: 30, chemicalCost: 0.89 },
     ];
-  
+
     const packages = packageNames.map(({ key, label }) => {
         return {
             label,
@@ -34,33 +34,47 @@ export default function WashPackages() {
             name={name}
             control={control}
             defaultValue={defaultValue}
-            render={({ field }) => (
-                <TextField
-                    fullWidth
-                    size="small"
-                    variant="outlined"
-                    sx={{ borderRadius: '10px' }}
-                    {...field}
-                    required
-                />
-            )}
+            render={({ field }) => <TextField fullWidth size="small" variant="outlined" sx={{ borderRadius: '10px' }} {...field} required />}
         />
     );
 
-    const allFieldsFilled = packages.every(pkg =>
-        pkg.price !== '' && pkg.price !== null && pkg.price !== undefined &&
-        pkg.customerPercent !== '' && pkg.customerPercent !== null && pkg.customerPercent !== undefined &&
-        pkg.chemicalCost !== '' && pkg.chemicalCost !== null && pkg.chemicalCost !== undefined
-      );
-   
+    const allFieldsFilled = packages.every(
+        (pkg) =>
+            pkg.price !== '' &&
+            pkg.price !== null &&
+            pkg.price !== undefined &&
+            pkg.customerPercent !== '' &&
+            pkg.customerPercent !== null &&
+            pkg.customerPercent !== undefined &&
+            pkg.chemicalCost !== '' &&
+            pkg.chemicalCost !== null &&
+            pkg.chemicalCost !== undefined
+    );
+
     return (
-        <InputAccordion title="Menu Packages" completed={allFieldsFilled}>     
-            <Grid container >
-                <Grid container spacing={2} sx={{ marginBottom: 2, fontWeight: "bold" }}>
-                    <Grid item xs={6}><Typography variant="body1" fontWeight="600" color="#3A4F5F">Packages</Typography></Grid>
-                    <Grid item xs={2}><Typography variant="body1" fontWeight="600" color="#3A4F5F">% Price</Typography></Grid>
-                    <Grid item xs={2}><Typography variant="body1" fontWeight="600" color="#3A4F5F">% Customer</Typography></Grid>
-                    <Grid item xs={2}><Typography variant="body1" fontWeight="600" color="#3A4F5F">Chemical Cost</Typography></Grid>
+        <InputAccordion title="Menu Packages" completed={allFieldsFilled}>
+            <Grid container>
+                <Grid container spacing={2} sx={{ marginBottom: 2, fontWeight: 'bold' }}>
+                    <Grid item xs={6}>
+                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
+                            Packages
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
+                            % Price
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
+                            % Customer
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
+                            Chemical Cost
+                        </Typography>
+                    </Grid>
                 </Grid>
                 {packages.map((pkg, index) => (
                     <Grid container spacing={2} key={index} alignItems="center" sx={{ marginBottom: 2 }}>
@@ -80,5 +94,5 @@ export default function WashPackages() {
                 ))}
             </Grid>
         </InputAccordion>
-    )
+    );
 }

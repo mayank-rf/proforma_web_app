@@ -16,8 +16,7 @@ const ratings = [
     {
         label: 'Hours of Operation',
         value: 3,
-        description:
-            'Rates the duration of operating hours—70+ hours, 70-65 hours, 64-60 hours, and less than 60 hours, respectively.',
+        description: 'Rates the duration of operating hours—70+ hours, 70-65 hours, 64-60 hours, and less than 60 hours, respectively.',
     },
     {
         label: 'Site Type',
@@ -28,8 +27,7 @@ const ratings = [
     {
         label: 'Accessibility',
         value: 3,
-        description:
-            'Rates the ease of access: easy in/out, easy in/out with divided highway, easy in/out one-way, difficult in/out, respectively.',
+        description: 'Rates the ease of access: easy in/out, easy in/out with divided highway, easy in/out one-way, difficult in/out, respectively.',
     },
     {
         label: 'Stack Up Area',
@@ -40,14 +38,12 @@ const ratings = [
     {
         label: 'Number of Free Vacuum Slots',
         value: 3,
-        description:
-            'Rates the vacuum slot offering: 20+ vehicles, 20-12 vehicles, less than 12 vehicles, and “coin or none”, respectively.',
+        description: 'Rates the vacuum slot offering: 20+ vehicles, 20-12 vehicles, less than 12 vehicles, and “coin or none”, respectively.',
     },
     {
         label: 'Number of Pay Stations',
         value: 2,
-        description:
-            'Rates the ability to drive throughput: 3 or more, 2, 1, or live person, respectively.',
+        description: 'Rates the ability to drive throughput: 3 or more, 2, 1, or live person, respectively.',
     },
     {
         label: 'Visibility',
@@ -58,11 +54,9 @@ const ratings = [
     {
         label: 'Traffic Speed',
         value: 1,
-        description:
-            'Rates the desirable level of traffic speed: <30mph, 40-30mph, 50-40mph, 50+mph, respectively.',
+        description: 'Rates the desirable level of traffic speed: <30mph, 40-30mph, 50-40mph, 50+mph, respectively.',
     },
 ];
-
 
 export const SiteFactors = () => (
     <Box sx={{ width: '98%', mx: 'auto' }}>
@@ -70,7 +64,9 @@ export const SiteFactors = () => (
             {ratings.map((item) => (
                 <Box key={item.label}>
                     <Stack direction={'column'} alignItems={'flex-start'}>
-                        <Typography variant="body2" fontSize={20} fontWeight={600} color="#3A4F5F">{item.label}</Typography>
+                        <Typography variant="body2" fontSize={20} fontWeight={600} color="#3A4F5F">
+                            {item.label}
+                        </Typography>
                         <Typography variant="body2" color="textSecondary" fontWeight={500} fontSize={16}>
                             {item.description}
                         </Typography>

@@ -4,6 +4,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Legend, Tooltip, ChartDataLabels);
 
+const desiredLegendOrder = ['Total Revenue', 'OpEx %', 'Total Expense %', 'Net Income Margin %'];
 
 const data = {
     labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
@@ -13,6 +14,7 @@ const data = {
             label: 'Total Revenue',
             data: [884165, 1166988, 1313617, 1348583, 1455050],
             backgroundColor: 'rgba(45, 156, 219, 0.7)',
+            barThickness: 100,
             order: 2, // Lower order: draw first
             datalabels: {
                 align: 'top',
@@ -21,9 +23,9 @@ const data = {
                 color: '#3A4F5F',
                 font: {
                     weight: 'bold',
-                    size: 14
+                    size: 16,
                 },
-            }
+            },
         },
         {
             type: 'line',
@@ -40,10 +42,10 @@ const data = {
                 color: '#3A4F5F',
                 font: {
                     weight: 'bold',
-                    size: 16
+                    size: 16,
                 },
             },
-            clip: false
+            clip: false,
         },
         {
             type: 'line',
@@ -60,10 +62,10 @@ const data = {
                 color: '#3A4F5F',
                 font: {
                     weight: 'bold',
-                    size: 16
+                    size: 16,
                 },
             },
-            clip: false
+            clip: false,
         },
         {
             type: 'line',
@@ -80,22 +82,29 @@ const data = {
                 color: '#3A4F5F',
                 font: {
                     weight: 'bold',
-                    size: 16
+                    size: 16,
                 },
             },
-            clip: false
-        }
-
+            clip: false,
+        },
     ],
 };
-
-
 
 const options = {
     responsive: true,
     plugins: {
         legend: {
             position: 'top',
+            labels: {
+                generateLabels: (chart) => {
+                    const original = ChartJS.defaults.plugins.legend.labels.generateLabels;
+                    const labels = original(chart);
+                    // Sort according to desired order
+                    return labels.sort((a, b) => {
+                        return desiredLegendOrder.indexOf(a.text) - desiredLegendOrder.indexOf(b.text);
+                    });
+                },
+            },
         },
     },
     interaction: {
@@ -105,24 +114,23 @@ const options = {
     scales: {
         x: {
             grid: { drawOnChartArea: false },
-
         },
         y: {
             position: 'left',
             title: { display: true, text: 'Total Revenue ($)' },
             grid: { drawOnChartArea: false },
-
+            display: false,
         },
         y1: {
             position: 'right',
             title: { display: true, text: '% of Sales' },
             grid: { drawOnChartArea: false },
+            display: false,
+            max: 150,
         },
     },
 };
 
-
-
 export default function IncomeStatementChart() {
-    return <Chart type='bar' data={data} options={options} />;
+    return <Chart type="bar" data={data} options={options} height={100} />;
 }

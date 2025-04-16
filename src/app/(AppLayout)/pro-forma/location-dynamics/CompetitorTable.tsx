@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    Table, TableBody, TableCell, TableContainer,
-    TableHead, TableRow, Paper, Link, Typography
-} from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Link, Typography } from '@mui/material';
 
 const competitorData = [
     {
@@ -25,13 +22,15 @@ const competitorData = [
         mup: 'Yes',
         website: 'https://www.zipcarwash.com',
         distance: 9.63,
-    }, {
+    },
+    {
         name: 'Zip Car Wash',
         type: 'Express',
         mup: 'Yes',
         website: 'https://www.zipcarwash.com',
         distance: 9.74,
-    }, {
+    },
+    {
         name: 'Zip Car Wash',
         type: 'Express',
         mup: 'Yes',

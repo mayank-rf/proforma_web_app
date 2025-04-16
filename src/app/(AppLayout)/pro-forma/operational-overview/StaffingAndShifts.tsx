@@ -1,40 +1,32 @@
-import {
-    Box,
-    Card,
-    CardContent,
-    Grid,
-    Typography,
-    Divider,
-    Avatar,
-} from "@mui/material";
-import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
-import PersonIcon from "@mui/icons-material/Person";
-import GroupIcon from "@mui/icons-material/Group";
+import { Box, Card, CardContent, Grid, Typography, Divider, Avatar } from '@mui/material';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import PersonIcon from '@mui/icons-material/Person';
+import GroupIcon from '@mui/icons-material/Group';
 
 const roles = [
     {
-        title: "Manager",
-        hours: "49 Hrs.",
-        wage: "$25",
-        burdenRate: "20%",
-        total: "$79K",
-        icon: <SupervisorAccountIcon fontSize="large" />,
-    },
-    {
-        title: "Asst Manager",
-        hours: "42 Hrs.",
-        wage: "$18",
-        burdenRate: "20%",
-        total: "$49K",
+        title: 'Manager',
+        hours: '49 Hrs.',
+        wage: '$25',
+        burdenRate: '20%',
+        total: '$79K',
         icon: <PersonIcon fontSize="large" />,
     },
     {
-        title: "[4] Attendants",
-        hours: "160 Hrs.",
-        subHours: "80 Hrs. Temp. Labor",
-        wage: "$14",
-        burdenRate: "20%",
-        total: "$144K",
+        title: 'Assistant Manager',
+        hours: '42 Hrs.',
+        wage: '$18',
+        burdenRate: '20%',
+        total: '$49K',
+        icon: <PersonIcon fontSize="large" />,
+    },
+    {
+        title: 'Attendants',
+        hours: '160 Hrs.',
+        subHours: '80 Hrs. Temp. Labor',
+        wage: '$14',
+        burdenRate: '20%',
+        total: '$144K',
         icon: <GroupIcon fontSize="large" />,
     },
 ];
@@ -47,9 +39,7 @@ export default function StaffingAndShifts() {
                     {roles.map((role, index) => (
                         <Grid item xs={12} sm={4} key={index}>
                             <Box display="flex" flexDirection="column" alignItems="center" gap={1}>
-                                <Avatar sx={{ bgcolor: "transparent", color: "primary.main" }}>
-                                    {role.icon}
-                                </Avatar>
+                                <Avatar sx={{ bgcolor: 'transparent', color: 'primary.main' }}>{role.icon}</Avatar>
                                 <Typography variant="subtitle1" fontWeight="bold" align="center" fontSize={24} color="primary.main">
                                     {role.title}
                                 </Typography>
@@ -86,10 +76,10 @@ export default function StaffingAndShifts() {
                                     </Typography>
                                 </Box>
 
-                                <Divider sx={{ my: 2, width: "100%" }} />
+                                <Divider sx={{ my: 2, width: '100%' }} />
 
-                                <Typography variant="subtitle2" fontWeight="bold">
-                                    Total Labor
+                                <Typography variant="subtitle2" fontWeight="bold" color="primary.main">
+                                    {role.title} Labor
                                 </Typography>
                                 <Typography variant="h6" color="primary">
                                     {role.total}

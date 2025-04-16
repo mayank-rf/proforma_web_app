@@ -115,7 +115,9 @@ const KeyDemographicsAccordion = () => {
                         sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)', mb: 2 }}
                     >
                         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography fontWeight="bold" color='primary.main'>{section.category}</Typography>
+                            <Typography fontWeight="bold" color="primary.main">
+                                {section.category}
+                            </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
                             <TableContainer component={Paper}>

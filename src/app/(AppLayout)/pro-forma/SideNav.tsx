@@ -49,9 +49,7 @@ export default function SideNav() {
                         }}
                     >
                         <Tooltip title={!isHovered ? item.label : ''} placement="right">
-                            <ListItemIcon sx={{ color: 'white', minWidth: 0, mr: isHovered ? 2 : 'auto' }}>
-                                {item.icon}
-                            </ListItemIcon>
+                            <ListItemIcon sx={{ color: 'white', minWidth: 0, mr: isHovered ? 2 : 'auto' }}>{item.icon}</ListItemIcon>
                         </Tooltip>
                         {isHovered && <ListItemText primary={item.label} />}
                     </ListItemButton>

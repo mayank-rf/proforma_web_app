@@ -1,19 +1,7 @@
 'use client';
 
-import {
-    Box,
-    Card,
-    CardContent,
-    Typography,
-    Grid,
-    Divider,
-    Stack,
-} from '@mui/material';
-import {
-    GoogleMap,
-    useJsApiLoader,
-    Marker,
-} from '@react-google-maps/api';
+import { Box, Card, CardContent, Typography, Grid, Divider, Stack } from '@mui/material';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { LineChart } from '@mui/x-charts';
 import { SiteFactors } from './SiteFactors';
 import SiteQualitySnapshot from './SiteQualitySnapshot';
@@ -34,15 +22,21 @@ const center = {
 
 const Metric = ({ label, value }: { label: string; value: string }) => (
     <Box mb={2}>
-        <Typography variant="body2" color="textSecondary">{label}</Typography>
-        <Typography variant="h6" sx={{ color: '#3A4F5F' }}>{value}</Typography>
+        <Typography variant="body2" color="textSecondary">
+            {label}
+        </Typography>
+        <Typography variant="h6" sx={{ color: '#3A4F5F' }}>
+            {value}
+        </Typography>
     </Box>
 );
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
     <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)' }}>
         <CardContent>
-            <Typography variant="h6" gutterBottom sx={{ color: '#3A4F5F' }}>{title}</Typography>
+            <Typography variant="h6" gutterBottom sx={{ color: '#3A4F5F' }}>
+                {title}
+            </Typography>
             <Divider sx={{ mb: 2 }} />
             {children}
         </CardContent>
@@ -71,7 +65,7 @@ export default function LocationDynamics() {
                                 <Marker position={center} />
                             </GoogleMap>
                         )} */}
-                        <StaticMapWithRadius lat={38.204430} lng={-84.560326} />
+                        <StaticMapWithRadius lat={38.20443} lng={-84.560326} />
                     </CardContent>
                 </Card>
 
@@ -150,23 +144,18 @@ export default function LocationDynamics() {
                             </Card> */}
                             <TrafficChartTabs />
                         </Box>
-
                     </Stack>
                 </Section>
-
 
                 {/* Demographic Details */}
                 <Section title="Demographic Details">
                     <KeyDemographicsTable />
                 </Section>
 
-
                 {/* Market Overview */}
                 <Section title="Competitive Environment">
                     <CompetitorTable />
-                    <Typography variant='body1'>
-                        *M.U.P = Monthly Unlimited Package
-                    </Typography>
+                    <Typography variant="body1">*M.U.P = Monthly Unlimited Package</Typography>
                 </Section>
             </Box>
         </>

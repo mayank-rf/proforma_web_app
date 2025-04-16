@@ -1,21 +1,28 @@
 'use client';
 
-import { Box, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
+import { Box, Card, CardContent, Divider, Grid, Stack, Typography } from '@mui/material';
 import CarWashFeatures from './CarWashFeatures';
 import OperatingExpensePieChart from './OperatingExpensePieChart';
 import OpexTable from './OpexTable';
 import StaffingAndShifts from './StaffingAndShifts';
 import WashPackageSummary from './WashPackageSummary';
+import OpexChartTabs from './OpexChartTabs';
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
     <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)' }}>
         <CardContent>
-            <Typography variant="h6" gutterBottom sx={{ color: '#3A4F5F' }}>{title}</Typography>
+            <Typography variant="h6" gutterBottom sx={{ color: '#3A4F5F' }}>
+                {title}
+            </Typography>
             <Divider sx={{ mb: 2 }} />
             {children}
         </CardContent>
     </Card>
 );
+
+const percentOfSalesYear1 = [3, 6, 1, 1, 31, 1, 1, 1, 2, 1, 1, 9];
+const percentOfSalesYear3 = [3, 6, 1, 1, 21, 1, 1, 1, 2, 1, 1, 9];
+const percentOfSalesYear5 = [3, 6, 1, 1, 19, 1, 1, 1, 2, 1, 1, 9];
 
 export default function OperationalOverview() {
     return (
@@ -27,11 +34,12 @@ export default function OperationalOverview() {
                         <OpexTable />
                     </Grid>
                     <Grid item xs={6}>
-                        <OperatingExpensePieChart />
+                        <Stack justifyContent="center" alignItems="center">
+                            <OpexChartTabs />
+                        </Stack>
                     </Grid>
                 </Grid>
             </Section>
-
 
             {/* Staffing & Shifts */}
             <Section title="Staffing & Shifts">

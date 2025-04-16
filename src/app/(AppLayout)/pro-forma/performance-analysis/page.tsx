@@ -1,12 +1,6 @@
 'use client';
 
-import {
-    Box,
-    Card,
-    CardContent,
-    Grid,
-    Typography
-} from '@mui/material';
+import { Box, Card, CardContent, Divider, Grid, Stack, Typography } from '@mui/material';
 import CarWashVolumeChart from './CarWashVolumeChart';
 import CarWashVolumeTable from './CarWashVolumeTable';
 import IncomeStatementChart from './ProformaIncomeChart';
@@ -14,59 +8,80 @@ import ProFormaIncomeTable from './ProformaIncomeTable';
 import RevenueBreakoutChart from './RevenueBreakoutChart';
 import RevenueBreakoutTable from './RevenueBreakoutTable';
 
+const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+    <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)' }}>
+        <CardContent>
+            <Typography variant="h6" gutterBottom sx={{ color: '#3A4F5F' }}>
+                {title}
+            </Typography>
+            <Divider sx={{ mb: 2 }} />
+            {children}
+        </CardContent>
+    </Card>
+);
+
 export default function KPIAnalysis() {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, p: 1 }}>
             {/* Pro Forma Income Statement */}
-            <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)' }}>
-                <CardContent>
-                    <Typography variant="h6" gutterBottom>
-                        Pro Forma Income Statement
-                    </Typography>
-                    <Grid container spacing={6}>
-                        <Grid item xs={5}>
-                            <ProFormaIncomeTable />
-                        </Grid>
-                        <Grid item xs={7}>
-                            <IncomeStatementChart />
-                        </Grid>
+            <Section title="Pro Forma Income Statement">
+                <Grid container spacing={6}>
+                    <Grid item xs={3}>
+                        <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
+                            <Typography sx={{ textAlign: 'left', p: 2 }}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
+                                ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </Typography>
+                        </Stack>
                     </Grid>
-                </CardContent>
-            </Card>
+                    <Grid item xs={9}>
+                        <IncomeStatementChart />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <ProFormaIncomeTable />
+                    </Grid>
+                </Grid>
+            </Section>
 
             {/* Revenue Breakout */}
-            <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)' }}>
-                <CardContent>
-                    <Typography variant="h6" gutterBottom>
-                        Revenue Breakout
-                    </Typography>
-                    <Grid container spacing={6}>
-                        <Grid item xs={5}>
-                            <RevenueBreakoutTable />
-                        </Grid>
-                        <Grid item xs={7}>
-                            <RevenueBreakoutChart />
-                        </Grid>
+            <Section title="Revenue Breakout">
+                <Grid container spacing={6}>
+                    <Grid item xs={3}>
+                        <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
+                            <Typography sx={{ textAlign: 'left', p: 2 }}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
+                                ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </Typography>
+                        </Stack>
                     </Grid>
-                </CardContent>
-            </Card>
+                    <Grid item xs={9}>
+                        <RevenueBreakoutChart />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <RevenueBreakoutTable />
+                    </Grid>
+                </Grid>
+            </Section>
 
             {/* Car Wash Volume Estimates */}
-            <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)' }}>
-                <CardContent>
-                    <Typography variant="h6" gutterBottom>
-                        Car Wash Volume Estimates
-                    </Typography>
-                    <Grid container spacing={6}>
-                        <Grid item xs={5}>
-                            <CarWashVolumeTable />
-                        </Grid>
-                        <Grid item xs={7}>
-                            <CarWashVolumeChart />
-                        </Grid>
+            <Section title="Car Wash Volume Estimates">
+                <Grid container spacing={6}>
+                    <Grid item xs={3}>
+                        <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
+                            <Typography sx={{ textAlign: 'left', p: 2 }}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
+                                ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </Typography>
+                        </Stack>
                     </Grid>
-                </CardContent>
-            </Card>
+                    <Grid item xs={9}>
+                        <CarWashVolumeChart />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <CarWashVolumeTable />
+                    </Grid>
+                </Grid>
+            </Section>
         </Box>
     );
 }

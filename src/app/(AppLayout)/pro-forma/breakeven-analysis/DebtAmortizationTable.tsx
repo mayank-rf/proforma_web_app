@@ -1,16 +1,6 @@
 'use client';
 
-import {
-    Box,
-    Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Typography,
-} from '@mui/material';
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
 const amortizationData = [
     {
@@ -50,8 +40,7 @@ const amortizationData = [
     },
 ];
 
-const formatCurrency = (value: number) =>
-    `$${value.toLocaleString(undefined, { minimumFractionDigits: 0 })}`;
+const formatCurrency = (value: number) => `$${value.toLocaleString(undefined, { minimumFractionDigits: 0 })}`;
 
 export default function DebtAmortizationTable() {
     return (
@@ -64,11 +53,21 @@ export default function DebtAmortizationTable() {
                 <Table size="small">
                     <TableHead sx={{ backgroundColor: '#f5f5f5' }}>
                         <TableRow>
-                            <TableCell><strong>Year</strong></TableCell>
-                            <TableCell align="right"><strong>Beg. Debt Balance</strong></TableCell>
-                            <TableCell align="right"><strong>Principal Paid</strong></TableCell>
-                            <TableCell align="right"><strong>Interest Paid</strong></TableCell>
-                            <TableCell align="right"><strong>End Debt Balance</strong></TableCell>
+                            <TableCell>
+                                <strong>Year</strong>
+                            </TableCell>
+                            <TableCell align="right">
+                                <strong>Beg. Debt Balance</strong>
+                            </TableCell>
+                            <TableCell align="right">
+                                <strong>Principal Paid</strong>
+                            </TableCell>
+                            <TableCell align="right">
+                                <strong>Interest Paid</strong>
+                            </TableCell>
+                            <TableCell align="right">
+                                <strong>End Debt Balance</strong>
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -1,16 +1,6 @@
 'use client';
 
-import {
-    Box,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Typography,
-    Paper,
-} from '@mui/material';
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
 const data = [
     { year: 'Year 1', retail: '[ ]', member: '[ ]' },
@@ -20,32 +10,38 @@ const data = [
     { year: 'Year 5', retail: '[ ]', member: '[ ]' },
 ];
 
-export default function RevenueBreakoutTable() {
+export default function RevenueBreakoutTableTransposed() {
     return (
-        <Box mt={4}>
-            <TableContainer component={Paper} elevation={0}>
+        <Box sx={{ mb: 2 }}>
+            <TableContainer sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
                 <Table size="small">
                     <TableHead>
                         <TableRow>
                             <TableCell />
-                            <TableCell align="center" sx={{ fontStyle: 'italic', fontWeight: 500 }}>
-                                Average Retail Price / Wash
-                            </TableCell>
-                            <TableCell align="center" sx={{ fontStyle: 'italic', fontWeight: 500 }}>
-                                Avg. Member Price / Wash
-                            </TableCell>
+                            {data.map((row, index) => (
+                                <TableCell key={index} align="center" sx={{ fontWeight: 600 }}>
+                                    {row.year}
+                                </TableCell>
+                            ))}
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {data.map((row, idx) => (
-                            <TableRow key={idx}>
-                                <TableCell sx={{ fontWeight: 600 }}>{row.year}</TableCell>
-                                <TableCell align="center">{row.retail}</TableCell>
-                                <TableCell align="center" sx={{ bgcolor: '#f5f5f5' }}>
+                        <TableRow>
+                            <TableCell sx={{ fontStyle: 'italic', fontWeight: 500 }}>Avg. Retail Price / Wash</TableCell>
+                            {data.map((row, idx) => (
+                                <TableCell key={idx} align="center">
+                                    {row.retail}
+                                </TableCell>
+                            ))}
+                        </TableRow>
+                        <TableRow>
+                            <TableCell sx={{ fontStyle: 'italic', fontWeight: 500 }}>Avg. Member Price / Wash</TableCell>
+                            {data.map((row, idx) => (
+                                <TableCell key={idx} align="center">
                                     {row.member}
                                 </TableCell>
-                            </TableRow>
-                        ))}
+                            ))}
+                        </TableRow>
                     </TableBody>
                 </Table>
             </TableContainer>

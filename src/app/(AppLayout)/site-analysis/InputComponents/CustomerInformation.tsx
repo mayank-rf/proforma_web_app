@@ -1,23 +1,22 @@
-import { FormControl, Grid, InputLabel, Stack, TextField } from "@mui/material";
-import InputAccordion from "./InputAccordion";
-import useStore from "../../../../store/useStore";
-import { Controller, useWatch } from "react-hook-form";
-import { useEffect } from "react";
+import { FormControl, Grid, InputLabel, Stack, TextField } from '@mui/material';
+import InputAccordion from './InputAccordion';
+import useStore from '../../../../store/useStore';
+import { Controller, useWatch } from 'react-hook-form';
+import { useEffect } from 'react';
 
 export default function CustomerInformation({ control }: any) {
-    const customerName = useWatch({ control, name: "customerName" });
-    const companyName = useWatch({ control, name: "companyName" });
-    const address = useWatch({ control, name: "siteAddress.address" });
-    const city = useWatch({ control, name: "siteAddress.city" });
-    const state = useWatch({ control, name: "siteAddress.state" });
-    const zip_code = useWatch({ control, name: "siteAddress.zip_code" });
+    const customerName = useWatch({ control, name: 'customerName' });
+    const companyName = useWatch({ control, name: 'companyName' });
+    const address = useWatch({ control, name: 'siteAddress.address' });
+    const city = useWatch({ control, name: 'siteAddress.city' });
+    const state = useWatch({ control, name: 'siteAddress.state' });
+    const zip_code = useWatch({ control, name: 'siteAddress.zip_code' });
     const { setAddress } = useStore();
 
     useEffect(() => {
-        const addressHeader = `${address || ""}-${city || ""}, ${state || ""}, ${zip_code || ""}`;
+        const addressHeader = `${address || ''}-${city || ''}, ${state || ''}, ${zip_code || ''}`;
         setAddress(addressHeader);
-      }, [address, city, state, zip_code, setAddress]);
-    
+    }, [address, city, state, zip_code, setAddress]);
 
     const allFilled = !!customerName && !!companyName && !!city && !!state && !!zip_code && !!address;
 
@@ -30,7 +29,17 @@ export default function CustomerInformation({ control }: any) {
                         control={control}
                         render={({ field }: any) => (
                             <FormControl fullWidth required>
-                                <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px' }} {...field} id="customerName" label="Customer Name" required />
+                                <TextField
+                                    fullWidth
+                                    size="small"
+                                    variant="outlined"
+                                    value=""
+                                    sx={{ borderRadius: '10px' }}
+                                    {...field}
+                                    id="customerName"
+                                    label="Customer Name"
+                                    required
+                                />
                             </FormControl>
                         )}
                     />
@@ -41,7 +50,17 @@ export default function CustomerInformation({ control }: any) {
                         control={control}
                         render={({ field }: any) => (
                             <FormControl fullWidth required>
-                                <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px' }} {...field} id="companyName" label="Company Name" required />
+                                <TextField
+                                    fullWidth
+                                    size="small"
+                                    variant="outlined"
+                                    value=""
+                                    sx={{ borderRadius: '10px' }}
+                                    {...field}
+                                    id="companyName"
+                                    label="Company Name"
+                                    required
+                                />
                             </FormControl>
                         )}
                     />
@@ -52,7 +71,17 @@ export default function CustomerInformation({ control }: any) {
                         control={control}
                         render={({ field }: any) => (
                             <FormControl fullWidth required>
-                                <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px' }} {...field} id="siteAddress.address" label="Site Address" required />
+                                <TextField
+                                    fullWidth
+                                    size="small"
+                                    variant="outlined"
+                                    value=""
+                                    sx={{ borderRadius: '10px' }}
+                                    {...field}
+                                    id="siteAddress.address"
+                                    label="Site Address"
+                                    required
+                                />
                             </FormControl>
                         )}
                     />
@@ -63,7 +92,17 @@ export default function CustomerInformation({ control }: any) {
                         control={control}
                         render={({ field }: any) => (
                             <FormControl fullWidth required>
-                                <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px' }} {...field} id="siteAddress.city" label="City" required />
+                                <TextField
+                                    fullWidth
+                                    size="small"
+                                    variant="outlined"
+                                    value=""
+                                    sx={{ borderRadius: '10px' }}
+                                    {...field}
+                                    id="siteAddress.city"
+                                    label="City"
+                                    required
+                                />
                             </FormControl>
                         )}
                     />
@@ -74,7 +113,17 @@ export default function CustomerInformation({ control }: any) {
                         control={control}
                         render={({ field }: any) => (
                             <FormControl fullWidth required>
-                                <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px' }} {...field} id="siteAddress.state" label="State" required />
+                                <TextField
+                                    fullWidth
+                                    size="small"
+                                    variant="outlined"
+                                    value=""
+                                    sx={{ borderRadius: '10px' }}
+                                    {...field}
+                                    id="siteAddress.state"
+                                    label="State"
+                                    required
+                                />
                             </FormControl>
                         )}
                     />
@@ -85,13 +134,22 @@ export default function CustomerInformation({ control }: any) {
                         control={control}
                         render={({ field }: any) => (
                             <FormControl fullWidth required>
-                                <TextField fullWidth size="small" variant="outlined" value="" sx={{ borderRadius: '10px' }} {...field} id="siteAddress.zip_code" label="Zip Code" required />
+                                <TextField
+                                    fullWidth
+                                    size="small"
+                                    variant="outlined"
+                                    value=""
+                                    sx={{ borderRadius: '10px' }}
+                                    {...field}
+                                    id="siteAddress.zip_code"
+                                    label="Zip Code"
+                                    required
+                                />
                             </FormControl>
                         )}
                     />
                 </Grid>
             </Grid>
         </InputAccordion>
-    )
+    );
 }
-
