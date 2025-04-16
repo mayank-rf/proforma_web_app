@@ -1,9 +1,9 @@
-import { createTheme } from "@mui/material/styles";
-import { Montserrat } from "next/font/google";
+import { createTheme } from '@mui/material/styles';
+import { Montserrat } from 'next/font/google';
 
 const montserrat = Montserrat({
-    variable: "--font-montserrat",
-    subsets: ["latin"],
+    variable: '--font-montserrat',
+    subsets: ['latin'],
 });
 
 const theme = createTheme({
@@ -46,12 +46,11 @@ const theme = createTheme({
             700: '#A32E26',
             800: '#7D231D',
             900: '#561814',
-        }
+        },
     },
     typography: {
         fontFamily: 'Montserrat, sans-serif',
     },
+});
 
-})
-
-export default theme
+export default theme;

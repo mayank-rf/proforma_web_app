@@ -10,7 +10,9 @@ import WashPackageSummary from './WashPackageSummary';
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
     <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)' }}>
         <CardContent>
-            <Typography variant="h6" gutterBottom sx={{ color: '#3A4F5F' }}>{title}</Typography>
+            <Typography variant="h6" gutterBottom sx={{ color: '#3A4F5F' }}>
+                {title}
+            </Typography>
             <Divider sx={{ mb: 2 }} />
             {children}
         </CardContent>
@@ -31,7 +33,6 @@ export default function OperationalOverview() {
                     </Grid>
                 </Grid>
             </Section>
-
 
             {/* Staffing & Shifts */}
             <Section title="Staffing & Shifts">

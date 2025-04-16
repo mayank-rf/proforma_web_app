@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-    Chart as ChartJS,
-    ArcElement,
-    Tooltip,
-    Legend,
-} from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Box, Stack } from '@mui/material';
@@ -24,11 +19,7 @@ const labels = [
 ];
 
 const percentValues = [4.7, 5.3, 7.3, 12.7, 45.0, 4.0, 1.2, 1.8, 6.0];
-const backgroundColors = [
-    '#27AE60', '#2D9CDB', '#F2994A', '#9B51E0', '#EB5757',
-    '#2AD2C9', '#F2C94C', '#F5A623', '#7B5E57',
-];
-
+const backgroundColors = ['#27AE60', '#2D9CDB', '#F2994A', '#9B51E0', '#EB5757', '#2AD2C9', '#F2C94C', '#F5A623', '#7B5E57'];
 
 const OperatingExpensePieChart = () => {
     const data = {
@@ -47,10 +38,7 @@ const OperatingExpensePieChart = () => {
             {
                 label: 'Year 3 OpEx (%)',
                 data: [4.7, 5.3, 7.3, 12.7, 45.0, 4.0, 1.2, 1.8, 6.0],
-                backgroundColor: [
-                    '#27AE60', '#2D9CDB', '#F2994A', '#9B51E0', '#EB5757',
-                    '#2AD2C9', '#F2C94C', '#F5A623', '#7B5E57',
-                ],
+                backgroundColor: ['#27AE60', '#2D9CDB', '#F2994A', '#9B51E0', '#EB5757', '#2AD2C9', '#F2C94C', '#F5A623', '#7B5E57'],
                 borderWidth: 1,
             },
         ],
@@ -83,8 +71,7 @@ const OperatingExpensePieChart = () => {
             legend: {
                 display: false,
                 position: 'top' as const,
-                labels: {
-                },
+                labels: {},
             },
             tooltip: {
                 callbacks: {
@@ -98,20 +85,20 @@ const OperatingExpensePieChart = () => {
         },
     };
 
-
-
     return (
-        <Stack direction='column' gap={6} p={4} justifyContent="center" alignItems="center">
+        <Stack direction="column" gap={6} p={4} justifyContent="center" alignItems="center">
             {/* Legend Section */}
             <Box style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
                 {labels.map((label, index) => (
                     <Box key={index} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Box style={{
-                            width: '12px',
-                            height: '12px',
-                            borderRadius: '50%',
-                            backgroundColor: backgroundColors[index],
-                        }} />
+                        <Box
+                            style={{
+                                width: '12px',
+                                height: '12px',
+                                borderRadius: '50%',
+                                backgroundColor: backgroundColors[index],
+                            }}
+                        />
                         <span style={{ fontSize: '14px' }}>
                             {label} ({percentValues[index]}%)
                         </span>
@@ -124,7 +111,6 @@ const OperatingExpensePieChart = () => {
                 <Pie data={data} options={options} />
             </Box>
         </Stack>
-
     );
 };
 

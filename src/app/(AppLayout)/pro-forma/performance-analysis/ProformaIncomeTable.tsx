@@ -1,9 +1,6 @@
 'use client';
 
-import {
-    Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-    Typography, Paper, Box
-} from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper, Box } from '@mui/material';
 
 const data = [
     {
@@ -46,9 +43,15 @@ export default function ProFormaIncomeTable() {
                     <TableHead>
                         <TableRow>
                             <TableCell />
-                            <TableCell align="center" sx={{ fontStyle: 'italic' }}>Revenue Growth %</TableCell>
-                            <TableCell align="center" sx={{ fontStyle: 'italic' }}>Net Income</TableCell>
-                            <TableCell align="center" sx={{ fontStyle: 'italic' }}>ROE %</TableCell>
+                            <TableCell align="center" sx={{ fontStyle: 'italic' }}>
+                                Revenue Growth %
+                            </TableCell>
+                            <TableCell align="center" sx={{ fontStyle: 'italic' }}>
+                                Net Income
+                            </TableCell>
+                            <TableCell align="center" sx={{ fontStyle: 'italic' }}>
+                                ROE %
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

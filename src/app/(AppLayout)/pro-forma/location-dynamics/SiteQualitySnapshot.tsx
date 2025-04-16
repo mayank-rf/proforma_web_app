@@ -9,7 +9,7 @@ const siteFactors = [
     {
         label: 'Nearest Competition',
         value: 'One in 4 miles',
-        score: 0.10,
+        score: 0.1,
     },
     {
         label: 'Weekly Hours of Operation',
@@ -50,7 +50,7 @@ const siteFactors = [
         label: 'Traffic Speed',
         value: 'Less than 30 mph',
         score: 0.15,
-    }
+    },
 ];
 
 const getColor = (score) => {
@@ -79,7 +79,7 @@ export default function SiteQualitySnapshot() {
                             <Chip
                                 label={factor.value}
                                 color={getColor(factor.score)}
-                                variant='outlined'
+                                variant="outlined"
                                 sx={{ mt: 1, borderRadius: 1, fontSize: 16 }}
                             />
                             <Tooltip title={`Impact Score: ${factor.score}`} arrow>
@@ -106,4 +106,4 @@ export default function SiteQualitySnapshot() {
             </Box> */}
         </Box>
     );
-} 
+}

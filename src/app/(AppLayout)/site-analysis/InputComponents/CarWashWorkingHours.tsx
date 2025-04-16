@@ -1,10 +1,10 @@
-import { Grid, InputLabel, Stack, TextField } from "@mui/material";
-import InputAccordion from "./InputAccordion";
-import { Controller, useWatch } from "react-hook-form";
+import { Grid, InputLabel, Stack, TextField } from '@mui/material';
+import InputAccordion from './InputAccordion';
+import { Controller, useWatch } from 'react-hook-form';
 
 export default function CarWashWorkingHours({ control }: any) {
-    const weeklyHoursOfOperation = useWatch({ control, name: "weeklyHoursOfOperation" });
-    const averageDailyWashHours = useWatch({ control, name: "averageDailyWashHours" });
+    const weeklyHoursOfOperation = useWatch({ control, name: 'weeklyHoursOfOperation' });
+    const averageDailyWashHours = useWatch({ control, name: 'averageDailyWashHours' });
 
     const allFilled = !!weeklyHoursOfOperation && !!averageDailyWashHours;
 
@@ -16,7 +16,16 @@ export default function CarWashWorkingHours({ control }: any) {
                         name="weeklyHoursOfOperation"
                         control={control}
                         render={({ field }: any) => (
-                            <TextField fullWidth size="small" variant="outlined" sx={{ borderRadius: '10px' }} {...field} id="weeklyHoursOfOperation" label="Weekly Hours" required />
+                            <TextField
+                                fullWidth
+                                size="small"
+                                variant="outlined"
+                                sx={{ borderRadius: '10px' }}
+                                {...field}
+                                id="weeklyHoursOfOperation"
+                                label="Weekly Hours"
+                                required
+                            />
                         )}
                     />
                 </Grid>
@@ -25,11 +34,20 @@ export default function CarWashWorkingHours({ control }: any) {
                         name="averageDailyWashHours"
                         control={control}
                         render={({ field }: any) => (
-                            <TextField fullWidth size="small" variant="outlined" sx={{ borderRadius: '10px' }} {...field} id="averageDailyWashHours" label="Average Daily Wash Hours" required />
+                            <TextField
+                                fullWidth
+                                size="small"
+                                variant="outlined"
+                                sx={{ borderRadius: '10px' }}
+                                {...field}
+                                id="averageDailyWashHours"
+                                label="Average Daily Wash Hours"
+                                required
+                            />
                         )}
                     />
                 </Grid>
             </Grid>
         </InputAccordion>
-    )
+    );
 }

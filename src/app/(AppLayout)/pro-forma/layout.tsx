@@ -5,14 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-    Map,
-    Factory,
-    BarChart,
-    MonetizationOn,
-    Assessment,
-    Summarize,
-} from '@mui/icons-material';
+import { Map, Factory, BarChart, MonetizationOn, Assessment, Summarize } from '@mui/icons-material';
 import Image from 'next/image';
 import SideNav from './SideNav';
 
@@ -33,13 +26,7 @@ export default function AnalysisLayout({ children }: { children: ReactNode }) {
             <Stack>
                 <Paper elevation={3} sx={{ width: 260, px: 2, boxShadow: '0 0 8px rgba(35, 103, 157, 1)' }}>
                     <Typography align="center" sx={{ mt: 2 }}>
-                        <Image
-                            src="/logo.svg"
-                            alt="Logo"
-                            width={80}
-                            height={80}
-                            style={{ width: '70%', height: 'auto' }}
-                        />
+                        <Image src="/logo.svg" alt="Logo" width={80} height={80} style={{ width: '70%', height: 'auto' }} />
                     </Typography>
                     <Divider sx={{ mt: 0, mb: 1 }} />
                     <List>
@@ -92,7 +79,18 @@ export default function AnalysisLayout({ children }: { children: ReactNode }) {
             {/* <SideNav /> */}
 
             {/* Animated Content */}
-            <Box sx={{ flexGrow: 1, p: 3, position: 'relative', overflowY: 'auto', overflowX: 'hidden', height: '100%', boxShadow: '0 0 8px rgba(35, 103, 157, 0.4)', mx: 2 }}>
+            <Box
+                sx={{
+                    flexGrow: 1,
+                    p: 3,
+                    position: 'relative',
+                    overflowY: 'auto',
+                    overflowX: 'hidden',
+                    height: '100%',
+                    boxShadow: '0 0 8px rgba(35, 103, 157, 0.4)',
+                    mx: 2,
+                }}
+            >
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={pathname}

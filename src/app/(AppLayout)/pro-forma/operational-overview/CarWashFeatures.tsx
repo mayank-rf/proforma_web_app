@@ -1,30 +1,30 @@
-import { Box, Card, CardContent, Grid, Typography, Divider } from "@mui/material";
+import { Box, Card, CardContent, Grid, Typography, Divider } from '@mui/material';
 
 const features = [
     {
-        value: "90",
-        unit: "ft",
-        label: "Tunnel Length",
+        value: '90',
+        unit: 'ft',
+        label: 'Tunnel Length',
     },
     {
-        value: "17",
-        unit: "Vehicles",
-        label: "Entrance\nStack Up Area",
+        value: '17',
+        unit: 'Vehicles',
+        label: 'Entrance\nStack Up Area',
     },
     {
-        value: "60",
-        unit: "Vehicles",
-        label: "Max Hourly\nThroughput",
+        value: '60',
+        unit: 'Vehicles',
+        label: 'Max Hourly\nThroughput',
     },
     {
-        value: "12",
-        unit: "hrs",
-        label: "Avg. Daily\nWash Hours",
+        value: '12',
+        unit: 'hrs',
+        label: 'Avg. Daily\nWash Hours',
     },
     {
-        value: "15",
-        unit: "",
-        label: "Vacuum Slots",
+        value: '15',
+        unit: '',
+        label: 'Vacuum Slots',
     },
 ];
 
@@ -36,27 +36,15 @@ export default function CarWashFeatures() {
                     {features.map((feature, idx) => (
                         <Grid item xs={4} key={idx}>
                             <Box textAlign="center">
-                                <Typography
-                                    variant="h5"
-                                    fontWeight="bold"
-                                    color="primary.main"
-                                    sx={{ mb: 0.5 }}
-                                    fontSize={48}
-                                >
+                                <Typography variant="h5" fontWeight="bold" color="primary.main" sx={{ mb: 0.5 }} fontSize={48}>
                                     [{feature.value}]
                                     {feature.unit && (
-                                        <Typography
-                                            component="span"
-                                            variant="subtitle1"
-                                            color="primary.main"
-                                            fontSize={26}
-                                            fontWeight={600}
-                                        >
+                                        <Typography component="span" variant="subtitle1" color="primary.main" fontSize={26} fontWeight={600}>
                                             {` ${feature.unit}`}
                                         </Typography>
                                     )}
                                 </Typography>
-                                <Typography variant="body2" sx={{ whiteSpace: "pre-line" }} fontSize={18} fontWeight={600}>
+                                <Typography variant="body2" sx={{ whiteSpace: 'pre-line' }} fontSize={18} fontWeight={600}>
                                     {feature.label}
                                 </Typography>
                             </Box>

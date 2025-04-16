@@ -1,11 +1,4 @@
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Tooltip,
-    Legend,
-} from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import React from 'react';
 
@@ -27,9 +20,9 @@ const RevenueBreakoutChart = () => {
                     color: '#fff',
                     font: {
                         weight: 'bold',
-                        size: 16
+                        size: 16,
                     },
-                }
+                },
             },
             {
                 label: 'Member Revenue',
@@ -41,9 +34,9 @@ const RevenueBreakoutChart = () => {
                     color: '#fff',
                     font: {
                         weight: 'bold',
-                        size: 16
+                        size: 16,
                     },
-                }
+                },
             },
         ],
     };

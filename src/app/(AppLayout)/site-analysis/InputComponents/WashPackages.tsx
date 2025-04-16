@@ -1,13 +1,13 @@
-import { Grid, InputLabel, Stack, TextField } from '@mui/material'
-import InputAccordion from './InputAccordion'
-import { Controller, useWatch } from 'react-hook-form'
+import { Grid, InputLabel, Stack, TextField } from '@mui/material';
+import InputAccordion from './InputAccordion';
+import { Controller, useWatch } from 'react-hook-form';
 
 export default function WashPackages({ control }: any) {
-    const basicPackage = useWatch({ control, name: "basicPackage" });
-    const menuPackageOne = useWatch({ control, name: "menuPackageOne" });
-    const menuPackageTwo = useWatch({ control, name: "menuPackageTwo" });
-    const menuPackageThree = useWatch({ control, name: "menuPackageThree" });
-    const menuPackageFour = useWatch({ control, name: "menuPackageFour" });
+    const basicPackage = useWatch({ control, name: 'basicPackage' });
+    const menuPackageOne = useWatch({ control, name: 'menuPackageOne' });
+    const menuPackageTwo = useWatch({ control, name: 'menuPackageTwo' });
+    const menuPackageThree = useWatch({ control, name: 'menuPackageThree' });
+    const menuPackageFour = useWatch({ control, name: 'menuPackageFour' });
 
     const allFilled = !!basicPackage && !!menuPackageOne && !!menuPackageTwo && !!menuPackageThree && !!menuPackageFour;
 
@@ -19,14 +19,7 @@ export default function WashPackages({ control }: any) {
                         name="basicPackage"
                         control={control}
                         render={({ field }) => (
-                            <TextField
-                                {...field}
-                                fullWidth
-                                label="Basic Package"
-                                size="small"
-                                variant="outlined"
-                                sx={{ borderRadius: '10px' }}
-                            />
+                            <TextField {...field} fullWidth label="Basic Package" size="small" variant="outlined" sx={{ borderRadius: '10px' }} />
                         )}
                     />
                 </Grid>
@@ -35,14 +28,7 @@ export default function WashPackages({ control }: any) {
                         name="menuPackageOne"
                         control={control}
                         render={({ field }) => (
-                            <TextField
-                                {...field}
-                                fullWidth
-                                label="Menu Package #1"
-                                size="small"
-                                variant="outlined"
-                                sx={{ borderRadius: '10px' }}
-                            />
+                            <TextField {...field} fullWidth label="Menu Package #1" size="small" variant="outlined" sx={{ borderRadius: '10px' }} />
                         )}
                     />
                 </Grid>
@@ -51,14 +37,7 @@ export default function WashPackages({ control }: any) {
                         name="menuPackageTwo"
                         control={control}
                         render={({ field }) => (
-                            <TextField
-                                {...field}
-                                fullWidth
-                                label="Menu Package #2"
-                                size="small"
-                                variant="outlined"
-                                sx={{ borderRadius: '10px' }}
-                            />
+                            <TextField {...field} fullWidth label="Menu Package #2" size="small" variant="outlined" sx={{ borderRadius: '10px' }} />
                         )}
                     />
                 </Grid>
@@ -67,14 +46,7 @@ export default function WashPackages({ control }: any) {
                         name="menuPackageThree"
                         control={control}
                         render={({ field }) => (
-                            <TextField
-                                {...field}
-                                fullWidth
-                                label="Menu Package #3"
-                                size="small"
-                                variant="outlined"
-                                sx={{ borderRadius: '10px' }}
-                            />
+                            <TextField {...field} fullWidth label="Menu Package #3" size="small" variant="outlined" sx={{ borderRadius: '10px' }} />
                         )}
                     />
                 </Grid>
@@ -83,18 +55,11 @@ export default function WashPackages({ control }: any) {
                         name="menuPackageFour"
                         control={control}
                         render={({ field }) => (
-                            <TextField
-                                {...field}
-                                fullWidth
-                                label="Menu Package #4"
-                                size="small"
-                                variant="outlined"
-                                sx={{ borderRadius: '10px' }}
-                            />
+                            <TextField {...field} fullWidth label="Menu Package #4" size="small" variant="outlined" sx={{ borderRadius: '10px' }} />
                         )}
                     />
                 </Grid>
             </Grid>
         </InputAccordion>
-    )
+    );
 }

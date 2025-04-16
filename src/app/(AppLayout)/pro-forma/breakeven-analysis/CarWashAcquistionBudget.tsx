@@ -1,9 +1,6 @@
 'use client';
 
-import {
-    Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-    Typography, Paper, Box
-} from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper, Box } from '@mui/material';
 
 const investmentData = [
     {
@@ -69,8 +66,7 @@ export default function CarWashAcquisitionBudget() {
         { total: 0, equity: 0, debt: 0 }
     );
 
-    const formatCurrency = (value: number) =>
-        `$${value.toLocaleString(undefined, { minimumFractionDigits: 0 })}`;
+    const formatCurrency = (value: number) => `$${value.toLocaleString(undefined, { minimumFractionDigits: 0 })}`;
 
     return (
         <Box>
@@ -82,14 +78,30 @@ export default function CarWashAcquisitionBudget() {
                 <Table size="small">
                     <TableHead sx={{ backgroundColor: '#f5f5f5' }}>
                         <TableRow>
-                            <TableCell><strong>Investment Item</strong></TableCell>
-                            <TableCell align="right"><strong>Total Investment</strong></TableCell>
-                            <TableCell align="center"><strong>% Equity</strong></TableCell>
-                            <TableCell align="right"><strong>$ Equity</strong></TableCell>
-                            <TableCell align="center"><strong>% Debt</strong></TableCell>
-                            <TableCell align="right"><strong>$ Debt</strong></TableCell>
-                            <TableCell align="center"><strong>Interest Rate %</strong></TableCell>
-                            <TableCell align="center"><strong>Loan Term (Mo)</strong></TableCell>
+                            <TableCell>
+                                <strong>Investment Item</strong>
+                            </TableCell>
+                            <TableCell align="right">
+                                <strong>Total Investment</strong>
+                            </TableCell>
+                            <TableCell align="center">
+                                <strong>% Equity</strong>
+                            </TableCell>
+                            <TableCell align="right">
+                                <strong>$ Equity</strong>
+                            </TableCell>
+                            <TableCell align="center">
+                                <strong>% Debt</strong>
+                            </TableCell>
+                            <TableCell align="right">
+                                <strong>$ Debt</strong>
+                            </TableCell>
+                            <TableCell align="center">
+                                <strong>Interest Rate %</strong>
+                            </TableCell>
+                            <TableCell align="center">
+                                <strong>Loan Term (Mo)</strong>
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -107,12 +119,20 @@ export default function CarWashAcquisitionBudget() {
                         ))}
                         {/* Totals Row */}
                         <TableRow sx={{ backgroundColor: '#f0f0f0' }}>
-                            <TableCell><strong>Project Cost</strong></TableCell>
-                            <TableCell align="right"><strong>{formatCurrency(total.total)}</strong></TableCell>
+                            <TableCell>
+                                <strong>Project Cost</strong>
+                            </TableCell>
+                            <TableCell align="right">
+                                <strong>{formatCurrency(total.total)}</strong>
+                            </TableCell>
                             <TableCell />
-                            <TableCell align="right"><strong>{formatCurrency(total.equity)}</strong></TableCell>
+                            <TableCell align="right">
+                                <strong>{formatCurrency(total.equity)}</strong>
+                            </TableCell>
                             <TableCell />
-                            <TableCell align="right"><strong>{formatCurrency(total.debt)}</strong></TableCell>
+                            <TableCell align="right">
+                                <strong>{formatCurrency(total.debt)}</strong>
+                            </TableCell>
                             <TableCell />
                             <TableCell />
                         </TableRow>

@@ -1,12 +1,6 @@
 'use client';
 
-import {
-    Box,
-    Card,
-    CardContent,
-    Grid,
-    Typography
-} from '@mui/material';
+import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 import CarWashVolumeChart from './CarWashVolumeChart';
 import CarWashVolumeTable from './CarWashVolumeTable';
 import IncomeStatementChart from './ProformaIncomeChart';

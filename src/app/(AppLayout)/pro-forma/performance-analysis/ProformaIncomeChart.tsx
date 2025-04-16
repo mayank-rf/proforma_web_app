@@ -4,7 +4,6 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Legend, Tooltip, ChartDataLabels);
 
-
 const data = {
     labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
     datasets: [
@@ -21,9 +20,9 @@ const data = {
                 color: '#3A4F5F',
                 font: {
                     weight: 'bold',
-                    size: 14
+                    size: 14,
                 },
-            }
+            },
         },
         {
             type: 'line',
@@ -40,10 +39,10 @@ const data = {
                 color: '#3A4F5F',
                 font: {
                     weight: 'bold',
-                    size: 16
+                    size: 16,
                 },
             },
-            clip: false
+            clip: false,
         },
         {
             type: 'line',
@@ -60,10 +59,10 @@ const data = {
                 color: '#3A4F5F',
                 font: {
                     weight: 'bold',
-                    size: 16
+                    size: 16,
                 },
             },
-            clip: false
+            clip: false,
         },
         {
             type: 'line',
@@ -80,16 +79,13 @@ const data = {
                 color: '#3A4F5F',
                 font: {
                     weight: 'bold',
-                    size: 16
+                    size: 16,
                 },
             },
-            clip: false
-        }
-
+            clip: false,
+        },
     ],
 };
-
-
 
 const options = {
     responsive: true,
@@ -105,13 +101,11 @@ const options = {
     scales: {
         x: {
             grid: { drawOnChartArea: false },
-
         },
         y: {
             position: 'left',
             title: { display: true, text: 'Total Revenue ($)' },
             grid: { drawOnChartArea: false },
-
         },
         y1: {
             position: 'right',
@@ -121,8 +115,6 @@ const options = {
     },
 };
 
-
-
 export default function IncomeStatementChart() {
-    return <Chart type='bar' data={data} options={options} />;
+    return <Chart type="bar" data={data} options={options} />;
 }
