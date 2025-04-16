@@ -1,18 +1,11 @@
 'use client';
 
-import { Box, Card, CardContent, Typography, Grid, Chip, Divider } from '@mui/material';
+import { Box, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
+import CarWashFeatures from './CarWashFeatures';
+import OperatingExpensePieChart from './OperatingExpensePieChart';
 import OpexTable from './OpexTable';
-import OpexCompositionChart from './OpexCompositionChart';
 import StaffingAndShifts from './StaffingAndShifts';
 import WashPackageSummary from './WashPackageSummary';
-import CarWashFeatures from './CarWashFeatures';
-
-const Metric = ({ label, value }: { label: string; value: string }) => (
-    <Box mb={2}>
-        <Typography variant="body2" color="textSecondary">{label}</Typography>
-        <Typography variant="h6" sx={{ color: '#3A4F5F' }}>{value}</Typography>
-    </Box>
-);
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
     <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)' }}>
@@ -34,7 +27,7 @@ export default function OperationalOverview() {
                         <OpexTable />
                     </Grid>
                     <Grid item xs={6}>
-                        <OpexCompositionChart />
+                        <OperatingExpensePieChart />
                     </Grid>
                 </Grid>
             </Section>
@@ -42,46 +35,11 @@ export default function OperationalOverview() {
 
             {/* Staffing & Shifts */}
             <Section title="Staffing & Shifts">
-                {/* <Grid container spacing={2}>
-                    <Grid item xs={4}>
-                        <Metric label="Number of Employees" value="6" />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Metric label="Staff Roles" value="Manager (1), Operators (3), Cashier (1), Maintenance (1)" />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Metric label="Number of Shifts" value="2" />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Metric label="Shift Duration" value="8 hours" />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Metric label="Burden Rate" value="30%" />
-                    </Grid>
-                </Grid> */}
                 <StaffingAndShifts />
             </Section>
 
             {/* Wash Package Summary */}
             <Section title="Wash Package Summary">
-                {/* <Grid container spacing={2}>
-                    <Grid item xs={4}>
-                        <Metric label="Basic Package" value="$10" />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Metric label="Menu Package #1" value="$15" />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Metric label="Menu Package #2" value="$20" />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Metric label="Menu Package #3" value="$25" />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Metric label="Menu Package #4" value="$30" />
-                    </Grid>
-                </Grid> */}
-
                 <WashPackageSummary />
             </Section>
 
