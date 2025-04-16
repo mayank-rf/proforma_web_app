@@ -39,7 +39,7 @@ export default function CarWashFeatures() {
                                 <Typography
                                     variant="h5"
                                     fontWeight="bold"
-                                    color="#0D47A1"
+                                    color="primary.main"
                                     sx={{ mb: 0.5 }}
                                     fontSize={48}
                                 >
@@ -48,14 +48,15 @@ export default function CarWashFeatures() {
                                         <Typography
                                             component="span"
                                             variant="subtitle1"
-                                            color="#0D47A1"
-                                            fontSize={24}
+                                            color="primary.main"
+                                            fontSize={26}
+                                            fontWeight={600}
                                         >
                                             {` ${feature.unit}`}
                                         </Typography>
                                     )}
                                 </Typography>
-                                <Typography variant="body2" sx={{ whiteSpace: "pre-line" }} fontSize={18}>
+                                <Typography variant="body2" sx={{ whiteSpace: "pre-line" }} fontSize={18} fontWeight={600}>
                                     {feature.label}
                                 </Typography>
                             </Box>
