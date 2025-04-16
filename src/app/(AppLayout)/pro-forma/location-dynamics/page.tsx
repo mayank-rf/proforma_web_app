@@ -9,6 +9,7 @@ import CompetitorTable from './CompetitorTable';
 import KeyDemographicsTable from './KeyDemographicsTable';
 import TrafficChartTabs from './TrafficChartTabs';
 import StaticMapWithRadius from './StaticMapWithRadius';
+import InteractiveMap from './InteractiveMap';
 
 const containerStyle = {
     width: '100%',
@@ -58,14 +59,8 @@ export default function LocationDynamics() {
                 {/* Google Map */}
                 <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)' }}>
                     <CardContent>
-                        {/* {isLoaded && (
-                            <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={14} options={{
-                                scrollwheel: false
-                            }}>
-                                <Marker position={center} />
-                            </GoogleMap>
-                        )} */}
-                        <StaticMapWithRadius lat={38.20443} lng={-84.560326} />
+                        {/* <StaticMapWithRadius lat={38.20443} lng={-84.560326} /> */}
+                        <InteractiveMap lat={38.20443} lng={-84.560326} />
                     </CardContent>
                 </Card>
 
@@ -108,7 +103,16 @@ export default function LocationDynamics() {
                     <Stack direction={'row'} spacing={1}>
                         <Box>
                             {/* Traffic Profile */}
-                            <Grid container spacing={2}>
+                            <Stack justifyContent="center" alignItems="center" sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)', p: 2, m: 2 }}>
+                                <Typography>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda voluptatum distinctio necessitatibus
+                                    consequuntur dicta iusto blanditiis autem exercitationem quibusdam numquam deleniti cum quidem amet, omnis, nobis,
+                                    odio quod reprehenderit impedit? Blanditiis nobis eum, nemo esse ab adipisci tempore cupiditate, soluta nesciunt
+                                    iste eaque aspernatur commodi molestias. Obcaecati rem fugit laudantium porro! Sed commodi in ipsam obcaecati
+                                    rerum saepe dolorem modi.
+                                </Typography>
+                            </Stack>
+                            <Grid container spacing={2} sx={{ p: 2, mx: 2 }}>
                                 <Grid item xs={12} sm={6}>
                                     <Metric label="Average Daily Traffic (AADT)" value="20.9K" />
                                 </Grid>
@@ -119,10 +123,18 @@ export default function LocationDynamics() {
                                     <Metric label="Traffic By Weekday" value="10.2K" />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    <Metric label="Traffic By Weekend" value="11.2K" />
+                                    {/* <Metric label="Peak Hours" value="7-10 AM 3-6 PM" /> */}
+                                    <Box mb={2}>
+                                        <Typography variant="body2" color="textSecondary">
+                                            Peak Hours
+                                        </Typography>
+                                        <Typography variant="h6" sx={{ color: '#3A4F5F' }}>
+                                            7-10 AM <br /> 3-6 PM
+                                        </Typography>
+                                    </Box>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    <Metric label="Peak Hours" value="7-10 AM, 3-6 PM" />
+                                    <Metric label="Traffic By Weekend" value="11.2K" />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <Metric label="Road Length" value="1,424 miles" />
@@ -131,17 +143,6 @@ export default function LocationDynamics() {
                         </Box>
 
                         <Box>
-                            {/* <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.0)' }}>
-                                <CardContent sx={{ margin: 'auto' }}>
-                                    <LineChart
-                                        xAxis={[{ scaleType: 'point', data: ['6 AM', '9 AM', '12 PM', '3 PM', '6 PM', '9 PM'] }]}
-                                        series={[{ data: [1500, 3200, 2800, 3000, 5000, 2000], label: 'Average Traffic per Hour' }]}
-                                        width={750}
-                                        height={400}
-                                        colors={['#23679D']}
-                                    />
-                                </CardContent>
-                            </Card> */}
                             <TrafficChartTabs />
                         </Box>
                     </Stack>

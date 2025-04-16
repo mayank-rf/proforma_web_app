@@ -13,7 +13,7 @@ const competitorData = [
         name: 'VIP Car Wash & Detail',
         type: 'Flex/Detail',
         mup: 'Yes',
-        website: 'https://www.facebook.com',
+        website: 'https://www.facebook.com/VIPCarWash',
         distance: 3.81,
     },
     {
