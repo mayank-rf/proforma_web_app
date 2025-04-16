@@ -10,10 +10,10 @@ const roles = [
         wage: '$25',
         burdenRate: '20%',
         total: '$79K',
-        icon: <SupervisorAccountIcon fontSize="large" />,
+        icon: <PersonIcon fontSize="large" />,
     },
     {
-        title: 'Asst Manager',
+        title: 'Assistant Manager',
         hours: '42 Hrs.',
         wage: '$18',
         burdenRate: '20%',
@@ -21,7 +21,7 @@ const roles = [
         icon: <PersonIcon fontSize="large" />,
     },
     {
-        title: '[4] Attendants',
+        title: 'Attendants',
         hours: '160 Hrs.',
         subHours: '80 Hrs. Temp. Labor',
         wage: '$14',
@@ -78,8 +78,8 @@ export default function StaffingAndShifts() {
 
                                 <Divider sx={{ my: 2, width: '100%' }} />
 
-                                <Typography variant="subtitle2" fontWeight="bold">
-                                    Total Labor
+                                <Typography variant="subtitle2" fontWeight="bold" color="primary.main">
+                                    {role.title} Labor
                                 </Typography>
                                 <Typography variant="h6" color="primary">
                                     {role.total}
