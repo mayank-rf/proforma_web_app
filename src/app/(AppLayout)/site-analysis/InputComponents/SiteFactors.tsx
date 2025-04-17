@@ -13,8 +13,6 @@ export default function SiteFactors({ control }: any) {
         setSiteFactors(siteFactors);
     }, [siteFactors]);
 
-    console.log('siteFactors', siteFactors);
-
     return (
         <InputAccordion title="Site Specific Factors" completed={allFilled}>
             <Grid container spacing={2}>

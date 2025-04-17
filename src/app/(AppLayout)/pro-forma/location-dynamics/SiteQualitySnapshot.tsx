@@ -62,14 +62,14 @@ const getColor = (score) => {
 };
 
 const getProgressValue = (score) => {
-    const normalized = (score + 0.25) / 0.5; // from -0.25 to +0.25 range
-    return Math.min(Math.max(normalized * 100, 0), 100);
+    const normalized = ((score + 0.25) / 0.5) * 100 // from -0.25 to +0.25 range
+    return normalized
+    // return Math.min(Math.max(normalized * 100, 0), 100);
 };
 
 export default function SiteQualitySnapshot() {
    const { siteFactors:globalSiteFactor } = useStore();
     const totalScore = siteFactors.reduce((acc, factor) => acc + factor.score, 0);
-    console.log(siteFactorsMap["areaProfile"], globalSiteFactor["areaProfile"],siteFactorsMap["areaProfile"][globalSiteFactor["areaProfile"]])
     return (
         <Box p={0}>
             <Grid container spacing={2}>

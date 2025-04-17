@@ -1,34 +1,44 @@
 import { Grid, TextField, Typography } from '@mui/material';
 import InputAccordion from './InputAccordion';
 import { Controller, useForm, useWatch } from 'react-hook-form';
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
+import useStore from '../../../../store/useStore';
 
 const defaultValues = {
-    basicPackage: { price: 10, customerPercent: 45, chemicalCost: 0.48 },
-    menuPackageOne: { price: 15, customerPercent: 30, chemicalCost: 0.89 },
-    menuPackageTwo: { price: 20, customerPercent: 15, chemicalCost: 1.05 },
-    menuPackageThree: { price: 25, customerPercent: 10, chemicalCost: 1.09 },
-    menuPackageFour: { price: 0, customerPercent: 0, chemicalCost: 0 },
+    basicPackage: { price: 10, percentCustomers: 45, chemicalCost: 0.48 },
+    menuPackageOne: { price: 15, percentCustomers: 30, chemicalCost: 0.89 },
+    menuPackageTwo: { price: 20, percentCustomers: 15, chemicalCost: 1.05 },
+    menuPackageThree: { price: 25, percentCustomers: 10, chemicalCost: 1.09 },
+    menuPackageFour: { price: 0, percentCustomers: 0, chemicalCost: 0 },
 };
 
 export default function WashPackages() {
     const { control } = useForm({ defaultValues });
+    const { setWashPackages } = useStore();
+
     const packageNames = [
-        { key: 'basicPackage', label: 'Basic Package', price: 10, customerPercent: 45, chemicalCost: 0.48 },
-        { key: 'menuPackageOne', label: 'Menu Package One', price: 15, customerPercent: 30, chemicalCost: 0.89 },
-        { key: 'menuPackageTwo', label: 'Menu Package Two', price: 15, customerPercent: 30, chemicalCost: 0.89 },
-        { key: 'menuPackageThree', label: 'Menu Package Three', price: 15, customerPercent: 30, chemicalCost: 0.89 },
-        { key: 'menuPackageFour', label: 'Menu Package Four', price: 15, customerPercent: 30, chemicalCost: 0.89 },
+        { key: 'basicPackage', name: 'Basic Package', price: 10, percentCustomers: 45, chemicalCost: 0.48 },
+        { key: 'menuPackageOne', name: 'Menu Package One', price: 15, percentCustomers: 30, chemicalCost: 0.89 },
+        { key: 'menuPackageTwo', name: 'Menu Package Two', price: 15, percentCustomers: 30, chemicalCost: 0.89 },
+        { key: 'menuPackageThree', name: 'Menu Package Three', price: 15, percentCustomers: 30, chemicalCost: 0.89 },
+        { key: 'menuPackageFour', name: 'Menu Package Four', price: 15, percentCustomers: 30, chemicalCost: 0.89 },
     ];
 
-    const packages = packageNames.map(({ key, label }) => {
-        return {
-            label,
-            price: useWatch({ control, name: `${key}.price` as any }),
-            customerPercent: useWatch({ control, name: `${key}.customerPercent` as any }),
-            chemicalCost: useWatch({ control, name: `${key}.chemicalCost` as any }),
-        };
-    });
+    const watchedValues: any = useWatch({ control });
+
+    const packages = useMemo(() => {
+        return packageNames.map(({ key, name }) => ({
+            name,
+            price: watchedValues?.[key]?.price ?? 0,
+            percentCustomers: watchedValues?.[key]?.percentCustomers ?? 0,
+            chemicalCost: watchedValues?.[key]?.chemicalCost ?? 0,
+        }));
+    }, [watchedValues]);
+
+    useEffect(() => {
+        setWashPackages(packages);
+    }, [packages]);
+
     const renderTextField = (name: string, defaultValue: number) => (
         <Controller
             name={name}
@@ -43,9 +53,9 @@ export default function WashPackages() {
             pkg.price !== '' &&
             pkg.price !== null &&
             pkg.price !== undefined &&
-            pkg.customerPercent !== '' &&
-            pkg.customerPercent !== null &&
-            pkg.customerPercent !== undefined &&
+            pkg.percentCustomers !== '' &&
+            pkg.percentCustomers !== null &&
+            pkg.percentCustomers !== undefined &&
             pkg.chemicalCost !== '' &&
             pkg.chemicalCost !== null &&
             pkg.chemicalCost !== undefined
@@ -79,13 +89,13 @@ export default function WashPackages() {
                 {packages.map((pkg, index) => (
                     <Grid container spacing={2} key={index} alignItems="center" sx={{ marginBottom: 2 }}>
                         <Grid item xs={6}>
-                            <Typography>{pkg.label}</Typography>
+                            <Typography>{pkg.name}</Typography>
                         </Grid>
                         <Grid item xs={2} md={2}>
                             {renderTextField(`${packageNames[index].key}.price`, packageNames[index].price)}
                         </Grid>
                         <Grid item xs={2} md={2}>
-                            {renderTextField(`${packageNames[index].key}.customerPercent`, packageNames[index].customerPercent)}
+                            {renderTextField(`${packageNames[index].key}.percentCustomers`, packageNames[index].percentCustomers)}
                         </Grid>
                         <Grid item xs={2} md={2}>
                             {renderTextField(`${packageNames[index].key}.chemicalCost`, packageNames[index].chemicalCost)}

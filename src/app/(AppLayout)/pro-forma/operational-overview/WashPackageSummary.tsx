@@ -1,4 +1,5 @@
 import { Box, Card, CardContent, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import useStore from '../../../../store/useStore';
 
 const packageData = [
     {
@@ -34,6 +35,8 @@ const packageData = [
 ];
 
 export default function WashPackageSummary() {
+    const { washPackages } = useStore();
+
     return (
         <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.0)' }}>
             <CardContent>
@@ -121,7 +124,7 @@ export default function WashPackageSummary() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {packageData
+                            {washPackages
                                 .filter((pkg) => pkg.price !== null && pkg.percentCustomers !== null && pkg.chemicalCost !== null)
                                 .map((pkg, index) => (
                                     <TableRow
@@ -143,13 +146,13 @@ export default function WashPackageSummary() {
                                             {pkg.name}
                                         </TableCell>
                                         <TableCell align="center" sx={{ width: 250, fontSize: 18 }}>
-                                            {pkg.price}
+                                            ${pkg.price}
                                         </TableCell>
                                         <TableCell align="center" sx={{ width: 250, fontSize: 18 }}>
-                                            {pkg.chemicalCost}
+                                            {pkg.chemicalCost}%
                                         </TableCell>
                                         <TableCell align="center" sx={{ width: 250, fontSize: 18 }}>
-                                            {pkg.percentCustomers}
+                                            ${pkg.percentCustomers}
                                         </TableCell>
                                     </TableRow>
                                 ))}
