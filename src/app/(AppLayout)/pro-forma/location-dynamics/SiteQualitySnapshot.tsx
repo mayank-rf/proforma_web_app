@@ -62,13 +62,14 @@ const getColor = (score) => {
 };
 
 const getProgressValue = (score) => {
-    const normalized = ((score + 0.25) / 0.5) * 100 // from -0.25 to +0.25 range
-    return normalized
+    const normalized = ((score + 0.25) / 0.5) * 100; // from -0.25 to +0.25 range
+    return normalized;
     // return Math.min(Math.max(normalized * 100, 0), 100);
 };
 
 export default function SiteQualitySnapshot() {
-   const { siteFactors:globalSiteFactor } = useStore();
+    const { siteFactors: globalSiteFactor } = useStore();
+
     const totalScore = siteFactors.reduce((acc, factor) => acc + factor.score, 0);
     return (
         <Box p={0}>
@@ -77,7 +78,7 @@ export default function SiteQualitySnapshot() {
                     <Grid item xs={12} md={6} key={index}>
                         <Card elevation={2} sx={{ p: 2 }}>
                             <Typography variant="body1" fontWeight="bold" fontSize={18} color={'#3A4F5F'}>
-                             {siteFactorsMap[factor.label]?.label}
+                                {siteFactorsMap[factor.label]?.label}
                             </Typography>
                             <Chip
                                 label={siteFactorsMap[factor.label][globalSiteFactor[factor.label]]}

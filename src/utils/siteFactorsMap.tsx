@@ -1,72 +1,72 @@
-export const siteFactorsMap :any= { 
-   'areaProfile': {
-    label:"Area Profile",
-    "0.15": "Shopping Mall",
-    "0.10": "Business",
-    "0.05": "Residential",
-    "-0.25": "Industrial"
-  },
-  'nearestCompetition': {
-    label:"Nearest Competition",
-    "0.15": "One in 1 mile", 
-    "0.125": "One in 2 miles",
-    "0.075": "One in 3 miles",
-    "-0.025": "One in 4 miles"
- },
+export const siteFactorsMap: any = {
+    areaProfile: {
+        label: 'Area Profile',
+        '0.15': 'Shopping Mall',
+        '0.10': 'Business',
+        '0.05': 'Residential',
+        '-0.25': 'Industrial',
+    },
+    nearestCompetition: {
+        label: 'Nearest Competition',
+        '0.15': 'One in 1 mile',
+        '0.125': 'One in 2 miles',
+        '0.075': 'One in 3 miles',
+        '-0.025': 'One in 4 miles',
+    },
     'Weekly Hours of Operation': {
-    label:"Weekly Hours of Operation",
-    "0.15": "More than 30 hours",  
-    "0.1": "Less than 30 hours",
-    "0.025": "Less than 20 hours",
-    "0": "Less than 10 hours"
-  },
-  'typeOfSite': {
-    label:"Type of Site",
-    "0.15": "Corner lot with light",  
-    "0.125": "Corner lot without light",
-    "0.075": "Inside lot with light",
-    "0.05": "Inside lot without light"
-  },
-  'siteAccessibility': {
-    label:"Site Accessibility'",
-    "0.15": "Easy in and out",
-    "0.10": "Easy in and out with divided highway", 
-    "0.05": "Easy in and out with traffic light",
-    "0": "Difficult in and out"
-  },
-  'entranceStackUpArea': {
-    label:"Entrance Stack Up Area",
-    "0.15": "More than 20 vehicles", 
-    "0.125": "14-20 vehicles",
-    "0.075": "10-14 vehicles",
-    "0.05": "Less than 10 vehicles"
-  },
-  'numberOfFreeVacuumSlots': {
-    label:"Number of Free Vacuum Slots",
-    "0.15": "More than 20 vehicles", 
-    "0.10": "12-20 vehicles",
-    "0.05": "8-12 vehicles",
-    "-0.25": "Less than 8 vehicles"
-  },
-  'numberOfPayStations': {
-    label:"Number of pay stations",
-    "0.15": "More than 4", 
-    "0.10": "3-4",
-    "0.05": "2-3",
-    "0": "Less than 2"
-  },
-  'visibility': {
-    label:"Visibility",
-    "0.15": "More than 1000 feet both directions",
-    "0.10": "More than 500 feet both directions", 
-    "0.05": "More than 300 feet both directions",
-    "0": "Less than 300 feet both directions"
-  },
-  'trafficSpeed': {
-    label:"Traffic Speed",
-    "0.15": "Less than 20 mph",
-    "0.10": "Less than 30 mph",
-    "0.05": "Less than 40 mph",
-    "0": "More than 40 mph"
-  }
+        label: 'Weekly Hours of Operation',
+        '0.15': 'More than 30 hours',
+        '0.1': 'Less than 30 hours',
+        '0.025': 'Less than 20 hours',
+        '0': 'Less than 10 hours',
+    },
+    typeOfSite: {
+        label: 'Type of Site',
+        '0.15': 'Corner lot with light',
+        '0.125': 'Corner lot without light',
+        '0.075': 'Inside lot with light',
+        '0.05': 'Inside lot without light',
+    },
+    siteAccessibility: {
+        label: 'Site Accessibility',
+        '0.15': 'Easy in and out',
+        '0.10': 'Easy in and out with divided highway',
+        '0.05': 'Easy in and out with traffic light',
+        '0': 'Difficult in and out',
+    },
+    entranceStackUpArea: {
+        label: 'Entrance Stack Up Area',
+        '0.15': 'More than 20 vehicles',
+        '0.125': '14-20 vehicles',
+        '0.075': '10-14 vehicles',
+        '0.05': 'Less than 10 vehicles',
+    },
+    numberOfFreeVacuumSlots: {
+        label: 'Number of Free Vacuum Slots',
+        '0.15': 'More than 20 vehicles',
+        '0.10': '12-20 vehicles',
+        '0.05': '8-12 vehicles',
+        '-0.25': 'Less than 8 vehicles',
+    },
+    numberOfPayStations: {
+        label: 'Number of pay stations',
+        '0.15': 'More than 4',
+        '0.10': '3-4',
+        '0.05': '2-3',
+        '0': 'Less than 2',
+    },
+    visibility: {
+        label: 'Visibility',
+        '0.15': 'More than 1000 feet both directions',
+        '0.10': 'More than 500 feet both directions',
+        '0.05': 'More than 300 feet both directions',
+        '0': 'Less than 300 feet both directions',
+    },
+    trafficSpeed: {
+        label: 'Traffic Speed',
+        '0.15': 'Less than 20 mph',
+        '0.10': 'Less than 30 mph',
+        '0.05': 'Less than 40 mph',
+        '0': 'More than 40 mph',
+    },
 };

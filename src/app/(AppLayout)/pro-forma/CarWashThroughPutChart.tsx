@@ -4,11 +4,15 @@ import React from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 // Register chart components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
 const CarWashThroughPutChart = () => {
+    const theme = useTheme();
+    const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
+
     const years = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
     const maxVolumes = [30000, 35000, 42000, 47000, 53000];
 
@@ -20,15 +24,15 @@ const CarWashThroughPutChart = () => {
                 data: maxVolumes,
                 backgroundColor: '#4CAF50',
                 borderRadius: 6,
-                barThickness: 100,
+                barThickness: isTabletOrSmaller ? 50 : 100,
                 datalabels: {
                     anchor: 'end',
                     align: 'top',
-                    formatter: (value: number) => `${value.toLocaleString()} cars`,
+                    formatter: (value: number) => `${value.toLocaleString()}`,
                     color: '#3A4F5F',
                     font: {
                         weight: 'bold',
-                        size: 18,
+                        size: isTabletOrSmaller ? 12 : 18,
                     },
                 },
             },
