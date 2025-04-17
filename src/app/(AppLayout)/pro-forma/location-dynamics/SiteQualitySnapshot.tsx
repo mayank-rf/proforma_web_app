@@ -67,9 +67,10 @@ const getProgressValue = (score) => {
 };
 
 export default function SiteQualitySnapshot() {
-   const { siteFactors:globalSiteFactor } = useStore();
+    const { siteFactors: globalSiteFactor } = useStore();
+
     const totalScore = siteFactors.reduce((acc, factor) => acc + factor.score, 0);
-    console.log(siteFactorsMap["areaProfile"], globalSiteFactor["areaProfile"],siteFactorsMap["areaProfile"][globalSiteFactor["areaProfile"]])
+    console.log(siteFactorsMap['areaProfile'], globalSiteFactor['areaProfile'], siteFactorsMap['areaProfile'][globalSiteFactor['areaProfile']]);
     return (
         <Box p={0}>
             <Grid container spacing={2}>
@@ -77,7 +78,7 @@ export default function SiteQualitySnapshot() {
                     <Grid item xs={12} md={6} key={index}>
                         <Card elevation={2} sx={{ p: 2 }}>
                             <Typography variant="body1" fontWeight="bold" fontSize={18} color={'#3A4F5F'}>
-                             {siteFactorsMap[factor.label]?.label}
+                                {siteFactorsMap[factor.label]?.label}
                             </Typography>
                             <Chip
                                 label={siteFactorsMap[factor.label][globalSiteFactor[factor.label]]}

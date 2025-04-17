@@ -65,45 +65,22 @@ export default function LocationDynamics() {
                 </Card>
 
                 <Section title="Site Factors">
-                    {/* <SiteFactors /> */}
                     <SiteQualitySnapshot />
                 </Section>
 
-                {/* Site Overview */}
-                {/* <Section title="Site Overview">
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} sm={4}>
-                            <Metric label="Site Name" value="24,500" />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Metric label="Site Address" value="123, Main Street, NY-110011" />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Metric label="Latitude / Longitude" value="37.7749, 122.4194" />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Metric label="Land Size" value="2.5 acres" />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Metric label="Visibility" value="Good" />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Metric label="Area Profile" value="Residential" />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Metric label="Accessibility" value="Easy In/Out With Divided Highway" />
-                        </Grid>
-                        <Grid item xs={12} sm={4}>
-                            <Metric label="Type of Site" value="Corner Lot With Light" />
-                        </Grid>
-                    </Grid>
-                </Section> */}
-
                 <Section title="Traffic Profile">
-                    <Stack direction={'row'} spacing={1}>
-                        <Box>
-                            {/* Traffic Profile */}
-                            <Stack justifyContent="center" alignItems="center" sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)', p: 2, m: 2 }}>
+                    <Stack direction={{ md: 'column', lg: 'row' }} spacing={2} sx={{ px: 2, py: 3 }}>
+                        {/* Summary + Metrics */}
+                        <Box flex={1} order={{ xs: 1, md: 1 }}>
+                            <Stack
+                                justifyContent="center"
+                                alignItems="center"
+                                sx={{
+                                    boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)',
+                                    p: 2,
+                                    mb: 2,
+                                }}
+                            >
                                 <Typography>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda voluptatum distinctio necessitatibus
                                     consequuntur dicta iusto blanditiis autem exercitationem quibusdam numquam deleniti cum quidem amet, omnis, nobis,
@@ -112,7 +89,8 @@ export default function LocationDynamics() {
                                     rerum saepe dolorem modi.
                                 </Typography>
                             </Stack>
-                            <Grid container spacing={2} sx={{ p: 2, mx: 2 }}>
+
+                            <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
                                     <Metric label="Average Daily Traffic (AADT)" value="20.9K" />
                                 </Grid>
@@ -123,7 +101,6 @@ export default function LocationDynamics() {
                                     <Metric label="Traffic By Weekday" value="10.2K" />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    {/* <Metric label="Peak Hours" value="7-10 AM 3-6 PM" /> */}
                                     <Box mb={2}>
                                         <Typography variant="body2" color="textSecondary">
                                             Peak Hours
@@ -142,7 +119,8 @@ export default function LocationDynamics() {
                             </Grid>
                         </Box>
 
-                        <Box>
+                        {/* Chart Section */}
+                        <Box flex={1} order={{ xs: 2, md: 2 }} sx={{ width: '100%' }}>
                             <TrafficChartTabs />
                         </Box>
                     </Stack>

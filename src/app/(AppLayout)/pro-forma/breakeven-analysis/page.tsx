@@ -1,7 +1,25 @@
-import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Grid, Divider } from '@mui/material';
+'use client';
+
+import {
+    Box,
+    Typography,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
+    Grid,
+    Divider,
+    Stack,
+    useTheme,
+    useMediaQuery,
+} from '@mui/material';
 import { LineChart } from '@mui/x-charts/LineChart';
 import CarWashAcquisitionBudget from './CarWashAcquistionBudget';
 import DebtAmortizationTable from './DebtAmortizationTable';
+import InvestmentPieChart from './InvestmentDistribution';
 
 const breakEvenData = {
     funding: {
@@ -42,10 +60,33 @@ const breakEvenData = {
 
 export default function BreakEvenAnalysis() {
     const { funding, profitAndCashflow, carWashVolume } = breakEvenData;
+    const theme = useTheme();
+    const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
 
     return (
         <Box sx={{}}>
-            <CarWashAcquisitionBudget />
+            <Typography variant="h4" fontWeight={600} textAlign="center" mb={2} sx={{ fontSize: isTabletOrSmaller ? 18 : 24, color: 'primary.main' }}>
+                Car Wash Acquisition Budget
+            </Typography>
+            <Grid container spacing={2}>
+                <Grid item xs={12} lg={6}>
+                    <Stack direction="column" justifyContent="center" alignItems="center" gap={4}>
+                        <Box sx={{ mt: isTabletOrSmaller ? 0 : 2, boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)', p: 2 }}>
+                            <Typography>
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure beatae ullam quibusdam! Autem minus, deserunt quos
+                                cumque non soluta qui a sapiente neque. Rerum eos fugit fuga aspernatur voluptatem hic. Temporibus quas quibusdam sit
+                                tenetur non, possimus ab a quasi qui molestias distinctio molestiae. Voluptatem officia cum repudiandae expedita,
+                                assumenda quos saepe nobis doloremque. Quae hic deserunt veniam officiis laudantium?
+                            </Typography>
+                        </Box>
+
+                        <CarWashAcquisitionBudget />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} lg={6}>
+                    <InvestmentPieChart />
+                </Grid>
+            </Grid>
 
             <DebtAmortizationTable />
         </Box>

@@ -2,10 +2,14 @@ import React from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend, ChartDataLabels);
 
 const CarWashVolumeChart = () => {
+    const theme = useTheme();
+    const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
+
     const labels = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
 
     const retailVolume = [56142, 69984, 76461, 74214, 76994];
@@ -19,14 +23,14 @@ const CarWashVolumeChart = () => {
                 data: retailVolume,
                 backgroundColor: '#2D9CDB',
                 stack: 'volume',
-                barThickness: 100,
+                barThickness: isTabletOrSmaller ? 80 : 100,
                 datalabels: {
                     color: '#fff',
                     anchor: 'center',
                     align: 'center',
                     formatter: (value: number) => value.toLocaleString(),
                     font: {
-                        size: 18,
+                        size: isTabletOrSmaller ? 12 : 16,
                     },
                 },
             },
@@ -35,7 +39,7 @@ const CarWashVolumeChart = () => {
                 data: memberVolume,
                 backgroundColor: '#174E8C',
                 stack: 'volume',
-                barThickness: 100,
+                barThickness: isTabletOrSmaller ? 80 : 100,
                 datalabels: {
                     color: '#fff',
                     anchor: 'center',
@@ -47,7 +51,7 @@ const CarWashVolumeChart = () => {
                         return [member.toLocaleString()];
                     },
                     font: {
-                        size: 18,
+                        size: isTabletOrSmaller ? 12 : 16,
                     },
                 },
             },
@@ -67,7 +71,7 @@ const CarWashVolumeChart = () => {
                         return [total.toLocaleString()];
                     },
                     font: {
-                        size: 18,
+                        size: isTabletOrSmaller ? 12 : 16,
                     },
                 },
             },

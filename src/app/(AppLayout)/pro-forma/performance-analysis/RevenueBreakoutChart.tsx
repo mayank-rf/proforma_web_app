@@ -1,6 +1,7 @@
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import React from 'react';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -8,6 +9,9 @@ const retailRevenue = [795749, 933590, 985213, 944008, 982125];
 const memberRevenue = [88417, 233398, 328404, 404575, 472875];
 
 const RevenueBreakoutChart = () => {
+    const theme = useTheme();
+    const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
+
     const labels = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
 
     const data = {
@@ -17,14 +21,14 @@ const RevenueBreakoutChart = () => {
                 label: 'Retail Revenue',
                 data: retailRevenue,
                 backgroundColor: '#2D9CDB',
-                barThickness: 100,
+                barThickness: isTabletOrSmaller ? 80 : 100,
                 stack: 'revenue',
                 datalabels: {
-                    formatter: (value) => `$${value.toLocaleString('en-US')}`,
+                    formatter: (value: number) => `$${value.toLocaleString('en-US')}`,
                     color: '#fff',
                     font: {
                         weight: 'bold',
-                        size: 16,
+                        size: isTabletOrSmaller ? 12 : 16,
                     },
                 },
             },
@@ -32,14 +36,14 @@ const RevenueBreakoutChart = () => {
                 label: 'Member Revenue',
                 data: memberRevenue,
                 backgroundColor: '#174E8C',
-                barThickness: 100,
+                barThickness: isTabletOrSmaller ? 80 : 100,
                 stack: 'revenue',
                 datalabels: {
                     formatter: (value: number) => `$${value.toLocaleString('en-US')}`,
                     color: '#fff',
                     font: {
                         weight: 'bold',
-                        size: 16,
+                        size: isTabletOrSmaller ? 12 : 16,
                     },
                 },
             },
@@ -58,7 +62,7 @@ const RevenueBreakoutChart = () => {
                     color: '#000',
                     font: {
                         weight: 'bold',
-                        size: 16,
+                        size: isTabletOrSmaller ? 12 : 16,
                     },
                 },
             },
