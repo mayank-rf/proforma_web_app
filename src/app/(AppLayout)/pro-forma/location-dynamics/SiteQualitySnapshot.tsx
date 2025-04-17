@@ -14,11 +14,6 @@ const siteFactors: { label: keyof typeof siteFactorsMap; value: string; score: n
         score: 0.1,
     },
     {
-        label: 'Weekly Hours of Operation',
-        value: 'Less than 30 hours',
-        score: -0.25,
-    },
-    {
         label: 'typeOfSite',
         value: 'Inside lot without light',
         score: -0.25,

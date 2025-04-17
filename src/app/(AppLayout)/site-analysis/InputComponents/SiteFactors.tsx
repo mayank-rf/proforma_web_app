@@ -27,7 +27,7 @@ export default function SiteFactors({ control }: any) {
                                     Area Profile
                                 </InputLabel>
                                 <Select {...field} label="Area Profile" labelId="areaProfile" sx={{ borderRadius: '10px' }}>
-                                    <MenuItem value="0.15">Shopping Mall</MenuItem>
+                                    <MenuItem value="0.15">Shopping</MenuItem>
                                     <MenuItem value="0.10">Business</MenuItem>
                                     <MenuItem value="0.05">Residential</MenuItem>
                                     <MenuItem value="-0.25">Industrial</MenuItem>
@@ -113,7 +113,7 @@ export default function SiteFactors({ control }: any) {
                                     <MenuItem value="0.15">More than 500 feet Both Directions</MenuItem>
                                     <MenuItem value="0.10">400-500 feet Both Directions</MenuItem>
                                     <MenuItem value="0.05">300-400 feet Both Directions</MenuItem>
-                                    <MenuItem value="0">Less than 300 feed Both Directions</MenuItem>
+                                    <MenuItem value="0">Less than 300 feet Both Directions</MenuItem>
                                 </Select>
                             </FormControl>
                         )}
