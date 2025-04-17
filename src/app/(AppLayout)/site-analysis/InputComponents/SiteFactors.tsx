@@ -10,11 +10,8 @@ export default function SiteFactors({ control }: any) {
     const { setSiteFactors } = useStore()
 
     useEffect(() => {
-
         setSiteFactors(siteFactors);
     }, [siteFactors]);
-
-    console.log('siteFactors', siteFactors)
 
     return (
         <InputAccordion title="Site Specific Factors" completed={allFilled}>

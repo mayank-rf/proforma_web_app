@@ -10,36 +10,39 @@ import {
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import PersonIcon from "@mui/icons-material/Person";
 import GroupIcon from "@mui/icons-material/Group";
-
-const roles = [
-    {
-        title: "Manager",
-        hours: "49 Hrs.",
-        wage: "$25",
-        burdenRate: "20%",
-        total: "$79K",
-        icon: <SupervisorAccountIcon fontSize="large" />,
-    },
-    {
-        title: "Asst Manager",
-        hours: "42 Hrs.",
-        wage: "$18",
-        burdenRate: "20%",
-        total: "$49K",
-        icon: <PersonIcon fontSize="large" />,
-    },
-    {
-        title: "[4] Attendants",
-        hours: "160 Hrs.",
-        subHours: "80 Hrs. Temp. Labor",
-        wage: "$14",
-        burdenRate: "20%",
-        total: "$144K",
-        icon: <GroupIcon fontSize="large" />,
-    },
-];
+import useStore  from "../../../../store/useStore";
 
 export default function StaffingAndShifts() {
+    const { laborInformation} = useStore();
+    const {manager, assistantManager, attendants} = laborInformation;
+    const roles = [
+        {
+            title: "Manager",
+            hours: manager.laborHours + ' Hrs',
+            wage: '$'+manager.hourlyWages,
+            burdenRate: manager.burdenRate+'%',
+            total: "$79K",
+            icon: <SupervisorAccountIcon fontSize="large" />,
+        },
+        {
+            title: "Asst Manager",
+            hours: assistantManager.laborHours + ' Hrs',
+            wage: '$'+assistantManager.hourlyWages,
+            burdenRate: assistantManager.burdenRate+'%',
+            total: "$49K",
+            icon: <PersonIcon fontSize="large" />,
+        },
+        {
+            title: "[4] Attendants",
+            hours: attendants.laborHours + ' Hrs',
+            subHours: "80 Hrs. Temp. Labor",
+            wage: '$'+attendants.hourlyWages,
+            burdenRate: attendants.burdenRate+'%',
+            total: "$144K",
+            icon: <GroupIcon fontSize="large" />,
+        },
+    ];
+
     return (
         <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.0)' }}>
             <CardContent>
