@@ -25,7 +25,8 @@ jobs:
       - name: Zip deployment files
         run: |
           mkdir deploy
-          cp -r .next public package.json package-lock.json next.config.js deploy
+          cp -r .next public package.json package-lock.json next.config.ts deploy
+          if [ -f tsconfig.json ]; then cp tsconfig.json deploy; fi
           cd deploy
           zip -r ../app.zip .
 
