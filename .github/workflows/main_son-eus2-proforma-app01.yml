@@ -18,7 +18,7 @@ jobs:
               with:
                   node-version: '22.x'
 
-            - name: Deploy to Azure Web App (via Oryx)
+            - name: Deploy to Azure Web App
               uses: azure/webapps-deploy@v3
               with:
                   app-name: 'son-eus2-proforma-app01'
