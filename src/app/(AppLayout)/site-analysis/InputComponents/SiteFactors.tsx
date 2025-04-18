@@ -1,17 +1,15 @@
 import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
-import InputAccordion from './InputAccordion';
 import { Controller, useWatch } from 'react-hook-form';
-import useStore from '../../../../store/useStore';
-import { useEffect } from 'react';
+import InputAccordion from './InputAccordion';
 
 export default function SiteFactors({ control }: any) {
     const siteFactors = useWatch({ control, name: 'siteFactors' });
     const allFilled = Object.values(siteFactors).every((value) => value !== '');
-    const { setSiteFactors } = useStore();
+    // const { setSiteFactors } = useStore();
 
-    useEffect(() => {
-        setSiteFactors(siteFactors);
-    }, [siteFactors]);
+    // useEffect(() => {
+    //     setSiteFactors(siteFactors);
+    // }, [siteFactors]);
 
     return (
         <InputAccordion title="Site Specific Factors" completed={allFilled}>

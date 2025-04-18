@@ -157,11 +157,11 @@ export default function SiteAnalysisPage() {
     const [isPending, startTransition] = useTransition();
 
     useEffect(() => {
-        // setValue('basicPackage', 10);
-        // setValue('menuPackageOne', 15);
-        // setValue('menuPackageTwo', 22);
-        // setValue('menuPackageThree', 27);
-        // setValue('menuPackageFour', 30);
+        setValue('basicPackage', { price: 10, customerPercent: 45, chemicalCost: 0.48 });
+        setValue('menuPackageOne', { price: 15, customerPercent: 30, chemicalCost: 0.89 });
+        setValue('menuPackageTwo', { price: 22, customerPercent: 15, chemicalCost: 1.05 });
+        setValue('menuPackageThree', { price: 27, customerPercent: 10, chemicalCost: 1.09 });
+        setValue('menuPackageFour', { price: 30, customerPercent: 5, chemicalCost: 1.13 });
 
         const defaultAcquisitionBudget = {
             building: {
@@ -229,13 +229,15 @@ export default function SiteAnalysisPage() {
     function onSubmit(data: ProformaInputs) {
         console.log({ data });
 
+        window.localStorage.setItem('proformaData', JSON.stringify(data));
+
         startTransition(async () => {
             const analysisResponse = await startAnalysis(data);
             console.log({ analysisResponse });
             setShowAnalysis(true);
         });
 
-        router.push('/pro-forma');
+        // router.push('/pro-forma');
     }
 
     const formValues = useWatch({ control });

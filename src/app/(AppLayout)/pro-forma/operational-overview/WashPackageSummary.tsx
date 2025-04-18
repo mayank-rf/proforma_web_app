@@ -48,7 +48,40 @@ const packageData = [
 ];
 
 export default function WashPackageSummary() {
-    const { washPackages } = useStore();
+    // const { washPackages } = useStore();
+    const data = JSON.parse(window.localStorage.getItem('proformaData'));
+    let washPackages = [
+        {
+            name: 'Basic Package',
+            price: data?.basicPackage?.price,
+            percentCustomers: data?.basicPackage?.percentCustomers,
+            chemicalCost: data?.basicPackage?.chemicalCost,
+        },
+        {
+            name: 'Menu Package #1',
+            price: data?.menuPackageOne?.price,
+            percentCustomers: data?.menuPackageOne?.percentCustomers,
+            chemicalCost: data?.menuPackageOne?.chemicalCost,
+        },
+        {
+            name: 'Menu Package #2',
+            price: data?.menuPackageTwo?.price,
+            percentCustomers: data?.menuPackageTwo?.percentCustomers,
+            chemicalCost: data?.menuPackageTwo?.chemicalCost,
+        },
+        {
+            name: 'Menu Package #3',
+            price: data?.menuPackageThree?.price,
+            percentCustomers: data?.menuPackageThree?.percentCustomers,
+            chemicalCost: data?.menuPackageThree?.chemicalCost,
+        },
+        {
+            name: 'Menu Package #4',
+            price: data?.menuPackageFour?.price,
+            percentCustomers: data?.menuPackageFour?.percentCustomers,
+            chemicalCost: data?.menuPackageFour?.chemicalCost,
+        },
+    ];
 
     const theme = useTheme();
     const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));

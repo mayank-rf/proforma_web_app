@@ -63,7 +63,8 @@ const getProgressValue = (score) => {
 };
 
 export default function SiteQualitySnapshot() {
-    const { siteFactors: globalSiteFactor } = useStore();
+    // const { siteFactors: globalSiteFactor } = useStore();
+    const globalSiteFactors = JSON.parse(window.localStorage.getItem('proformaData'))?.siteFactors;
 
     const totalScore = siteFactors.reduce((acc, factor) => acc + factor.score, 0);
     return (
@@ -76,7 +77,7 @@ export default function SiteQualitySnapshot() {
                                 {siteFactorsMap[factor.label]?.label}
                             </Typography>
                             <Chip
-                                label={siteFactorsMap[factor.label][globalSiteFactor[factor.label]]}
+                                label={siteFactorsMap[factor.label][globalSiteFactors[factor.label]]}
                                 color={getColor(factor.score)}
                                 variant="outlined"
                                 sx={{ mt: 1, borderRadius: 1, fontSize: 16 }}
@@ -89,20 +90,10 @@ export default function SiteQualitySnapshot() {
                                     color={getColor(factor.score)}
                                 />
                             </Tooltip>
-                            {/* <Typography variant="caption" fontSize={14} sx={{ mt: 1, display: 'block' }}>
-                                Weighted Score: {factor.score > 0 ? '+' : ''}{factor.score}
-                            </Typography> */}
                         </Card>
                     </Grid>
                 ))}
             </Grid>
-
-            {/* <Box textAlign="center" mt={4}>
-                <Typography variant="subtitle1">Total Site Suitability Score</Typography>
-                <Typography variant="h4" fontWeight="bold" color={totalScore >= 0 ? 'green' : 'red'}>
-                    {totalScore.toFixed(2)}
-                </Typography>
-            </Box> */}
         </Box>
     );
 }

@@ -1,8 +1,7 @@
 import { Grid, TextField, Typography } from '@mui/material';
-import InputAccordion from './InputAccordion';
+import { useMemo } from 'react';
 import { Controller, useForm, useWatch } from 'react-hook-form';
-import React, { useEffect, useMemo } from 'react';
-import useStore from '../../../../store/useStore';
+import InputAccordion from './InputAccordion';
 
 const defaultValues = {
     basicPackage: { price: 10, percentCustomers: 45, chemicalCost: 0.48 },
@@ -14,7 +13,7 @@ const defaultValues = {
 
 export default function WashPackages() {
     const { control } = useForm({ defaultValues });
-    const { setWashPackages } = useStore();
+    // const { setWashPackages } = useStore();
 
     const packageNames = [
         { key: 'basicPackage', name: 'Basic Package', price: 10, percentCustomers: 45, chemicalCost: 0.48 },
@@ -35,9 +34,9 @@ export default function WashPackages() {
         }));
     }, [watchedValues]);
 
-    useEffect(() => {
-        setWashPackages(packages);
-    }, [packages]);
+    // useEffect(() => {
+    //     setWashPackages(packages);
+    // }, [packages]);
 
     const renderTextField = (name: any, defaultValue: number) => (
         <Controller
