@@ -29,10 +29,8 @@ jobs:
 
       - name: 📁 Prepare deployment package
         run: |
-          mkdir -p deploy/.next/static
-          cp -r .next/standalone/* deploy/
-          cp -r .next/static/* deploy/.next/static
-          cp -r public deploy/public
+          mkdir -p deploy/.next
+          cp -r .next/* deploy/.next
           cp package.json deploy/
           cd deploy && zip -r ../app.zip .
 
@@ -55,7 +53,7 @@ jobs:
           name: nextjs-app
 
       - name: 📦 Unzip artifact
-        run: unzip -o app.zip -d deploy
+        run: unzip -o app.zip
 
       - name: 🚀 Deploy to Azure Web App
         id: deploy-to-webapp
@@ -63,5 +61,5 @@ jobs:
         with:
           app-name: 'son-eus2-proforma-app01'
           slot-name: 'Production'
-          package: deploy
+          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_63E3FCDEF32E4113A70986F8721CBBD6 }}
