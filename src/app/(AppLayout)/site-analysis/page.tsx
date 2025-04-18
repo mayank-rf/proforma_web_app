@@ -237,7 +237,7 @@ export default function SiteAnalysisPage() {
             setShowAnalysis(true);
         });
 
-        // router.push('/pro-forma');
+        router.push('/pro-forma');
     }
 
     const formValues = useWatch({ control });
