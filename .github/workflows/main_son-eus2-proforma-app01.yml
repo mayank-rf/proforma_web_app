@@ -2,6 +2,9 @@ name: 🚀 Deploy Next.js SSR App to Azure Web App - son-eus2-proforma-app01
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main # You can change this to your default branch
 
 jobs:
   build:
@@ -10,21 +13,21 @@ jobs:
       contents: read
 
     steps:
-      - name: Checkout repository
+      - name: 🧾 Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js 22
+      - name: 🛠 Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: npm ci
 
-      - name: Build Next.js app
+      - name: 🧱 Build Next.js app
         run: npm run build
 
-      - name: Prepare deployment package
+      - name: 📁 Prepare deployment package
         run: |
           mkdir -p deploy/.next/static
           cp -r .next/standalone/* deploy/
@@ -33,7 +36,7 @@ jobs:
           cp package.json deploy/
           cd deploy && zip -r ../app.zip .
 
-      - name: Upload artifact
+      - name: ⬆️ Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: nextjs-app
@@ -44,22 +47,21 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Download deployment artifact
+      - name: ⬇️ Download deployment artifact
         uses: actions/download-artifact@v4
         with:
           name: nextjs-app
 
-      - name: Unzip artifact
-        run: unzip app.zip
+      - name: 📦 Unzip artifact
+        run: unzip -o app.zip -d deploy
 
-      - name: Deploy to Azure Web App
+      - name: 🚀 Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'son-eus2-proforma-app01'
           slot-name: 'Production'
-          package: .
+          package: deploy
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_63E3FCDEF32E4113A70986F8721CBBD6 }}
