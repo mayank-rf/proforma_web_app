@@ -62,31 +62,31 @@ export default function WashPackageSummary() {
                 {
                     name: 'Basic Package',
                     price: data?.basicPackage?.price,
-                    percentCustomers: data?.basicPackage?.percentCustomers,
+                    percentCustomers: data?.basicPackage?.customerPercent,
                     chemicalCost: data?.basicPackage?.chemicalCost,
                 },
                 {
                     name: 'Menu Package #1',
                     price: data?.menuPackageOne?.price,
-                    percentCustomers: data?.menuPackageOne?.percentCustomers,
+                    percentCustomers: data?.menuPackageOne?.customerPercent,
                     chemicalCost: data?.menuPackageOne?.chemicalCost,
                 },
                 {
                     name: 'Menu Package #2',
                     price: data?.menuPackageTwo?.price,
-                    percentCustomers: data?.menuPackageTwo?.percentCustomers,
+                    percentCustomers: data?.menuPackageTwo?.customerPercent,
                     chemicalCost: data?.menuPackageTwo?.chemicalCost,
                 },
                 {
                     name: 'Menu Package #3',
                     price: data?.menuPackageThree?.price,
-                    percentCustomers: data?.menuPackageThree?.percentCustomers,
+                    percentCustomers: data?.menuPackageThree?.customerPercent,
                     chemicalCost: data?.menuPackageThree?.chemicalCost,
                 },
                 {
                     name: 'Menu Package #4',
                     price: data?.menuPackageFour?.price,
-                    percentCustomers: data?.menuPackageFour?.percentCustomers,
+                    percentCustomers: data?.menuPackageFour?.customerPercent,
                     chemicalCost: data?.menuPackageFour?.chemicalCost,
                 },
             ]);

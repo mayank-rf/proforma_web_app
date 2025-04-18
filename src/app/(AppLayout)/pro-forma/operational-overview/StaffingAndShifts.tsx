@@ -5,10 +5,51 @@ import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import PersonIcon from '@mui/icons-material/Person';
 import GroupIcon from '@mui/icons-material/Group';
 import useStore from '../../../../store/useStore';
+import { useEffect, useState } from 'react';
 
 export default function StaffingAndShifts() {
-    const { laborInformation } = useStore();
-    // const { manager, assistantManager, attendants } = laborInformation;
+    // const { laborInformation } = useStore();
+    const [laborInformation, setLaborInformation] = useState({
+        manager: {
+            laborHours: 0,
+            hourlyWages: 0,
+            burdenRate: 0,
+        },
+        assistantManager: {
+            laborHours: 0,
+            hourlyWages: 0,
+            burdenRate: 0,
+        },
+        attendants: {
+            laborHours: 0,
+            hourlyWages: 0,
+            burdenRate: 0,
+        },
+    });
+
+    useEffect(function () {
+        const data = JSON.parse(window.localStorage.getItem('proformaData'));
+        if (data && data.laborHours && data.hourlyWages && data.burdenRate) {
+            setLaborInformation({
+                manager: {
+                    laborHours: data.laborHours.manager,
+                    hourlyWages: data.hourlyWages.manager,
+                    burdenRate: data.burdenRate.manager,
+                },
+                assistantManager: {
+                    laborHours: data.laborHours.assistantManager,
+                    hourlyWages: data.hourlyWages.assistantManager,
+                    burdenRate: data.burdenRate.assistantManager,
+                },
+                attendants: {
+                    laborHours: data.laborHours.attendants,
+                    hourlyWages: data.hourlyWages.attendants,
+                    burdenRate: data.burdenRate.attendants,
+                },
+            });
+        }
+    }, []);
+
     const roles = [
         {
             title: 'Manager',
