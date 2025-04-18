@@ -1,9 +1,6 @@
 name: Build and Deploy Next.js App to Azure Web App - son-eus2-proforma-app01
 
 on:
-    push:
-        branches:
-            - main
     workflow_dispatch:
 
 jobs:
