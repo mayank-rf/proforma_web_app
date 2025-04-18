@@ -1,9 +1,6 @@
 name: Build and Deploy Next.js App to Azure Web App - son-eus2-proforma-app01
 
 on:
-    push:
-        branches:
-            - main
     workflow_dispatch:
 
 jobs:
@@ -30,8 +27,6 @@ jobs:
               run: |
                   mkdir deploy
                   cp -r .next/standalone/* deploy/
-                  cp -r .next/static deploy/.next/static
-                  cp -r public deploy/public
                   cp package.json deploy/
                   cd deploy && zip -r ../release.zip .
 
