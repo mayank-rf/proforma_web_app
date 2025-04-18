@@ -36,8 +36,8 @@ export default function CarWashFeatures() {
         <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.0)' }}>
             <CardContent>
                 <Stack direction="row" spacing={2} justifyContent="space-around">
-                    {features.map((feature) => (
-                        <Box textAlign="center">
+                    {features.map((feature, idx) => (
+                        <Box textAlign="center" key={idx}>
                             <Typography variant="h5" fontWeight="bold" color="primary.main" sx={{ mb: 0.5 }} fontSize={isTabletOrSmaller ? 32 : 48}>
                                 {feature.value}
                                 {feature.unit && (

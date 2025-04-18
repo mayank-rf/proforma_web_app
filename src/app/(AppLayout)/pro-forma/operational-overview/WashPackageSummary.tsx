@@ -143,7 +143,7 @@ export default function WashPackageSummary() {
                         </TableHead>
                         <TableBody>
                             {washPackages
-                                .filter((pkg) => pkg.price !== null && pkg.percentCustomers !== null && pkg.chemicalCost !== null)
+                                .filter((pkg) => pkg.price !== 0 && pkg.percentCustomers !== 0 && pkg.chemicalCost !== 0)
                                 .map((pkg, index) => (
                                     <TableRow
                                         key={index}
@@ -158,19 +158,19 @@ export default function WashPackageSummary() {
                                                 color: '#fff',
                                                 width: 250,
                                                 textAlign: 'center',
-                                                fontSize: isTabletOrSmaller ? 12 : 20,
+                                                fontSize: isTabletOrSmaller ? 16 : 20,
                                             }}
                                         >
                                             {pkg.name}
                                         </TableCell>
-                                        <TableCell align="center" sx={{ width: 250, fontSize: isTabletOrSmaller ? 12 : 18 }}>
+                                        <TableCell align="center" sx={{ width: 250, fontSize: isTabletOrSmaller ? 16 : 18 }}>
                                             ${pkg.price}
                                         </TableCell>
-                                        <TableCell align="center" sx={{ width: 250, fontSize: isTabletOrSmaller ? 12 : 18 }}>
+                                        <TableCell align="center" sx={{ width: 250, fontSize: isTabletOrSmaller ? 16 : 18 }}>
                                             {pkg.chemicalCost}%
                                         </TableCell>
-                                        <TableCell align="center" sx={{ width: 250, fontSize: isTabletOrSmaller ? 12 : 18 }}>
-                                            ${pkg.percentCustomers}
+                                        <TableCell align="center" sx={{ width: 250, fontSize: isTabletOrSmaller ? 16 : 18 }}>
+                                            {pkg.percentCustomers}%
                                         </TableCell>
                                     </TableRow>
                                 ))}

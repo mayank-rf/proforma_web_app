@@ -2,6 +2,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Lege
 import { Bar } from 'react-chartjs-2';
 import React from 'react';
 import { useMediaQuery, useTheme } from '@mui/material';
+import { ChartData } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
@@ -14,7 +15,7 @@ const RevenueBreakoutChart = () => {
 
     const labels = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'];
 
-    const data = {
+    const data: ChartData<'bar'> = {
         labels,
         datasets: [
             {

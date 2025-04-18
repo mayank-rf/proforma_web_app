@@ -129,10 +129,10 @@ const KeyDemographicsAccordion = () => {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {section.rows.map(([label, values], i) => (
+                                        {section.rows.map(([label, values]: [string, string[]], i) => (
                                             <TableRow key={i}>
                                                 <TableCell sx={{ width: '20%' }}>{label}</TableCell>
-                                                {values.map((value, j) => (
+                                                {values?.map((value, j) => (
                                                     <TableCell key={j} align="center" sx={{ width: '20%' }}>
                                                         {value}
                                                     </TableCell>

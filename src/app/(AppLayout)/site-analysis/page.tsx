@@ -48,11 +48,31 @@ const defaultValues: ProformaInputs = {
         attendants: null,
     },
     //
-    basicPackage: 0,
-    menuPackageOne: 0,
-    menuPackageTwo: 0,
-    menuPackageThree: 0,
-    menuPackageFour: 0,
+    basicPackage: {
+        price: 0,
+        customerPercent: 0,
+        chemicalCost: 0,
+    },
+    menuPackageOne: {
+        price: 0,
+        customerPercent: 0,
+        chemicalCost: 0,
+    },
+    menuPackageTwo: {
+        price: 0,
+        customerPercent: 0,
+        chemicalCost: 0,
+    },
+    menuPackageThree: {
+        price: 0,
+        customerPercent: 0,
+        chemicalCost: 0,
+    },
+    menuPackageFour: {
+        price: 0,
+        customerPercent: 0,
+        chemicalCost: 0,
+    },
     //
     siteFactors: {
         areaProfile: '',
@@ -137,11 +157,11 @@ export default function SiteAnalysisPage() {
     const [isPending, startTransition] = useTransition();
 
     useEffect(() => {
-        setValue('basicPackage', 10);
-        setValue('menuPackageOne', 15);
-        setValue('menuPackageTwo', 22);
-        setValue('menuPackageThree', 27);
-        setValue('menuPackageFour', 30);
+        // setValue('basicPackage', 10);
+        // setValue('menuPackageOne', 15);
+        // setValue('menuPackageTwo', 22);
+        // setValue('menuPackageThree', 27);
+        // setValue('menuPackageFour', 30);
 
         const defaultAcquisitionBudget = {
             building: {
@@ -241,7 +261,7 @@ export default function SiteAnalysisPage() {
                             <LaborInformation control={control} />
 
                             {/* Wash Packages */}
-                            <WashPackages control={control} />
+                            <WashPackages />
 
                             {/* Site Specific Factors */}
                             <SiteFactors control={control} />

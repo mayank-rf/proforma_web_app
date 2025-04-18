@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartData } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useMediaQuery, Box, useTheme } from '@mui/material';
@@ -18,7 +18,7 @@ const IncomeBarChart = () => {
     const theme = useTheme();
     const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
 
-    const data = {
+    const data: ChartData<'bar'> = {
         labels: years,
         datasets: [
             {

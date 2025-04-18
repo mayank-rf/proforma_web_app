@@ -1,25 +1,11 @@
 'use client';
 
-import { Box, Card, CardContent, Typography, Grid, Divider, Stack } from '@mui/material';
-import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import { LineChart } from '@mui/x-charts';
-import { SiteFactors } from './SiteFactors';
-import SiteQualitySnapshot from './SiteQualitySnapshot';
+import { Box, Card, CardContent, Divider, Grid, Stack, Typography } from '@mui/material';
 import CompetitorTable from './CompetitorTable';
-import KeyDemographicsTable from './KeyDemographicsTable';
-import TrafficChartTabs from './TrafficChartTabs';
-import StaticMapWithRadius from './StaticMapWithRadius';
 import InteractiveMap from './InteractiveMap';
-
-const containerStyle = {
-    width: '100%',
-    height: '512px',
-};
-
-const center = {
-    lat: 37.7749,
-    lng: 122.4194,
-};
+import KeyDemographicsTable from './KeyDemographicsTable';
+import SiteQualitySnapshot from './SiteQualitySnapshot';
+import TrafficChartTabs from './TrafficChartTabs';
 
 const Metric = ({ label, value }: { label: string; value: string }) => (
     <Box mb={2}>
@@ -69,7 +55,7 @@ export default function LocationDynamics() {
                 </Section>
 
                 <Section title="Traffic Profile">
-                    <Stack direction={{ md: 'column', lg: 'row' }} spacing={2} sx={{ px: 2, py: 3 }}>
+                    <Stack direction={{ md: 'column', lg: 'row' }} spacing={2} sx={{ px: 2, py: 1 }}>
                         {/* Summary + Metrics */}
                         <Box flex={1} order={{ xs: 1, md: 1 }}>
                             <Stack
@@ -82,11 +68,14 @@ export default function LocationDynamics() {
                                 }}
                             >
                                 <Typography>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda voluptatum distinctio necessitatibus
-                                    consequuntur dicta iusto blanditiis autem exercitationem quibusdam numquam deleniti cum quidem amet, omnis, nobis,
-                                    odio quod reprehenderit impedit? Blanditiis nobis eum, nemo esse ab adipisci tempore cupiditate, soluta nesciunt
-                                    iste eaque aspernatur commodi molestias. Obcaecati rem fugit laudantium porro! Sed commodi in ipsam obcaecati
-                                    rerum saepe dolorem modi.
+                                    This site sees strong daily traffic with an average of 20.9K vehicles, split fairly evenly between weekdays
+                                    (10.2K) and weekends (11.2K).{' '}
+                                    <strong>
+                                        Peak flow occurs during standard commute times—7–10 AM and 3–6 PM—making these prime windows for visibility
+                                        and customer inflow.
+                                    </strong>{' '}
+                                    Consistent afternoon surges suggest strong potential for after-work visits. The 2-way road and 1,424-mile stretch
+                                    provide sustained exposure throughout the day.
                                 </Typography>
                             </Stack>
 

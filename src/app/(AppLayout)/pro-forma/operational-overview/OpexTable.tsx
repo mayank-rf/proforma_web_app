@@ -34,7 +34,7 @@ const totalExpenseYear5 = totalOperatingYear5 + totalDebtYear5;
 
 export default function OpexTable() {
     return (
-        <TableContainer sx={{ mt: 3 }}>
+        <TableContainer sx={{ mt: 0 }}>
             <Typography variant="body1" sx={{ px: 2, pt: 1, pb: 2, m: 2, boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)', borderRadius: '4px' }}>
                 Over the years, operating expenses are expected to rise from ${totalOperatingYear1.toLocaleString('en-US')} in Year 1 to $
                 {totalOperatingYear5.toLocaleString('en-US')} by Year 5, largely driven by labor and utility costs. Despite increased revenue, expense

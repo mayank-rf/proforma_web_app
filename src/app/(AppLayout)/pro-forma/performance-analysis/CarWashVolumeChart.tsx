@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend, ChartData } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useMediaQuery, useTheme } from '@mui/material';
@@ -15,7 +15,7 @@ const CarWashVolumeChart = () => {
     const retailVolume = [56142, 69984, 76461, 74214, 76994];
     const memberVolume = [6238, 12350, 16219, 20932, 25665];
 
-    const data = {
+    const data: ChartData<'bar'> = {
         labels,
         datasets: [
             {

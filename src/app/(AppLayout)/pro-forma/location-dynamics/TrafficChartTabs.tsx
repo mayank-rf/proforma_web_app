@@ -66,6 +66,9 @@ const TrafficChartTabs = () => {
             legend: {
                 display: false,
             },
+            datalabels: {
+                display: false,
+            },
             tooltip: {
                 callbacks: {
                     label: (context: any) => `${context.parsed.y} cars`,

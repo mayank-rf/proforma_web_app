@@ -1,4 +1,4 @@
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Legend, Tooltip } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Legend, Tooltip, ChartOptions } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useMediaQuery, useTheme } from '@mui/material';
@@ -19,12 +19,12 @@ export default function IncomeStatementChart() {
                 label: 'Total Revenue',
                 data: [884165, 1166988, 1313617, 1348583, 1455050],
                 backgroundColor: 'rgba(45, 156, 219, 0.7)',
-                barThickness: isTabletOrSmaller ? 50 : 100,
+                barThickness: isTabletOrSmaller ? 80 : 100,
                 order: 2, // Lower order: draw first
                 datalabels: {
                     align: 'top',
                     anchor: 'end',
-                    formatter: (value) => `$${value}`,
+                    formatter: (value) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 0 })}`,
                     color: '#3A4F5F',
                     font: {
                         weight: 'bold',
@@ -95,7 +95,7 @@ export default function IncomeStatementChart() {
         ],
     };
 
-    const options = {
+    const options: ChartOptions<'bar'> = {
         responsive: true,
         plugins: {
             legend: {
@@ -136,5 +136,6 @@ export default function IncomeStatementChart() {
         },
     };
 
-    return <Chart type="bar" data={data} options={options} height={isTabletOrSmaller ? 70 : 100} />;
+    // @ts-ignore
+    return <Chart type="bar" data={data} options={options} />;
 }

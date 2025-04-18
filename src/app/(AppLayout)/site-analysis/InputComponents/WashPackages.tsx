@@ -39,7 +39,7 @@ export default function WashPackages() {
         setWashPackages(packages);
     }, [packages]);
 
-    const renderTextField = (name: string, defaultValue: number) => (
+    const renderTextField = (name: any, defaultValue: number) => (
         <Controller
             name={name}
             control={control}
@@ -72,7 +72,7 @@ export default function WashPackages() {
                     </Grid>
                     <Grid item xs={2}>
                         <Typography variant="body1" fontWeight="600" color="#3A4F5F">
-                            % Price
+                            $ Price
                         </Typography>
                     </Grid>
                     <Grid item xs={2}>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Container, Grid, TextField, Typography, Paper } from '@mui/material';
+import { Container, Grid, TextField, Typography } from '@mui/material';
+import { useState } from 'react';
 
 const initialData = [
     { item: 'Building', totalInvestment: 360000, ownerPercentage: 20, bankPercentage: 80 },

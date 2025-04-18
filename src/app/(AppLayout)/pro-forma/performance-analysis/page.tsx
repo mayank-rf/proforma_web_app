@@ -32,8 +32,22 @@ export default function KPIAnalysis() {
                     <Grid item xs={12} lg={3}>
                         <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
                             <Typography sx={{ textAlign: 'left', p: 2 }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-                                ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                <strong>Profitability &gt; Growth</strong>
+                                <br />
+                                Revenue growth slows (32% → 7%), but net income margin climbs (2% → 31%) and ROE hits 52%. Efficiency is driving
+                                profits more than scalability. <br />
+                                <strong>Actions</strong>
+                                <ul>
+                                    <li>
+                                        <b>Optimize ops further</b> — replicate cost-saving levers.
+                                    </li>
+                                    <li>
+                                        <b>Reinvest profits</b> into scalable growth (e.g., tech, memberships).
+                                    </li>
+                                    <li>
+                                        <b>Explore new revenue streams</b> as top-line growth plateaus.
+                                    </li>
+                                </ul>
                             </Typography>
                         </Stack>
                     </Grid>
@@ -50,10 +64,24 @@ export default function KPIAnalysis() {
             <Section title="Revenue Breakout">
                 <Grid container spacing={6}>
                     <Grid item xs={12} lg={3}>
-                        <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
+                        <Stack justifyContent="flex-start" alignItems="flex-start" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
                             <Typography sx={{ textAlign: 'left', p: 2 }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-                                ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                <strong>Memberships Are the Growth Engine</strong>
+                                <br />
+                                Retail revenue flattens; member revenue 5x's. Strong sign of stickiness and high LTV.
+                                <br />
+                                <strong>Actions</strong>
+                                <ul>
+                                    <li>
+                                        <b>Push member growth</b> — perks, referrals, loyalty.
+                                    </li>
+                                    <li>
+                                        <b>Shift marketing to recurring models</b>.
+                                    </li>
+                                    <li>
+                                        <b>Test dynamic pricing</b> for retail to nudge conversions.
+                                    </li>
+                                </ul>
                             </Typography>
                         </Stack>
                     </Grid>
@@ -70,10 +98,24 @@ export default function KPIAnalysis() {
             <Section title="Car Wash Volume Estimates">
                 <Grid container spacing={6}>
                     <Grid item xs={12} lg={3}>
-                        <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
+                        <Stack justifyContent="flex-start" alignItems="flex-start" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
                             <Typography sx={{ textAlign: 'left', p: 2 }}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-                                ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                <strong>Scale Ops with Member Demand</strong>
+                                <br />
+                                Retail volume plateaus, but member washes surge 4x. Total volume exceeds 100K — potential capacity strain ahead.
+                                <br />
+                                <strong>Actions</strong>
+                                <ul>
+                                    <li>
+                                        <b>Plan capacity scale-up</b> (equipment, staff, lanes).
+                                    </li>
+                                    <li>
+                                        <b>Align ops with member usage patterns</b>.
+                                    </li>
+                                    <li>
+                                        <b>Offer scheduling tools</b> to smooth peak demand.
+                                    </li>
+                                </ul>
                             </Typography>
                         </Stack>
                     </Grid>

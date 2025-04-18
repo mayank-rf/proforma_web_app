@@ -1,22 +1,6 @@
 'use client';
 
-import {
-    Box,
-    Typography,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Paper,
-    Grid,
-    Divider,
-    Stack,
-    useTheme,
-    useMediaQuery,
-} from '@mui/material';
-import { LineChart } from '@mui/x-charts/LineChart';
+import { Box, Grid, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 import CarWashAcquisitionBudget from './CarWashAcquistionBudget';
 import DebtAmortizationTable from './DebtAmortizationTable';
 import InvestmentPieChart from './InvestmentDistribution';
@@ -73,10 +57,20 @@ export default function BreakEvenAnalysis() {
                     <Stack direction="column" justifyContent="center" alignItems="center" gap={4}>
                         <Box sx={{ mt: isTabletOrSmaller ? 0 : 2, boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)', p: 2 }}>
                             <Typography>
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure beatae ullam quibusdam! Autem minus, deserunt quos
-                                cumque non soluta qui a sapiente neque. Rerum eos fugit fuga aspernatur voluptatem hic. Temporibus quas quibusdam sit
-                                tenetur non, possimus ab a quasi qui molestias distinctio molestiae. Voluptatem officia cum repudiandae expedita,
-                                assumenda quos saepe nobis doloremque. Quae hic deserunt veniam officiis laudantium?
+                                The total projected cost for developing the car wash site is $4,300,000, which includes Building and Equipment
+                                ($1,500,000 each), Land ($800,000), Site ($250,000), and Soft Costs ($250,000). <br />
+                                The financing structure assumes:
+                                <br />
+                                <ul>
+                                    <li>
+                                        <b>20% Equity</b>, totaling <b>$860,000</b>
+                                    </li>
+                                    <li>
+                                        <b>80% Debt</b>, totaling <b>$3,440,000</b>
+                                    </li>
+                                </ul>
+                                The debt is financed at an interest rate of 9% over a 300-month term (25 years).
+                                <br />
                             </Typography>
                         </Box>
 

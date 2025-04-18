@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Card, CardContent, Grid, Typography, Divider, Avatar } from '@mui/material';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import PersonIcon from '@mui/icons-material/Person';
@@ -6,30 +8,30 @@ import useStore from '../../../../store/useStore';
 
 export default function StaffingAndShifts() {
     const { laborInformation } = useStore();
-    const { manager, assistantManager, attendants } = laborInformation;
+    // const { manager, assistantManager, attendants } = laborInformation;
     const roles = [
         {
             title: 'Manager',
-            hours: manager.laborHours + ' Hrs',
-            wage: '$' + manager.hourlyWages,
-            burdenRate: manager.burdenRate + '%',
+            hours: laborInformation?.manager?.laborHours + ' Hrs',
+            wage: '$' + laborInformation?.manager?.hourlyWages,
+            burdenRate: laborInformation?.manager?.burdenRate + '%',
             total: '$79K',
-            icon: <SupervisorAccountIcon fontSize="large" />,
+            icon: <PersonIcon fontSize="large" />,
         },
         {
-            title: 'Asst Manager',
-            hours: assistantManager.laborHours + ' Hrs',
-            wage: '$' + assistantManager.hourlyWages,
-            burdenRate: assistantManager.burdenRate + '%',
+            title: 'Assistant Manager',
+            hours: laborInformation?.assistantManager?.laborHours + ' Hrs',
+            wage: '$' + laborInformation?.assistantManager?.hourlyWages,
+            burdenRate: laborInformation?.assistantManager?.burdenRate + '%',
             total: '$49K',
             icon: <PersonIcon fontSize="large" />,
         },
         {
-            title: '[4] Attendants',
-            hours: attendants.laborHours + ' Hrs',
+            title: 'Attendants',
+            hours: laborInformation?.attendants?.laborHours + ' Hrs',
             subHours: '80 Hrs. Temp. Labor',
-            wage: '$' + attendants.hourlyWages,
-            burdenRate: attendants.burdenRate + '%',
+            wage: '$' + laborInformation?.attendants?.hourlyWages,
+            burdenRate: laborInformation?.attendants?.burdenRate + '%',
             total: '$144K',
             icon: <GroupIcon fontSize="large" />,
         },

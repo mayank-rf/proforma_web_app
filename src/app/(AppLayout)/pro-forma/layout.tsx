@@ -1,12 +1,13 @@
 'use client';
 
-import { BarChart, Factory, Map, MonetizationOn, Summarize, Menu as MenuIcon } from '@mui/icons-material';
-import { Box, Divider, Fab, List, ListItemButton, ListItemIcon, ListItemText, Paper, Popover, Typography } from '@mui/material';
+import { BarChart, Factory, Map, Menu as MenuIcon, MonetizationOn, Summarize } from '@mui/icons-material';
+import { Box, Divider, Fab, List, ListItemButton, ListItemIcon, ListItemText, Popover, Typography } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode, useRef, useState } from 'react';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 const sections = [
     { label: 'Overview', path: '/pro-forma', icon: <Summarize /> },
@@ -44,76 +45,84 @@ export default function AnalysisLayout({ children }: { children: ReactNode }) {
                 />
             )}
 
-            {/* FAB Anchor Box (bottom-left fixed) */}
-            <Box
-                ref={fabAnchorRef}
-                sx={{
-                    position: 'fixed',
-                    bottom: 24,
-                    left: 24,
-                    zIndex: 1400,
-                }}
-            >
-                <Fab color="primary" aria-label="menu" onClick={handleToggle}>
-                    <MenuIcon />
-                </Fab>
-            </Box>
-
-            {/* Popover - anchored to the FAB box */}
-            <Popover
-                open={open}
-                anchorEl={fabAnchorRef.current}
-                onClose={handleClose}
-                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-                transformOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                PaperProps={{
-                    sx: {
-                        mb: 2,
-                        borderRadius: 3,
-                        width: 260,
-                        boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
-                        zIndex: 1500,
-                    },
-                }}
-            >
-                <Box sx={{ p: 2 }}>
-                    <Box sx={{ textAlign: 'center', mb: 1 }}>
-                        <Image src="/logo.svg" alt="Logo" width={80} height={80} style={{ width: '70%', height: 'auto' }} />
-                    </Box>
-                    <Divider sx={{ mb: 1 }} />
-                    <List>
-                        {sections.map((section) => (
-                            <Link key={section.path} href={section.path} passHref legacyBehavior>
-                                <ListItemButton
-                                    component="a"
-                                    selected={pathname === section.path}
-                                    onClick={handleClose}
-                                    sx={{
-                                        borderRadius: 2,
-                                        mb: 1,
-                                        '&.Mui-selected': {
-                                            backgroundColor: 'primary.main',
-                                            color: 'white',
-                                            '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-                                                color: 'white',
-                                            },
-                                        },
-                                    }}
-                                >
-                                    <ListItemIcon sx={{ minWidth: 36 }}>{section.icon}</ListItemIcon>
-                                    <ListItemText
-                                        primary={
-                                            <Typography variant="body1" fontWeight={500}>
-                                                {section.label}
-                                            </Typography>
-                                        }
-                                    />
-                                </ListItemButton>
-                            </Link>
-                        ))}
-                    </List>
+            <Box>
+                {/* FAB Anchor Box (bottom-left fixed) */}
+                <Box
+                    ref={fabAnchorRef}
+                    sx={{
+                        position: 'fixed',
+                        bottom: 24,
+                        left: 24,
+                        zIndex: 1400,
+                    }}
+                >
+                    <Fab
+                        color="primary"
+                        aria-label="menu"
+                        onClick={handleToggle}
+                        sx={{ backgroundColor: 'rgba(35, 103, 157, 0.7)', color: 'rgba(255, 255, 255, 0.9)' }}
+                    >
+                        {/* <MenuIcon /> */}
+                        <ArrowDropUpIcon />
+                    </Fab>
                 </Box>
-            </Popover>
+
+                {/* Popover - anchored to the FAB box */}
+                <Popover
+                    open={open}
+                    anchorEl={fabAnchorRef.current}
+                    onClose={handleClose}
+                    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                    transformOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                    PaperProps={{
+                        sx: {
+                            mb: 2,
+                            borderRadius: 3,
+                            width: 260,
+                            boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+                            zIndex: 1500,
+                        },
+                    }}
+                >
+                    <Box sx={{ p: 2 }}>
+                        <Box sx={{ textAlign: 'center', mb: 1 }}>
+                            <Image src="/logo.svg" alt="Logo" width={80} height={80} style={{ width: '70%', height: 'auto' }} />
+                        </Box>
+                        <Divider sx={{ mb: 1 }} />
+                        <List>
+                            {sections.map((section) => (
+                                <Link key={section.path} href={section.path} passHref legacyBehavior>
+                                    <ListItemButton
+                                        component="a"
+                                        selected={pathname === section.path}
+                                        onClick={handleClose}
+                                        sx={{
+                                            borderRadius: 2,
+                                            mb: 1,
+                                            '&.Mui-selected': {
+                                                backgroundColor: 'primary.main',
+                                                color: 'white',
+                                                '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+                                                    color: 'white',
+                                                },
+                                            },
+                                        }}
+                                    >
+                                        <ListItemIcon sx={{ minWidth: 36 }}>{section.icon}</ListItemIcon>
+                                        <ListItemText
+                                            primary={
+                                                <Typography variant="body1" fontWeight={500}>
+                                                    {section.label}
+                                                </Typography>
+                                            }
+                                        />
+                                    </ListItemButton>
+                                </Link>
+                            ))}
+                        </List>
+                    </Box>
+                </Popover>
+            </Box>
 
             {/* Main content */}
             <Box

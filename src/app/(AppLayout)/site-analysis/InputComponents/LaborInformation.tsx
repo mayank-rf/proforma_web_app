@@ -1,11 +1,11 @@
-import { Grid, TextField, Typography, Divider, Box } from '@mui/material';
-import { Controller, set, useWatch } from 'react-hook-form';
-import InputAccordion from './InputAccordion';
+import { Grid, TextField, Typography } from '@mui/material';
 import { useEffect } from 'react';
+import { Controller, useWatch } from 'react-hook-form';
 import useStore from '../../../../store/useStore';
+import InputAccordion from './InputAccordion';
 
 export default function LaborInformation({ control }: any) {
-    const {setLaborInformation} = useStore()
+    const { setLaborInformation } = useStore();
     const manager = {
         laborHours: useWatch({ control, name: 'laborHours.manager' }),
         hourlyWages: useWatch({ control, name: 'hourlyWages.manager' }),
@@ -32,7 +32,6 @@ export default function LaborInformation({ control }: any) {
     useEffect(() => {
         setLaborInformation(currentState);
     }, [JSON.stringify(currentState)]);
-
 
     const isManagerFilled = Object.values(manager).every(Boolean);
     const isAssistantManagerFilled = Object.values(assistantManager).every(Boolean);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartData, ChartOptions } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Box, Stack } from '@mui/material';
@@ -21,7 +21,7 @@ const labels = [
 const backgroundColors = ['#27AE60', '#2D9CDB', '#F2994A', '#9B51E0', '#EB5757', '#2AD2C9', '#F2C94C', '#F5A623', '#7B5E57'];
 
 const OperatingExpensePieChart = ({ percentValues }: any) => {
-    const data = {
+    const data: ChartData<'pie'> = {
         labels: [
             'Advertisements & Promotions',
             'Chemical Supplies',
@@ -43,12 +43,17 @@ const OperatingExpensePieChart = ({ percentValues }: any) => {
         ],
     };
 
-    const options = {
+    const options: ChartOptions<'pie'> = {
         responsive: true,
+        layout: {
+            padding: {
+                left: 40,
+                right: 40,
+            },
+        },
         plugins: {
             datalabels: {
                 display: true,
-                color: '#fff',
                 font: {
                     weight: 'bold',
                     size: 13,

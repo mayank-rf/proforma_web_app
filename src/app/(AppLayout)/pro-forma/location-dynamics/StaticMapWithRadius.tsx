@@ -1,6 +1,7 @@
 // components/StaticMapWithRadius.tsx
 import React from 'react';
 import { Card, CardContent, Stack, Typography } from '@mui/material';
+import Image from 'next/image';
 
 type StaticMapWithRadiusProps = {
     lat: number;
@@ -56,7 +57,7 @@ ${getCirclePath(5)}
             </Typography>
             <Card sx={{ width, boxShadow: '0 0 4px rgba(0, 0, 0, 0.1)' }}>
                 <CardContent>
-                    <img src={mapUrl} alt="Static Google Map with Radius" style={{ width: '100%', height: 'auto', borderRadius: 8 }} />
+                    <Image src={mapUrl} alt="Static Google Map with Radius" width={width} height={height} style={{ borderRadius: 8 }} />
                 </CardContent>
             </Card>
         </Stack>

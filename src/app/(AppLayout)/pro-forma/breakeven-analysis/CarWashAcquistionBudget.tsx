@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 const investmentData = [
     { item: 'Building', total: 1500000, equityPercent: 20, equity: 300000, debtPercent: 80, debt: 1200000, interestRate: 9, term: 300 },
@@ -21,7 +21,7 @@ export default function CarWashAcquisitionBudget() {
         { total: 0, equity: 0, debt: 0 }
     );
 
-    const formatCurrency = (value: number) => `$${value.toLocaleString(undefined, { minimumFractionDigits: 0 })}`;
+    const formatCurrency = (value: number) => `$${value.toLocaleString('en-US', { minimumFractionDigits: 0 })}`;
 
     return (
         <Box width={'100%'}>
