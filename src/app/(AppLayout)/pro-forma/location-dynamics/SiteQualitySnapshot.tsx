@@ -1,6 +1,9 @@
+'use client';
+
 import { Box, Card, Chip, Grid, LinearProgress, Typography, Tooltip } from '@mui/material';
 import useStore from '../../../../store/useStore';
 import { siteFactorsMap } from '@/utils/siteFactorsMap';
+import { useEffect, useState } from 'react';
 
 const siteFactors: { label: keyof typeof siteFactorsMap; value: string; score: number }[] = [
     {
@@ -64,7 +67,14 @@ const getProgressValue = (score) => {
 
 export default function SiteQualitySnapshot() {
     // const { siteFactors: globalSiteFactor } = useStore();
-    const globalSiteFactors = JSON.parse(window.localStorage.getItem('proformaData'))?.siteFactors;
+    const [globalSiteFactors, setGlobalSiteFactors] = useState({});
+
+    useEffect(() => {
+        const data = JSON.parse(window.localStorage.getItem('proformaData'));
+        if (data && data.siteFactors) {
+            setGlobalSiteFactors(data.siteFactors);
+        }
+    }, []);
 
     const totalScore = siteFactors.reduce((acc, factor) => acc + factor.score, 0);
     return (

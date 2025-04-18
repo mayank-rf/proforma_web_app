@@ -2,13 +2,21 @@
 
 import { Stack, Typography } from '@mui/material';
 import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
     const router = useRouter();
     const pathName = usePathname();
     // const { addressHeader } = useStore();
-    let addressHeader = JSON.parse(window.localStorage.getItem('proformaData'))?.siteAddress;
-    addressHeader = `${addressHeader?.address || ''}-${addressHeader?.city || ''}, ${addressHeader?.state || ''}, ${addressHeader?.zip_code || ''}`;
+    const [addressHeader, setAddressHeader] = useState('');
+    useEffect(() => {
+        const data = JSON.parse(window.localStorage.getItem('proformaData'));
+        if (data && data.siteAddress) {
+            setAddressHeader(
+                `${data.siteAddress?.address || ''}-${data.siteAddress?.city || ''}, ${data.siteAddress?.state || ''}, ${data.siteAddress?.zip_code || ''}`
+            );
+        }
+    }, []);
     const [addressLine1, addressLine2] = addressHeader?.split('-') || [];
 
     return (
