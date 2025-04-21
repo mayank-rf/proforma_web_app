@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 const investmentData = [
     { item: 'Building', total: 1500000, equityPercent: 20, equity: 300000, debtPercent: 80, debt: 1200000, interestRate: 9, term: 300 },
@@ -11,6 +12,37 @@ const investmentData = [
 ];
 
 export default function CarWashAcquisitionBudget() {
+    const [globalCarAquistion, setGlobalCarAquistion] = useState<Record<string, {
+        item: string;
+        total: number;
+        equityPercent: number;
+        debtPercent: number;
+        interestRate: number;
+        term: number;
+    }>>({});
+
+    useEffect(() => {
+        const data = JSON.parse(window.localStorage.getItem('proformaData'));
+        if (data.acquisitionBudget && data.bankDebtAllocation) {
+            const { acquisitionBudget, bankDebtAllocation } = data;
+            const mergedData = Object.keys(acquisitionBudget).reduce((acc, key) => {
+                const budget = acquisitionBudget[key];
+                const debt = bankDebtAllocation[key];
+                acc[key] = {
+                    item: key,
+                    total: budget.totalInvestment,
+                    equityPercent: budget.percentOwner,
+                    debtPercent: budget.percentBank,
+                    interestRate: debt.interestRate,
+                    term: debt.termOfLoan,
+                };
+                return acc;
+            }, {});
+
+            setGlobalCarAquistion(mergedData);
+        }
+    }, []);
+
     const total = investmentData.reduce(
         (acc, row) => {
             acc.total += row.total;
@@ -51,7 +83,7 @@ export default function CarWashAcquisitionBudget() {
                     </TableHead>
 
                     <TableBody>
-                        {investmentData.map((row, idx) => (
+                        {Object.entries(globalCarAquistion).map(([_, row], idx) => (
                             <TableRow key={idx} hover>
                                 <TableCell>{row.item}</TableCell>
                                 <TableCell align="right">{formatCurrency(row.total)}</TableCell>

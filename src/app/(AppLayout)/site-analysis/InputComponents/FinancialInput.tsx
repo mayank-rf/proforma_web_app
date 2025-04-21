@@ -5,10 +5,14 @@ import { Controller, useWatch } from 'react-hook-form';
 export default function FinancialInput({ control }: any) {
     const acquisitionBudgetData = useWatch({ control, name: 'acquisitionBudget' });
     const bankDebtAllocationData = useWatch({ control, name: 'bankDebtAllocation' });
+    const operationalExpensesData = useWatch({ control, name: 'operationalExpenses' });
 
-    const acquisitionBudgetFilled = Object.values(acquisitionBudgetData).every((val) => val !== undefined && val !== null && val !== '');
-    const bankDebtAllocationFilled = Object.values(bankDebtAllocationData).every((val) => val !== undefined && val !== null && val !== '');
-    const allFilled = acquisitionBudgetFilled && bankDebtAllocationFilled;
+    const acquisitionBudgetFilled = Object.entries(acquisitionBudgetData).every(([_,val]) => Object.values(val).every((item) => item !== ""  && item !== null && item !== undefined));
+    const bankDebtAllocationFilled = Object.entries(bankDebtAllocationData).every(([_,val]) => Object.values(val).every((item) => item !== ""  && item !== null && item !== undefined));
+    const operationalExpensesFilled = Object.entries(operationalExpensesData).every(([_,val]) => Object.values(val).every((item) => item !== ""  && item !== null && item !== undefined));
+    console.log(acquisitionBudgetFilled)
+    
+    const allFilled = acquisitionBudgetFilled && bankDebtAllocationFilled && operationalExpensesFilled;
 
     return (
         <InputAccordion title="Financial Inputs" completed={allFilled}>
@@ -49,21 +53,21 @@ export default function FinancialInput({ control }: any) {
                             <Controller
                                 name={`acquisitionBudget.${key}.totalInvestment`}
                                 control={control}
-                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }} disabled />}
+                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }}  />}
                             />
                         </Grid>
                         <Grid item xs={2}>
                             <Controller
                                 name={`acquisitionBudget.${key}.percentOwner`}
                                 control={control}
-                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }} disabled />}
+                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }}  />}
                             />
                         </Grid>
                         <Grid item xs={2}>
                             <Controller
                                 name={`acquisitionBudget.${key}.percentBank`}
                                 control={control}
-                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }} disabled />}
+                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }}  />}
                             />
                         </Grid>
                     </Grid>
@@ -108,21 +112,21 @@ export default function FinancialInput({ control }: any) {
                             <Controller
                                 name={`bankDebtAllocation.${key}.bankDebtTotal`}
                                 control={control}
-                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }} disabled />}
+                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }}  />}
                             />
                         </Grid>
                         <Grid item xs={2}>
                             <Controller
                                 name={`bankDebtAllocation.${key}.interestRate`}
                                 control={control}
-                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }} disabled />}
+                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }}  />}
                             />
                         </Grid>
                         <Grid item xs={2}>
                             <Controller
                                 name={`bankDebtAllocation.${key}.termOfLoan`}
                                 control={control}
-                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }} disabled />}
+                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }}  />}
                             />
                         </Grid>
                     </Grid>
@@ -134,7 +138,58 @@ export default function FinancialInput({ control }: any) {
                     Operational Expenses
                 </Typography>
 
-                <Grid container spacing={2} sx={{ marginBottom: 2, fontWeight: 'bold' }}></Grid>
+
+                <Grid container spacing={2} sx={{ marginBottom: 2, fontWeight: 'bold' }}>
+                <Grid item xs={6}>
+                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
+                            Expense Description
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
+                            % of Sales
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
+                            Break Even
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
+                            Year 1
+                        </Typography>
+                    </Grid>
+                </Grid>
+
+                {Object.keys(operationalExpensesData).map((key: any, index: number) => (
+                    <Grid container spacing={2} key={index} alignItems="center">
+                        <Grid item xs={6}>
+                            <Typography>{capitalize(key.split('_').join(' '))}</Typography>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Controller
+                                name={`operationalExpenses.${key}.percentOfSales`}
+                                control={control}
+                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }}  />}
+                            />
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Controller
+                                name={`operationalExpenses.${key}.breakEven`}
+                                control={control}
+                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }}  />}
+                            />
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Controller
+                                name={`operationalExpenses.${key}.year1`}
+                                control={control}
+                                render={({ field }) => <TextField fullWidth size="small" type="number" {...field} sx={{ m: 1 }}  />}
+                            />
+                        </Grid>
+                    </Grid>
+                ))}
             </Box>
         </InputAccordion>
     );

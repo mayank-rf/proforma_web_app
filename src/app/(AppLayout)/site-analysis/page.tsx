@@ -141,6 +141,68 @@ const defaultValues: ProformaInputs = {
             termOfLoan: 0,
         },
     },
+    operationalExpenses :{
+        advertisements: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        chemicalSupplies: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        customerClaims: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        insurance: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        labor: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        legalFees: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        licenses: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        miscellaneous: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        repairs: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        realEstateTaxes: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        refuseCollection: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+        utilities: {
+          percentOfSales: 0,
+          breakEven: 0,
+          year1: 0,
+        },
+      }
 };
 
 export default function SiteAnalysisPage() {
@@ -220,6 +282,20 @@ export default function SiteAnalysisPage() {
                 termOfLoan: 0,
             },
         });
+        setValue('operationalExpenses', {
+            advertisements: { percentOfSales: 3.0, breakEven: 2505.00, year1: 1200.36 },
+            chemicalSupplies: { percentOfSales: 4.6, breakEven: 3836.99, year1: 1880.95 },
+            customerClaims: { percentOfSales: 1.0, breakEven: 835.00, year1: 400.12 },
+            insurance: { percentOfSales: 1.2, breakEven: 1000.00, year1: 1000.00 },
+            labor: { percentOfSales: 29.6, breakEven: 25298.00, year1: 25298.00 },
+            legalFees: { percentOfSales: 1.0, breakEven: 835.00, year1: 400.12 },
+            licenses: { percentOfSales: 1.0, breakEven: 835.00, year1: 400.12 },
+            miscellaneous: { percentOfSales: 1.5, breakEven: 1252.50, year1: 600.18 },
+            repairs: { percentOfSales: 1.0, breakEven: 835.00, year1: 400.12 },
+            realEstateTaxes: { percentOfSales: 2.3, breakEven: 2000.00, year1: 2000.00 },
+            refuseCollection: { percentOfSales: 1.0, breakEven: 835.00, year1: 400.12 },
+            utilities: { percentOfSales: 9.0, breakEven: 7515.01, year1: 3601.08 }
+        });
     }, []);
 
     const handleCloseAnalysis = () => {
@@ -270,6 +346,7 @@ export default function SiteAnalysisPage() {
 
                             {/* Financial Input */}
                             <FinancialInput control={control} />
+
                         </Stack>
 
                         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
