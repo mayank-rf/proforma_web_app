@@ -31,9 +31,16 @@ const expenseData = profitForecast.map((d) => d.expense);
 const profitData = profitForecast.map((d) => d.revenue - d.expense);
 
 async function startAnalysis(proformaInput: ProformaInputs) {
+    const helloWorldResponse = await fetch('http://10.53.224.4:8080/api/v1/hello', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
     await new Promise((resolve) => setTimeout(resolve, 7000));
 
-    const response = {};
+    const response = helloWorldResponse;
 
     return {
         success: true,

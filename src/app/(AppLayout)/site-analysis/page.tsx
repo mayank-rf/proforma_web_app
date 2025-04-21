@@ -234,6 +234,7 @@ export default function SiteAnalysisPage() {
         startTransition(async () => {
             const analysisResponse = await startAnalysis(data);
             console.log({ analysisResponse });
+            alert(JSON.stringify(analysisResponse));
             setShowAnalysis(true);
         });
 
