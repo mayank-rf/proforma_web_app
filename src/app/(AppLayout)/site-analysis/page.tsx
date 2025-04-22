@@ -43,8 +43,8 @@ const defaultValues: ProformaInputs = {
         attendants: null,
     },
     count: {
-        manager: null,
-        assistantManager: null,
+        // manager: null,
+        // assistantManager: null,
         attendants: null,
     },
     //
@@ -212,18 +212,30 @@ export default function SiteAnalysisPage() {
         control,
         handleSubmit,
         setValue,
-        formState: { errors },
+        formState: { errors, isValid},
     } = useForm<ProformaInputs>({
-        defaultValues: defaultValues,
+        defaultValues: defaultValues,mode: 'onChange',
     });
     const [isPending, startTransition] = useTransition();
 
     useEffect(() => {
+
         setValue('basicPackage', { price: 10, customerPercent: 45, chemicalCost: 0.48 });
         setValue('menuPackageOne', { price: 15, customerPercent: 30, chemicalCost: 0.89 });
         setValue('menuPackageTwo', { price: 22, customerPercent: 15, chemicalCost: 1.05 });
         setValue('menuPackageThree', { price: 27, customerPercent: 10, chemicalCost: 1.09 });
         setValue('menuPackageFour', { price: 30, customerPercent: 5, chemicalCost: 1.13 });
+        setValue('siteFactors',{
+            areaProfile: '0.15',
+            nearestCompetition: '0.125',
+            typeOfSite: '0.125',
+            siteAccessibility: '0.15',
+            visibility: '0.10',
+            entranceStackUpArea: '0.15',
+            numberOfFreeVacuumSlots: '0.10',
+            numberOfPayStations: '0.10',
+            trafficSpeed: '0.10',
+        },)
 
         const defaultAcquisitionBudget = {
             building: {
@@ -316,9 +328,20 @@ export default function SiteAnalysisPage() {
         router.push('/pro-forma');
     }
 
-    const formValues = useWatch({ control });
-    const allFilled = Object.values(formValues).every((val) => val !== undefined && val !== null && val !== '');
+    const formValues = useWatch({ control });   
 
+    const isObjectFullyFilled = (obj: any): boolean => {
+        if (obj === null || obj === undefined || obj === '') return false;
+        if (typeof obj === 'object') {
+          for (const key in obj) {
+            if (!isObjectFullyFilled(obj[key])) return false;
+          }
+        }
+        return true;
+      };
+    // Check if all values in the object are filled
+      const allFilled = isObjectFullyFilled(formValues) && isValid;
+      
     return (
         <Box sx={{ p: 4, maxWidth: 1200, margin: 'auto' }}>
             {/* Input Section */}
@@ -330,22 +353,22 @@ export default function SiteAnalysisPage() {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Stack sx={{ mb: 2 }} spacing={2}>
                             {/* Customer Information */}
-                            <CustomerInformation control={control} />
+                            <CustomerInformation control={control} isValid={isValid} />
 
                             {/* Car Wash Working Hours */}
-                            <CarWashWorkingHours control={control} />
+                            <CarWashWorkingHours control={control} isValid={isValid}   />
 
                             {/* Labor Information */}
-                            <LaborInformation control={control} />
+                            <LaborInformation control={control} isValid={isValid} />
 
                             {/* Wash Packages */}
-                            <WashPackages />
+                            <WashPackages control={control} isValid={isValid} />
 
                             {/* Site Specific Factors */}
-                            <SiteFactors control={control} />
+                            <SiteFactors control={control} isValid={isValid} />
 
                             {/* Financial Input */}
-                            <FinancialInput control={control} />
+                            <FinancialInput control={control} isValid={isValid}/>
 
                         </Stack>
 

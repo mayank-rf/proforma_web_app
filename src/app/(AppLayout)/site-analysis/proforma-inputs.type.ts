@@ -27,8 +27,8 @@ type ProformaInputs = {
         attendants: number | null;
     };
     count: {
-        manager: number | null;
-        assistantManager: number | null;
+        // manager: number | null;
+        // assistantManager: number | null;
         attendants: number | null;
     };
     //

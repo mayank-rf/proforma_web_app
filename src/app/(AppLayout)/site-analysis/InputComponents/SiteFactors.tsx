@@ -2,9 +2,9 @@ import { FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 import { Controller, useWatch } from 'react-hook-form';
 import InputAccordion from './InputAccordion';
 
-export default function SiteFactors({ control }: any) {
+export default function SiteFactors({ control, isValid }: any) {
     const siteFactors = useWatch({ control, name: 'siteFactors' });
-    const allFilled = Object.values(siteFactors).every((value) => value !== '');
+    const allFilled = Object.values(siteFactors).every((value) => value !== '') && isValid;
     // const { setSiteFactors } = useStore();
 
     // useEffect(() => {
@@ -102,7 +102,7 @@ export default function SiteFactors({ control }: any) {
                     <Controller
                         name="siteFactors.visibility"
                         control={control}
-                        render={({ field }) => (
+                        render={({ field, fieldState }) => (
                             <FormControl fullWidth>
                                 <InputLabel id="visibility" sx={{ fontWeight: '600', color: '#3A4F5F' }}>
                                     Visibility
