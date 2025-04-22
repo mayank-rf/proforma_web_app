@@ -96,7 +96,7 @@ export default function WashPackageSummary() {
     const theme = useTheme();
     const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
 
-    const iconSize = isTabletOrSmaller ? 32 : 40;
+    const iconSize = isTabletOrSmaller ? 30 : 40;
 
     return (
         <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.0)' }}>
@@ -118,7 +118,7 @@ export default function WashPackageSummary() {
                                                 strokeLinejoin="round"
                                             />
                                         </svg>
-                                        <Typography variant="subtitle2" fontSize={isTabletOrSmaller ? 16 : 24}>
+                                        <Typography variant="subtitle2" fontWeight="bold" color="primary.main" fontSize={isTabletOrSmaller ? 18 : 24}>
                                             Price
                                         </Typography>
                                     </Box>
@@ -158,7 +158,7 @@ export default function WashPackageSummary() {
                                             />
                                         </svg>
 
-                                        <Typography variant="subtitle2" fontSize={isTabletOrSmaller ? 16 : 24}>
+                                        <Typography variant="subtitle2" fontWeight="bold" color="primary.main" fontSize={isTabletOrSmaller ? 18 : 24}>
                                             Chemical Cost
                                         </Typography>
                                     </Box>
@@ -177,7 +177,7 @@ export default function WashPackageSummary() {
                                             />
                                         </svg>
 
-                                        <Typography variant="subtitle2" fontSize={isTabletOrSmaller ? 16 : 24}>
+                                        <Typography variant="subtitle2" fontWeight="bold" color="primary.main" fontSize={isTabletOrSmaller ? 18 : 24}>
                                             % Customers
                                         </Typography>
                                     </Box>
@@ -201,18 +201,27 @@ export default function WashPackageSummary() {
                                                 color: '#fff',
                                                 width: 250,
                                                 textAlign: 'center',
-                                                fontSize: isTabletOrSmaller ? 16 : 20,
+                                                fontSize: isTabletOrSmaller ? 12 : 20,
                                             }}
                                         >
                                             {pkg.name}
                                         </TableCell>
-                                        <TableCell align="center" sx={{ width: 250, fontSize: isTabletOrSmaller ? 16 : 18 }}>
+                                        <TableCell
+                                            align="center"
+                                            sx={{ width: 250, color: 'primary.main', fontWeight: '600', fontSize: isTabletOrSmaller ? 16 : 18 }}
+                                        >
                                             ${pkg.price}
                                         </TableCell>
-                                        <TableCell align="center" sx={{ width: 250, fontSize: isTabletOrSmaller ? 16 : 18 }}>
+                                        <TableCell
+                                            align="center"
+                                            sx={{ width: 250, color: 'primary.main', fontWeight: '600', fontSize: isTabletOrSmaller ? 16 : 18 }}
+                                        >
                                             {pkg.chemicalCost}%
                                         </TableCell>
-                                        <TableCell align="center" sx={{ width: 250, fontSize: isTabletOrSmaller ? 16 : 18 }}>
+                                        <TableCell
+                                            align="center"
+                                            sx={{ width: 250, color: 'primary.main', fontWeight: '600', fontSize: isTabletOrSmaller ? 16 : 18 }}
+                                        >
                                             {pkg.percentCustomers}%
                                         </TableCell>
                                     </TableRow>

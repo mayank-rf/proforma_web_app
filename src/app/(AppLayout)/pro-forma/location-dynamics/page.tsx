@@ -115,15 +115,15 @@ export default function LocationDynamics() {
                     </Stack>
                 </Section>
 
-                {/* Demographic Details */}
-                <Section title="Demographic Details">
-                    <KeyDemographicsTable />
-                </Section>
-
-                {/* Market Overview */}
+                {/* Competitive Environment */}
                 <Section title="Competitive Environment">
                     <CompetitorTable />
                     <Typography variant="body1">*M.U.P = Monthly Unlimited Package</Typography>
+                </Section>
+
+                {/* Demographic Details */}
+                <Section title="Demographic Details">
+                    <KeyDemographicsTable />
                 </Section>
             </Box>
         </>

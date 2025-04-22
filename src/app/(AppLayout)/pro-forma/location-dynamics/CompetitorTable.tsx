@@ -58,7 +58,7 @@ const CompetitorTable = () => (
                         <TableCell>{row.mup}</TableCell>
                         <TableCell>
                             <Link href={row.website} target="_blank" rel="noopener">
-                                {new URL(row.website).hostname}
+                                {row.website}
                             </Link>
                         </TableCell>
                         <TableCell>{row.distance}</TableCell>

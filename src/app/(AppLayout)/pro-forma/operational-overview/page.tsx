@@ -30,18 +30,9 @@ export default function OperationalOverview() {
 
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, p: 1 }}>
-            {/* Operating Cost Summary */}
-            <Section title="Operating Cost Summary">
-                <Grid container spacing={2}>
-                    <Grid item xs={12} lg={6}>
-                        <OpexTable />
-                    </Grid>
-                    <Grid item xs={12} lg={6}>
-                        <Stack justifyContent="center" alignItems="center">
-                            <OpexChartTabs />
-                        </Stack>
-                    </Grid>
-                </Grid>
+            {/* Car Wash Features */}
+            <Section title="Car Wash Features">
+                <CarWashFeatures />
             </Section>
 
             {/* Staffing & Shifts */}
@@ -54,9 +45,18 @@ export default function OperationalOverview() {
                 <WashPackageSummary />
             </Section>
 
-            {/* Car Wash Features */}
-            <Section title="Car Wash Features">
-                <CarWashFeatures />
+            {/* Operating Cost Summary */}
+            <Section title="Operating Cost Summary">
+                <Grid container spacing={2}>
+                    <Grid item xs={12} lg={6}>
+                        <OpexTable />
+                    </Grid>
+                    <Grid item xs={12} lg={6}>
+                        <Stack justifyContent="center" alignItems="center">
+                            <OpexChartTabs />
+                        </Stack>
+                    </Grid>
+                </Grid>
             </Section>
         </Box>
     );

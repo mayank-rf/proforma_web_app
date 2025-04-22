@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartData } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartData, ChartOptions } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useMediaQuery, useTheme } from '@mui/material';
@@ -39,11 +39,19 @@ const CarWashThroughPutChart = () => {
         ],
     };
 
-    const options = {
+    const options: ChartOptions<'bar'> = {
         responsive: true,
         plugins: {
             legend: {
                 position: 'top' as const,
+                labels: {
+                    color: '#3A4F5F', // Match datalabels color
+                    font: {
+                        weight: 'bold',
+                        size: isTabletOrSmaller ? 10 : 18, // Match datalabels font size
+                    },
+                    padding: 20,
+                },
             },
             tooltip: {
                 callbacks: {
@@ -65,6 +73,13 @@ const CarWashThroughPutChart = () => {
                     text: 'Year',
                 },
                 grid: { display: false },
+                ticks: {
+                    color: '#3A4F5F', // Match datalabels/legend color
+                    font: {
+                        weight: 'bold',
+                        size: isTabletOrSmaller ? 10 : 18, // Responsive size
+                    },
+                },
             },
         },
     };

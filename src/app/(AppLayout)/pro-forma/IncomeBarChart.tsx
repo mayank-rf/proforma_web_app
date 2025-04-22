@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartData } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartData, ChartOptions } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useMediaQuery, Box, useTheme } from '@mui/material';
@@ -41,12 +41,31 @@ const IncomeBarChart = () => {
         ],
     };
 
-    const options = {
+    const options: ChartOptions<'bar'> = {
         responsive: true,
-        maintainAspectRatio: false, // Allow flexible height
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top' as const,
+                labels: {
+                    color: '#3A4F5F', // Match datalabels color
+                    font: {
+                        weight: 'bold',
+                        size: isTabletOrSmaller ? 10 : 18, // Match datalabels font size
+                    },
+                    padding: 20,
+                },
+            },
+            datalabels: {
+                display: true,
+                align: 'top',
+                anchor: 'end',
+                formatter: (value: number) => `$${value.toLocaleString('en-US')}`,
+                color: '#3A4F5F',
+                font: {
+                    weight: 'bold',
+                    size: isTabletOrSmaller ? 10 : 18,
+                },
             },
             tooltip: {
                 callbacks: {
@@ -69,6 +88,13 @@ const IncomeBarChart = () => {
             x: {
                 grid: {
                     display: false,
+                },
+                ticks: {
+                    color: '#3A4F5F', // Match datalabels/legend color
+                    font: {
+                        weight: 'bold',
+                        size: isTabletOrSmaller ? 10 : 18, // Responsive size
+                    },
                 },
             },
         },
