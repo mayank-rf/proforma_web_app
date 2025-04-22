@@ -60,9 +60,10 @@ const getColor = (score) => {
 };
 
 const getProgressValue = (score) => {
-    const normalized = ((score + 0.25) / 0.5) * 100; // from -0.25 to +0.25 range
-    return normalized;
-    // return Math.min(Math.max(normalized * 100, 0), 100);
+    const min = -0.25;
+    const max = 0.15;
+    const normalized = ((score - min) / (max - min)) * 100;
+    return Math.min(Math.max(normalized, 0), 100); // clamp between 0 and 100
 };
 
 export default function SiteQualitySnapshot() {
