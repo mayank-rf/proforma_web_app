@@ -9,7 +9,7 @@ export default function IncomeStatementChart() {
     const theme = useTheme();
     const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
 
-    const desiredLegendOrder = ['Total Revenue', 'OpEx %', 'Total Expense %', 'Net Income Margin %'];
+    const desiredLegendOrder = ['Total Revenue', 'Total Expense %', 'OpEx %', 'Net Income Margin %'];
 
     const data = {
         labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],

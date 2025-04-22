@@ -319,15 +319,47 @@ export default function ProForma() {
                                     }}
                                 />
                             </Box>
+
                             <Typography variant="body2" sx={{ fontSize: 16, mt: 2 }}>
-                                The analysis indicates that this location is a strong candidate for a car wash business due to its high traffic volume
-                                of 12,000 vehicles per day, ensuring a steady flow of potential customers. The competition level is moderate, with
-                                three other car washes within a 5 km radius, meaning there is demand but also some competition.
+                                The 3-mile market has a population of 29,889 with 21,184 vehicles. Typically, it requires 25,000 people to support an
+                                express wash. The working population (25-65) makes up 50.7% of the demographics (our target is 55%). The unemployment
+                                rate is 4.2%, above the national average of 4.1%. The average household size is 2.51 (our target is 2.1), this
+                                increases the likelihood of there being children in the home that do not drive vehicles. Carwashing is a “low priced
+                                luxury” and requires some expendable income. 78.6% of households have a yearly income over $35K (our target is 50%).
+                                The average household income is projected to increase 9.9% in the next 4 years. Over the past four years the
+                                population has increased 7.08%. The market is projecting a notable increase in population of 10.43% in the next five
+                                years. Rental housing makes up 35.5% of the market (our target is 33%). Renters typically do not have the space
+                                required to wash their own vehicles and are dependent on the services of professional carwashes for their vehicle
+                                cleaning needs. The traffic count at the site is 20,883, just above our target of 20,000.
+                            </Typography>
+
+                            <Typography variant="body2" sx={{ fontSize: 16, mt: 2 }}>
+                                Carwashes are typically an impulse purchase; with this it is extremely helpful to have retail draw provided by the
+                                stores and businesses in the vicinity to attract customers to the site. The proposed location has great retail draw
+                                provided by the multiple big box stores in the area including Aldi and Kroger. However, the customers at these stores
+                                may not have visibility to the proposed location. With this it is recommended to consider target marketing towards
+                                them. This can be accomplished with billboards, flyers, special promotions etc. The proposed location has excellent
+                                visibility to northbound traffic on Lexington Road, easily visible at 500’. This will grant these customers ample
+                                opportunity to prepare to safely access the site which will positively affect your potential capture rate. Similarly,
+                                southbound vehicles have great visibility to the site, coming into view at approximately 400’. Strategic placement of
+                                equipment and installation of bright and eye-catching signage will help to further maximize the sites visibility and
+                                your potential capture rate. The site is directly accessible to both directions of traffic with no U-turns required.
+                                However, northbound vehicles must cross the opposing flow of traffic without the assistance of a signalized
+                                intersection to enter the site. This maneuver could be difficult which may negatively affect your potential capture
+                                rate.
                             </Typography>
                             <Typography variant="body2" sx={{ fontSize: 16, mt: 2 }}>
-                                The projected revenue suggests profitability within 1.5 - 2 years, making this an economically viable choice. Given
-                                the surrounding customer demographics, including daily commuters and families, offering a mix of automated and
-                                self-service options will enhance customer retention. The break-even analysis supports investment in this location.
+                                There are no carwashes within the 3-mile market. Offering monthly unlimited plans in this type of market is key to
+                                insulating your customer base and preventing competitors from having market penetration. However, the nearest express
+                                washes (1 an existing VIP location) are just outside the northeastern border of the market. With this, they will
+                                likely have market penetration. The proposed location is positioned on the southern edge of the population density,
+                                with this there is potential that some of the traffic passing the site is commuter in nature, traveling into
+                                Georgetown for work. With this, you may need to market the site as a destination location to attract the population
+                                density from the northern portion of the 3-mile market to capture the number of customers required to support a viable
+                                express wash. Overall, the site is well positioned on a traffic count above our benchmark with strong retail draw.
+                                Additionally, it appears there is room in the market for an additional express wash. However, you will need to
+                                strategically price your offering to win and maintain a customer base. Additionally, you may need to take market share
+                                from the competition and achieve a greater than typical capture rate of commuter traffic to maximize your ROI.
                             </Typography>
                         </CardContent>
                     </Card>
