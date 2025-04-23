@@ -61,7 +61,7 @@ const getColor = (score) => {
 
 const getProgressValue = (score) => {
     const min = -0.25;
-    const max = 0.15;
+    const max = 0.25;
     const normalized = ((score - min) / (max - min)) * 100;
     return Math.min(Math.max(normalized, 0), 100); // clamp between 0 and 100
 };

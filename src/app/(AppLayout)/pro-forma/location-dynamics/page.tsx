@@ -6,6 +6,8 @@ import InteractiveMap from './InteractiveMap';
 import KeyDemographicsTable from './KeyDemographicsTable';
 import SiteQualitySnapshot from './SiteQualitySnapshot';
 import TrafficChartTabs from './TrafficChartTabs';
+import { useEffect, useState } from 'react';
+import { getCoordinates } from '@/utils/getCoordinates';
 
 const Metric = ({ label, value }: { label: string; value: string }) => (
     <Box mb={2}>
@@ -35,6 +37,24 @@ export default function LocationDynamics() {
     //     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
     // });
 
+    const [coordinates, setCoordinates] = useState<{ lat: number; lng: number } | null>({ lat: 0, lng: 0 });
+
+    useEffect(function () {
+        async function fetchCoordinates() {
+            const data = JSON.parse(window.localStorage.getItem('proformaData'));
+
+            if (data && data.siteAddress) {
+                const address = `${data.siteAddress.address}, ${data.siteAddress.city}, ${data.siteAddress.state} ${data.siteAddress.zip}`;
+                const coordinates = await getCoordinates(address);
+                if (coordinates !== null) {
+                    console.log({ lat: coordinates.lat, lng: coordinates.lng });
+                }
+            }
+        }
+
+        fetchCoordinates();
+    }, []);
+
     return (
         <>
             <Typography variant="h4" sx={{ fontSize: 32, fontWeight: 'bolder', color: '#3A4F5F', textAlign: 'left', mb: 4 }}>
@@ -46,7 +66,7 @@ export default function LocationDynamics() {
                 <Card sx={{ boxShadow: '0 0 4px rgba(0, 0, 0, 0.4)' }}>
                     <CardContent>
                         {/* <StaticMapWithRadius lat={38.20443} lng={-84.560326} /> */}
-                        <InteractiveMap lat={38.20443} lng={-84.560326} />
+                        <InteractiveMap lat={coordinates?.lat || 38.20443} lng={coordinates?.lng || -84.560326} />
                     </CardContent>
                 </Card>
 

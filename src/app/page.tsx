@@ -25,13 +25,20 @@ export default function Home() {
                     width: isTabletOrSmaller ? '80%' : undefined,
                 }}
             >
-                <Stack justifyContent="center" alignItems="center" gap={1}>
+                <Stack justifyContent="center" maxWidth={1200} alignItems="center" gap={1}>
                     <Typography variant="h1" sx={{ fontSize: isTabletOrSmaller ? 32 : 48 }} align="center" fontWeight="600" color="#3A4F5F">
-                        Welcome to <br />
-                        Sonny’s Car Wash Pro Forma
+                        Welcome to Sonny’s Car Wash Pro Forma
                     </Typography>
-                    <Typography variant="h2" sx={{ fontSize: isTabletOrSmaller ? 20 : 24 }} fontWeight="400" color="#3A4F5F">
-                        Generate revenue projections in seconds
+                    <Typography
+                        variant="h2"
+                        maxWidth={isTabletOrSmaller ? 600 : undefined}
+                        sx={{ fontSize: isTabletOrSmaller ? 14 : 18 }}
+                        align="center"
+                        fontWeight="400"
+                        color="#3A4F5F"
+                    >
+                        Instantly generate revenue insights, cost estimates, and profitability projections for your site(s) by leveraging machine
+                        learning, site-specific data, and big data.
                     </Typography>
                 </Stack>
 
@@ -41,7 +48,7 @@ export default function Home() {
                     endIcon={<ArrowForwardIcon />}
                     onClick={() => router.push('/site-analysis')}
                 >
-                    Go To Web App
+                    Go To Proforma Application
                 </Button>
             </Stack>
         </Stack>
