@@ -6,7 +6,20 @@ import { Box, Stack } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
-const backgroundColors = ['#27AE60', '#2D9CDB', '#F2994A', '#9B51E0', '#EB5757', '#2AD2C9', '#F2C94C', '#F5A623', '#7B5E57'];
+const backgroundColors = [
+    '#0B3C5D', // Deep Navy Blue
+    '#1D4E89', // Dark Royal Blue
+    '#23679D', // Base Blue
+    '#2C7AB5', // Strong Blue
+    '#3790CD', // Bold Sky Blue
+    '#46A7E7', // Medium Ice Blue
+    '#64CAFF', // Light Blue
+    '#A0D8F1', // Soft Sky Blue
+    '#C3E6FF', // Very Light Blue
+    '#1E5F74', // Teal-Blue
+    '#4C85A2', // Muted Blue-Gray
+    '#90B4D4', // Powdery Blue
+];
 
 const OperatingExpensePieChart = ({ operatingCostsData }: any) => {
     const labels = operatingCostsData.map((item) => item.category);
@@ -16,7 +29,7 @@ const OperatingExpensePieChart = ({ operatingCostsData }: any) => {
         datasets: [
             {
                 data: operatingCostsData.map((item) => item.data.percentOfSales),
-                backgroundColor: ['#27AE60', '#2D9CDB', '#F2994A', '#9B51E0', '#EB5757', '#2AD2C9', '#F2C94C', '#F5A623', '#7B5E57'],
+                backgroundColor: backgroundColors,
                 borderWidth: 1,
                 clip: false,
             },
