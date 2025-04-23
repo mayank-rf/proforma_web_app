@@ -1,106 +1,187 @@
-import { Grid, TextField, Typography } from '@mui/material';
+import { Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import { useMemo } from 'react';
 import { Controller, useForm, useWatch } from 'react-hook-form';
 import InputAccordion from './InputAccordion';
+import { getValidationRules } from '@/utils/validationRules';
 
-const defaultValues = {
-    basicPackage: { price: 10, percentCustomers: 45, chemicalCost: 0.48 },
-    menuPackageOne: { price: 15, percentCustomers: 30, chemicalCost: 0.89 },
-    menuPackageTwo: { price: 20, percentCustomers: 15, chemicalCost: 1.05 },
-    menuPackageThree: { price: 25, percentCustomers: 10, chemicalCost: 1.09 },
-    menuPackageFour: { price: 0, percentCustomers: 0, chemicalCost: 0 },
-};
+export default function WashPackages({ control, isValid }: any) {
 
-export default function WashPackages() {
-    const { control } = useForm({ defaultValues });
-    // const { setWashPackages } = useStore();
+    const basicPackage = {
+        price: useWatch({ control, name: 'basicPackage.price' }),
+        customerPercent: useWatch({ control, name: 'basicPackage.customerPercent' }),
+        chemicalCost: useWatch({ control, name: 'basicPackage.chemicalCost' }),
+    };
 
-    const packageNames = [
-        { key: 'basicPackage', name: 'Basic Package', price: 10, percentCustomers: 45, chemicalCost: 0.48 },
-        { key: 'menuPackageOne', name: 'Menu Package One', price: 15, percentCustomers: 30, chemicalCost: 0.89 },
-        { key: 'menuPackageTwo', name: 'Menu Package Two', price: 15, percentCustomers: 30, chemicalCost: 0.89 },
-        { key: 'menuPackageThree', name: 'Menu Package Three', price: 15, percentCustomers: 30, chemicalCost: 0.89 },
-        { key: 'menuPackageFour', name: 'Menu Package Four', price: 15, percentCustomers: 30, chemicalCost: 0.89 },
-    ];
+    const menuPackageOne = {
+        price: useWatch({ control, name: 'menuPackageOne.price' }),
+        customerPercent: useWatch({ control, name: 'menuPackageOne.customerPercent' }),
+        chemicalCost: useWatch({ control, name: 'menuPackageOne.chemicalCost' }),
+    };
 
-    const watchedValues: any = useWatch({ control });
+    const menuPackageTwo = {
+        price: useWatch({ control, name: 'menuPackageTwo.price' }),
+        customerPercent: useWatch({ control, name: 'menuPackageTwo.customerPercent' }),
+        chemicalCost: useWatch({ control, name: 'menuPackageTwo.chemicalCost' }),
+    };
 
-    const packages = useMemo(() => {
-        return packageNames.map(({ key, name }) => ({
-            name,
-            price: watchedValues?.[key]?.price ?? 0,
-            percentCustomers: watchedValues?.[key]?.percentCustomers ?? 0,
-            chemicalCost: watchedValues?.[key]?.chemicalCost ?? 0,
-        }));
-    }, [watchedValues]);
+    const menuPackageThree = {
+        price: useWatch({ control, name: 'menuPackageThree.price' }),
+        customerPercent: useWatch({ control, name: 'menuPackageThree.customerPercent' }),
+        chemicalCost: useWatch({ control, name: 'menuPackageThree.chemicalCost' }),
+    };
 
-    // useEffect(() => {
-    //     setWashPackages(packages);
-    // }, [packages]);
+    const menuPackageFour = {
+        price: useWatch({ control, name: 'menuPackageFour.price' }),
+        customerPercent: useWatch({ control, name: 'menuPackageFour.customerPercent' }),
+        chemicalCost: useWatch({ control, name: 'menuPackageFour.chemicalCost' }),
+    };
 
-    const renderTextField = (name: any, defaultValue: number) => (
+    const isBasicPackageFilled = Object.values(basicPackage).every(Boolean);
+    const isMenuPackageOneFilled = Object.values(menuPackageOne).every(Boolean);
+    const isMenuPackageTwoFilled = Object.values(menuPackageTwo).every(Boolean);
+    const isMenuPackageThreeFilled = Object.values(menuPackageThree).every(Boolean);
+    const isMenuPackageFourFilled = Object.values(menuPackageFour).every(Boolean);
+
+    const allFilled = isBasicPackageFilled && isMenuPackageOneFilled && isMenuPackageTwoFilled && 
+                      isMenuPackageThreeFilled && isMenuPackageFourFilled && isValid;
+
+    const renderTextField = (name: string, label: string, type: string) => (
         <Controller
             name={name}
             control={control}
-            defaultValue={defaultValue}
-            render={({ field }) => <TextField fullWidth size="small" variant="outlined" sx={{ borderRadius: '10px' }} {...field} required />}
+            rules={getValidationRules('number')}
+            render={({ field, fieldState }) => (
+                <TextField 
+                    fullWidth 
+                    size="small" 
+                    variant="outlined" 
+                    sx={{ borderRadius: '10px' }} 
+                    {...field} 
+                    required 
+                    error={!!fieldState.error}
+                    helperText={fieldState.error?.message}
+                    slotProps={
+                        name.includes('price') || name.includes('chemicalCost') 
+                        ? {
+                            input: {
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        $
+                                    </InputAdornment>
+                                ),
+                            },
+                        }
+                        : name.includes('customerPercent')
+                        ? {
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position="end" sx={{ ml: -1 }}>
+                                        %
+                                    </InputAdornment>
+                                ),
+                            },
+                        }
+                        : null
+                    }
+                />
+            )}
         />
     );
 
-    const allFieldsFilled = packages.every(
-        (pkg) =>
-            pkg.price !== '' &&
-            pkg.price !== null &&
-            pkg.price !== undefined &&
-            pkg.percentCustomers !== '' &&
-            pkg.percentCustomers !== null &&
-            pkg.percentCustomers !== undefined &&
-            pkg.chemicalCost !== '' &&
-            pkg.chemicalCost !== null &&
-            pkg.chemicalCost !== undefined
-    );
-
     return (
-        <InputAccordion title="Menu Packages" completed={allFieldsFilled}>
-            <Grid container>
-                <Grid container spacing={2} sx={{ marginBottom: 2, fontWeight: 'bold' }}>
-                    <Grid item xs={6}>
-                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
-                            Packages
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
-                            $ Price
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
-                            % Customer
-                        </Typography>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Typography variant="body1" fontWeight="600" color="#3A4F5F">
-                            Chemical Cost
-                        </Typography>
-                    </Grid>
+        <InputAccordion title="Menu Packages" completed={allFilled}>
+            <Grid container spacing={2}>
+                {/* Header */}
+                <Grid item xs={6}>
+                    <Typography variant="body1" fontWeight="600" color="primary.main">
+                        Packages
+                    </Typography>
                 </Grid>
-                {packages.map((pkg, index) => (
-                    <Grid container spacing={2} key={index} alignItems="center" sx={{ marginBottom: 2 }}>
-                        <Grid item xs={6}>
-                            <Typography>{pkg.name}</Typography>
-                        </Grid>
-                        <Grid item xs={2} md={2}>
-                            {renderTextField(`${packageNames[index].key}.price`, packageNames[index].price)}
-                        </Grid>
-                        <Grid item xs={2} md={2}>
-                            {renderTextField(`${packageNames[index].key}.percentCustomers`, packageNames[index].percentCustomers)}
-                        </Grid>
-                        <Grid item xs={2} md={2}>
-                            {renderTextField(`${packageNames[index].key}.chemicalCost`, packageNames[index].chemicalCost)}
-                        </Grid>
-                    </Grid>
-                ))}
+                <Grid item xs={2}>
+                    <Typography variant="body1" fontWeight="600" color="primary.main">
+                        Price
+                    </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Typography variant="body1" fontWeight="600" color="primary.main">
+                        Customer %
+                    </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Typography variant="body1" fontWeight="600" color="primary.main">
+                        Chemical Cost
+                    </Typography>
+                </Grid>
+
+                {/* Basic Package */}
+                <Grid item xs={6}>
+                    <Typography variant="body1">Basic Package</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('basicPackage.price', 'Price', 'number')}
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('basicPackage.customerPercent', 'Customer %', 'number')}
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('basicPackage.chemicalCost', 'Chemical Cost', 'number')}
+                </Grid>
+
+                {/* Menu Package One */}
+                <Grid item xs={6}>
+                    <Typography variant="body1">Menu Package One</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageOne.price', 'Price', 'number')}
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageOne.customerPercent', 'Customer %', 'number')}
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageOne.chemicalCost', 'Chemical Cost', 'number')}
+                </Grid>
+
+                {/* Menu Package Two */}
+                <Grid item xs={6}>
+                    <Typography variant="body1">Menu Package Two</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageTwo.price', 'Price', 'number')}
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageTwo.customerPercent', 'Customer %', 'number')}
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageTwo.chemicalCost', 'Chemical Cost', 'number')}
+                </Grid>
+
+                {/* Menu Package Three */}
+                <Grid item xs={6}>
+                    <Typography variant="body1">Menu Package Three</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageThree.price', 'Price', 'number')}
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageThree.customerPercent', 'Customer %', 'number')}
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageThree.chemicalCost', 'Chemical Cost', 'number')}
+                </Grid>
+
+                {/* Menu Package Four */}
+                <Grid item xs={6}>
+                    <Typography variant="body1">Menu Package Four</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageFour.price', 'Price', 'number')}
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageFour.customerPercent', 'Customer %', 'number')}
+                </Grid>
+                <Grid item xs={2}>
+                    {renderTextField('menuPackageFour.chemicalCost', 'Chemical Cost', 'number')}
+                </Grid>
             </Grid>
         </InputAccordion>
     );

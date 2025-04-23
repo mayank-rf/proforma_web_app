@@ -1,8 +1,9 @@
 import { FormControl, Grid, TextField } from '@mui/material';
 import { Controller, useWatch } from 'react-hook-form';
 import InputAccordion from './InputAccordion';
+import { getValidationRules } from '@/utils/validationRules';
 
-export default function CustomerInformation({ control }: any) {
+export default function CustomerInformation({ control, isValid }: any) {
     const customerName = useWatch({ control, name: 'customerName' });
     const companyName = useWatch({ control, name: 'companyName' });
     const address = useWatch({ control, name: 'siteAddress.address' });
@@ -16,7 +17,7 @@ export default function CustomerInformation({ control }: any) {
     //     setAddress(addressHeader);
     // }, [address, city, state, zip_code, setAddress]);
 
-    const allFilled = !!customerName && !!companyName && !!city && !!state && !!zip_code && !!address;
+    const allFilled = !!customerName && !!companyName && !!city && !!state && !!zip_code && !!address && isValid;
 
     return (
         <InputAccordion title="Customer Information" completed={allFilled}>
@@ -25,7 +26,8 @@ export default function CustomerInformation({ control }: any) {
                     <Controller
                         name="customerName"
                         control={control}
-                        render={({ field }: any) => (
+                        rules={getValidationRules('text')}
+                        render={({ field, fieldState }: any) => (
                             <FormControl fullWidth required>
                                 <TextField
                                     fullWidth
@@ -37,6 +39,8 @@ export default function CustomerInformation({ control }: any) {
                                     id="customerName"
                                     label="Customer Name"
                                     required
+                                    error={!!fieldState.error}
+                                    helperText={fieldState.error?.message}
                                 />
                             </FormControl>
                         )}
@@ -46,7 +50,8 @@ export default function CustomerInformation({ control }: any) {
                     <Controller
                         name="companyName"
                         control={control}
-                        render={({ field }: any) => (
+                        rules={getValidationRules('text')}
+                        render={({ field, fieldState }: any) => (
                             <FormControl fullWidth required>
                                 <TextField
                                     fullWidth
@@ -58,6 +63,8 @@ export default function CustomerInformation({ control }: any) {
                                     id="companyName"
                                     label="Company Name"
                                     required
+                                    error={!!fieldState.error}
+                                    helperText={fieldState.error?.message}
                                 />
                             </FormControl>
                         )}
@@ -67,7 +74,8 @@ export default function CustomerInformation({ control }: any) {
                     <Controller
                         name="siteAddress.address"
                         control={control}
-                        render={({ field }: any) => (
+                        rules={getValidationRules('text')}
+                        render={({ field, fieldState }: any) => (
                             <FormControl fullWidth required>
                                 <TextField
                                     fullWidth
@@ -79,6 +87,8 @@ export default function CustomerInformation({ control }: any) {
                                     id="siteAddress.address"
                                     label="Site Address"
                                     required
+                                    error={!!fieldState.error}
+                                    helperText={fieldState.error?.message}
                                 />
                             </FormControl>
                         )}
@@ -88,7 +98,8 @@ export default function CustomerInformation({ control }: any) {
                     <Controller
                         name="siteAddress.city"
                         control={control}
-                        render={({ field }: any) => (
+                        rules={getValidationRules('text')}
+                        render={({ field,fieldState }: any) => (
                             <FormControl fullWidth required>
                                 <TextField
                                     fullWidth
@@ -100,6 +111,8 @@ export default function CustomerInformation({ control }: any) {
                                     id="siteAddress.city"
                                     label="City"
                                     required
+                                    error={!!fieldState.error}
+                                    helperText={fieldState.error?.message}
                                 />
                             </FormControl>
                         )}
@@ -109,7 +122,8 @@ export default function CustomerInformation({ control }: any) {
                     <Controller
                         name="siteAddress.state"
                         control={control}
-                        render={({ field }: any) => (
+                        rules={getValidationRules('text')}
+                        render={({ field, fieldState }: any) => (
                             <FormControl fullWidth required>
                                 <TextField
                                     fullWidth
@@ -121,6 +135,8 @@ export default function CustomerInformation({ control }: any) {
                                     id="siteAddress.state"
                                     label="State"
                                     required
+                                    error={!!fieldState.error}
+                                    helperText={fieldState.error?.message}
                                 />
                             </FormControl>
                         )}
@@ -130,7 +146,8 @@ export default function CustomerInformation({ control }: any) {
                     <Controller
                         name="siteAddress.zip_code"
                         control={control}
-                        render={({ field }: any) => (
+                        rules={getValidationRules('number')}
+                        render={({ field, fieldState }: any) => (
                             <FormControl fullWidth required>
                                 <TextField
                                     fullWidth
@@ -142,6 +159,8 @@ export default function CustomerInformation({ control }: any) {
                                     id="siteAddress.zip_code"
                                     label="Zip Code"
                                     required
+                                    error={!!fieldState.error}
+                                    helperText={fieldState.error?.message}
                                 />
                             </FormControl>
                         )}

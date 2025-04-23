@@ -27,8 +27,8 @@ type ProformaInputs = {
         attendants: number | null;
     };
     count: {
-        manager: number | null;
-        assistantManager: number | null;
+        // manager: number | null;
+        // assistantManager: number | null;
         attendants: number | null;
     };
     //
@@ -124,6 +124,68 @@ type ProformaInputs = {
             interestRate: number;
             termOfLoan: number;
         };
+    };
+        operationalExpenses: {
+            advertisements: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            chemicalSupplies: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            customerClaims: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            insurance: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            labor: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            legalFees: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            licenses: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            miscellaneous: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            repairs: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            realEstateTaxes: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            refuseCollection: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+            };
+            utilities: {
+              percentOfSales: number;
+              breakEven: number;
+              year1: number;
+          };
     };
 };
 

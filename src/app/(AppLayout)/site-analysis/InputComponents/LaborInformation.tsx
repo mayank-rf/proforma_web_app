@@ -1,8 +1,10 @@
-import { Grid, TextField, Typography } from '@mui/material';
+import { Grid, InputAdornment, TextField, Typography } from '@mui/material';
 import { Controller, useWatch } from 'react-hook-form';
 import InputAccordion from './InputAccordion';
+import { getValidationRules } from '@/utils/validationRules';
+import Percent from '@mui/icons-material/Percent';
 
-export default function LaborInformation({ control }: any) {
+export default function LaborInformation({ control, isValid }: any) {
     // const { setLaborInformation } = useStore();
     const manager = {
         laborHours: useWatch({ control, name: 'laborHours.manager' }),
@@ -35,14 +37,27 @@ export default function LaborInformation({ control }: any) {
     const isAssistantManagerFilled = Object.values(assistantManager).every(Boolean);
     const isAttendantsFilled = Object.values(attendants).every(Boolean);
 
-    const allFilled = isManagerFilled && isAssistantManagerFilled && isAttendantsFilled;
+    const allFilled = isManagerFilled && isAssistantManagerFilled && isAttendantsFilled && isValid
 
-    const renderTextField = (name: string, label: string) => (
+    const renderTextField = (name: string, label: string, type: any) => (
         <Controller
             name={name}
             control={control}
-            render={({ field }) => (
-                <TextField fullWidth size="small" variant="outlined" sx={{ borderRadius: '10px' }} {...field} label={label} required />
+            rules={getValidationRules(type)}
+            render={({ field, fieldState }) => (
+                <TextField fullWidth size="small" variant="outlined" sx={{ borderRadius: '10px' }} {...field} label={label} required error={!!fieldState.error}
+                    helperText={fieldState.error?.message} 
+                      slotProps={
+                        name === 'burdenRate.manager' || name === 'burdenRate.assistantManager' || name === 'burdenRate.attendants'
+                        ? {
+                        input: {
+                          endAdornment: (
+                            <InputAdornment position="end" sx={{ ml: -1 }}>
+                            %
+                          </InputAdornment>
+                          ),
+                        },
+                      }:null}/>
             )}
         />
     );
@@ -57,13 +72,13 @@ export default function LaborInformation({ control }: any) {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    {renderTextField('laborHours.manager', 'Labor Hours')}
+                    {renderTextField('laborHours.manager', 'Labor Hours', 'number')}
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    {renderTextField('hourlyWages.manager', 'Hourly Wages')}
+                    {renderTextField('hourlyWages.manager', 'Hourly Wages', 'number')}
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    {renderTextField('burdenRate.manager', 'Burden Rate')}
+                    {renderTextField('burdenRate.manager', 'Burden Rate', 'number')}
                 </Grid>
 
                 {/* Assistant Manager */}
@@ -73,13 +88,13 @@ export default function LaborInformation({ control }: any) {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    {renderTextField('laborHours.assistantManager', 'Labor Hours')}
+                    {renderTextField('laborHours.assistantManager', 'Labor Hours', 'number')}
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    {renderTextField('hourlyWages.assistantManager', 'Hourly Wages')}
+                    {renderTextField('hourlyWages.assistantManager', 'Hourly Wages', 'number')}
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    {renderTextField('burdenRate.assistantManager', 'Burden Rate')}
+                    {renderTextField('burdenRate.assistantManager', 'Burden Rate', 'number')}
                 </Grid>
 
                 {/* Attendants */}
@@ -89,16 +104,16 @@ export default function LaborInformation({ control }: any) {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={3}>
-                    {renderTextField('count.attendants', 'Number of Attendants')}
+                    {renderTextField('count.attendants', 'Number of Attendants', 'number')}
                 </Grid>
                 <Grid item xs={12} md={3}>
-                    {renderTextField('laborHours.attendants', 'Labor Hours')}
+                    {renderTextField('laborHours.attendants', 'Labor Hours', 'number')}
                 </Grid>
                 <Grid item xs={12} md={3}>
-                    {renderTextField('hourlyWages.attendants', 'Hourly Wages')}
+                    {renderTextField('hourlyWages.attendants', 'Hourly Wages', 'number')}
                 </Grid>
                 <Grid item xs={12} md={3}>
-                    {renderTextField('burdenRate.attendants', 'Burden Rate')}
+                    {renderTextField('burdenRate.attendants', 'Burden Rate', 'number')}
                 </Grid>
             </Grid>
         </InputAccordion>

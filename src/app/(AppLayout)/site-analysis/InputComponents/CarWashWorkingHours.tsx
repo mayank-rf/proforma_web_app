@@ -1,12 +1,13 @@
 import { Grid, InputLabel, Stack, TextField } from '@mui/material';
 import InputAccordion from './InputAccordion';
 import { Controller, useWatch } from 'react-hook-form';
+import { getValidationRules } from '@/utils/validationRules';
 
-export default function CarWashWorkingHours({ control }: any) {
+export default function CarWashWorkingHours({ control, isValid }: any) {
     const weeklyHoursOfOperation = useWatch({ control, name: 'weeklyHoursOfOperation' });
     const averageDailyWashHours = useWatch({ control, name: 'averageDailyWashHours' });
 
-    const allFilled = !!weeklyHoursOfOperation && !!averageDailyWashHours;
+    const allFilled = !!weeklyHoursOfOperation && !!averageDailyWashHours && isValid;
 
     return (
         <InputAccordion title="Car Wash Working Hours" completed={allFilled}>
@@ -15,7 +16,8 @@ export default function CarWashWorkingHours({ control }: any) {
                     <Controller
                         name="weeklyHoursOfOperation"
                         control={control}
-                        render={({ field }: any) => (
+                        rules={getValidationRules('number')}
+                        render={({ field, fieldState }: any) => (
                             <TextField
                                 fullWidth
                                 size="small"
@@ -25,6 +27,8 @@ export default function CarWashWorkingHours({ control }: any) {
                                 id="weeklyHoursOfOperation"
                                 label="Weekly Hours"
                                 required
+                                error={!!fieldState.error}
+                                helperText={fieldState.error?.message}
                             />
                         )}
                     />
@@ -33,7 +37,8 @@ export default function CarWashWorkingHours({ control }: any) {
                     <Controller
                         name="averageDailyWashHours"
                         control={control}
-                        render={({ field }: any) => (
+                        rules={getValidationRules('number')}
+                        render={({ field, fieldState }: any) => (
                             <TextField
                                 fullWidth
                                 size="small"
@@ -43,6 +48,8 @@ export default function CarWashWorkingHours({ control }: any) {
                                 id="averageDailyWashHours"
                                 label="Average Daily Wash Hours"
                                 required
+                                error={!!fieldState.error}
+                                helperText={fieldState.error?.message}
                             />
                         )}
                     />
