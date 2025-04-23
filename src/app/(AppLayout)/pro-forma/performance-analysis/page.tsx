@@ -30,7 +30,11 @@ export default function KPIAnalysis() {
             <Section title="Pro Forma Income Statement">
                 <Grid container spacing={6}>
                     <Grid item xs={12} lg={3}>
-                        <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
+                        <Stack
+                            justifyContent={isTabletOrSmaller ? 'flex-start' : 'center'}
+                            alignItems={isTabletOrSmaller ? 'flex-start' : 'center'}
+                            sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}
+                        >
                             <Typography sx={{ textAlign: 'left', p: 2 }}>
                                 <Typography sx={{ fontWeight: 'bold', color: '#3A4F5F' }}>Growth & Profitability</Typography>
                                 Revenue growth slows (32% → 7%), but net income margin climbs (2% → 31%) and ROE hits 52%. Efficiency is driving
@@ -66,7 +70,11 @@ export default function KPIAnalysis() {
             <Section title="Revenue Breakout">
                 <Grid container spacing={6}>
                     <Grid item xs={12} lg={3}>
-                        <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
+                        <Stack
+                            justifyContent={isTabletOrSmaller ? 'flex-start' : 'center'}
+                            alignItems={isTabletOrSmaller ? 'flex-start' : 'center'}
+                            sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}
+                        >
                             <Typography sx={{ textAlign: 'left', p: 2 }}>
                                 <Typography sx={{ fontWeight: 'bold', color: '#3A4F5F' }}>Memberships Are the Growth Engine</Typography>
                                 Retail revenue flattens; member revenue 5x's. Strong sign of stickiness and high LTV.
@@ -100,7 +108,11 @@ export default function KPIAnalysis() {
             <Section title="Car Wash Volume Estimates">
                 <Grid container spacing={6}>
                     <Grid item xs={12} lg={3}>
-                        <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
+                        <Stack
+                            justifyContent={isTabletOrSmaller ? 'flex-start' : 'center'}
+                            alignItems={isTabletOrSmaller ? 'flex-start' : 'center'}
+                            sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}
+                        >
                             <Typography sx={{ textAlign: 'left', p: 2 }}>
                                 <Typography sx={{ fontWeight: 'bold', color: '#3A4F5F' }}>Scale Ops with Member Demand</Typography>
                                 Retail volume plateaus, but member washes surge 4x. Total volume exceeds 100K — potential capacity strain ahead.

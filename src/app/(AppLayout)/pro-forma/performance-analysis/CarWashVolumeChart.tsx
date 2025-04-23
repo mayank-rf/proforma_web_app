@@ -31,6 +31,7 @@ const CarWashVolumeChart = () => {
                     formatter: (value: number) => value.toLocaleString(),
                     font: {
                         size: isTabletOrSmaller ? 12 : 16,
+                        weight: 'bold',
                     },
                 },
             },
@@ -52,6 +53,7 @@ const CarWashVolumeChart = () => {
                     },
                     font: {
                         size: isTabletOrSmaller ? 12 : 16,
+                        weight: 'bold',
                     },
                 },
             },
@@ -72,6 +74,7 @@ const CarWashVolumeChart = () => {
                     },
                     font: {
                         size: isTabletOrSmaller ? 12 : 16,
+                        weight: 'bold',
                     },
                 },
             },

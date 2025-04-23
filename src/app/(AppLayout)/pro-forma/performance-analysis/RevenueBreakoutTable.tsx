@@ -3,11 +3,11 @@
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
 const data = [
-    { year: 'Year 1', retail: '[ ]', member: '[ ]' },
-    { year: 'Year 2', retail: '[ ]', member: '[ ]' },
-    { year: 'Year 3', retail: '[ ]', member: '[ ]' },
-    { year: 'Year 4', retail: '[ ]', member: '[ ]' },
-    { year: 'Year 5', retail: '[ ]', member: '[ ]' },
+    { year: 'Year 1', retail: '$795,749', member: '$88,417' },
+    { year: 'Year 2', retail: '$933,590', member: '$233,398' },
+    { year: 'Year 3', retail: '$985,213', member: '$328,404' },
+    { year: 'Year 4', retail: '$944,008', member: '$404,575' },
+    { year: 'Year 5', retail: '$982,125', member: '$472,875' },
 ];
 
 export default function RevenueBreakoutTableTransposed() {

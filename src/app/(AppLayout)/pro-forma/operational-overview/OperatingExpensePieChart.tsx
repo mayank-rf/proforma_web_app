@@ -7,18 +7,18 @@ import { Box, Stack } from '@mui/material';
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const backgroundColors = [
-    '#0B3C5D', // Deep Navy Blue
-    '#1D4E89', // Dark Royal Blue
-    '#23679D', // Base Blue
-    '#2C7AB5', // Strong Blue
-    '#3790CD', // Bold Sky Blue
-    '#46A7E7', // Medium Ice Blue
-    '#64CAFF', // Light Blue
-    '#A0D8F1', // Soft Sky Blue
-    '#C3E6FF', // Very Light Blue
-    '#1E5F74', // Teal-Blue
-    '#4C85A2', // Muted Blue-Gray
-    '#90B4D4', // Powdery Blue
+    '#FF6B6B', // Soft Red
+    '#4ECDC4', // Aqua Green
+    '#FFE66D', // Sunny Yellow
+    '#1A535C', // Deep Teal
+    '#FF9F1C', // Vivid Orange
+    '#6A4C93', // Bold Purple
+    '#38B000', // Fresh Green
+    '#3D348B', // Rich Indigo
+    '#E07A5F', // Warm Salmon
+    '#00B4D8', // Sky Blue
+    '#F15BB5', // Rosy Pink
+    '#9B5DE5', // Lively Violet
 ];
 
 const OperatingExpensePieChart = ({ operatingCostsData }: any) => {

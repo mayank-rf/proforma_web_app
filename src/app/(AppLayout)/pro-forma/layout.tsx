@@ -62,8 +62,8 @@ export default function AnalysisLayout({ children }: { children: ReactNode }) {
                         onClick={handleToggle}
                         sx={{ backgroundColor: 'rgba(35, 103, 157, 0.7)', color: 'rgba(255, 255, 255, 0.9)' }}
                     >
-                        {/* <MenuIcon /> */}
-                        <ArrowDropUpIcon />
+                        <MenuIcon />
+                        {/* <ArrowDropUpIcon /> */}
                     </Fab>
                 </Box>
 
