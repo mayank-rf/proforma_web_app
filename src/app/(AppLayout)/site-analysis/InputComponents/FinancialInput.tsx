@@ -11,8 +11,7 @@ export default function FinancialInput({ control, isValid}: any) {
     const acquisitionBudgetFilled = Object.entries(acquisitionBudgetData).every(([_,val]) => Object.values(val).every((item) => item !== ""  && item !== null && item !== undefined));
     const bankDebtAllocationFilled = Object.entries(bankDebtAllocationData).every(([_,val]) => Object.values(val).every((item) => item !== ""  && item !== null && item !== undefined));
     const operationalExpensesFilled = Object.entries(operationalExpensesData).every(([_,val]) => Object.values(val).every((item) => item !== ""  && item !== null && item !== undefined));
-    console.log(acquisitionBudgetFilled)
-    
+ 
     const allFilled = acquisitionBudgetFilled && bankDebtAllocationFilled && operationalExpensesFilled && isValid;
 
     return (

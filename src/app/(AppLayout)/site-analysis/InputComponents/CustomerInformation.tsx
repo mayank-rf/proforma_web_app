@@ -74,7 +74,7 @@ export default function CustomerInformation({ control, isValid }: any) {
                     <Controller
                         name="siteAddress.address"
                         control={control}
-                        rules={getValidationRules('text')}
+                        rules={getValidationRules('textAndNumber')}
                         render={({ field, fieldState }: any) => (
                             <FormControl fullWidth required>
                                 <TextField

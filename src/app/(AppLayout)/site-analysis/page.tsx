@@ -270,28 +270,28 @@ export default function SiteAnalysisPage() {
         setValue('bankDebtAllocation', {
             building: {
                 bankDebtTotal: defaultAcquisitionBudget.building.totalInvestment * (defaultAcquisitionBudget.building.percentBank / 100),
-                interestRate: 0,
-                termOfLoan: 0,
+                interestRate: 9,
+                termOfLoan: 300,
             },
             equipment: {
                 bankDebtTotal: defaultAcquisitionBudget.equipment.totalInvestment * (defaultAcquisitionBudget.equipment.percentBank / 100),
-                interestRate: 0,
-                termOfLoan: 0,
+                interestRate: 9,
+                termOfLoan: 300,
             },
             land: {
                 bankDebtTotal: defaultAcquisitionBudget.land.totalInvestment * (defaultAcquisitionBudget.land.percentBank / 100),
-                interestRate: 0,
-                termOfLoan: 0,
+                interestRate: 9,
+                termOfLoan: 300,
             },
             site: {
                 bankDebtTotal: defaultAcquisitionBudget.site.totalInvestment * (defaultAcquisitionBudget.site.percentBank / 100),
-                interestRate: 0,
-                termOfLoan: 0,
+                interestRate: 9,
+                termOfLoan: 300,
             },
             soft_costs: {
                 bankDebtTotal: defaultAcquisitionBudget.soft_costs.totalInvestment * (defaultAcquisitionBudget.soft_costs.percentBank / 100),
-                interestRate: 0,
-                termOfLoan: 0,
+                interestRate: 9,
+                termOfLoan: 300,
             },
         });
         setValue('operationalExpenses', {
