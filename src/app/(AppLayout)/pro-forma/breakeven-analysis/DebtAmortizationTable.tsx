@@ -186,7 +186,7 @@ export default function DebtAmortizationTable() {
     return (
         <Box mt={6}>
             <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
-                5-Year Amortization of Debt
+                Amortization of Debt
             </Typography>
 
             <TableContainer component={Paper} elevation={1}>

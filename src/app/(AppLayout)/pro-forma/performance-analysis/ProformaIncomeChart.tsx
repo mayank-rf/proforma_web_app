@@ -9,7 +9,7 @@ export default function IncomeStatementChart() {
     const theme = useTheme();
     const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
 
-    const desiredLegendOrder = ['Total Revenue', 'OpEx %', 'Total Expense %', 'Net Income Margin %'];
+    const desiredLegendOrder = ['Total Revenue', 'Total Expense %', 'OpEx %', 'Net Income Margin %'];
 
     const data = {
         labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
@@ -109,6 +109,12 @@ export default function IncomeStatementChart() {
                             return desiredLegendOrder.indexOf(a.text) - desiredLegendOrder.indexOf(b.text);
                         });
                     },
+                    color: '#3A4F5F', // Match datalabels color
+                    font: {
+                        weight: 'bold',
+                        size: isTabletOrSmaller ? 10 : 18, // Match datalabels font size
+                    },
+                    padding: 20,
                 },
             },
         },
@@ -119,6 +125,13 @@ export default function IncomeStatementChart() {
         scales: {
             x: {
                 grid: { drawOnChartArea: false },
+                ticks: {
+                    color: '#3A4F5F', // Match datalabels/legend color
+                    font: {
+                        weight: 'bold',
+                        size: isTabletOrSmaller ? 10 : 18, // Responsive size
+                    },
+                },
             },
             y: {
                 position: 'left',

@@ -2,11 +2,7 @@ import { useState } from 'react';
 import { Tabs, Tab, Box, Grid } from '@mui/material';
 import OperatingExpensePieChart from './OperatingExpensePieChart'; // Adjust the import path as needed
 
-const percentOfSalesYear1 = [3, 6, 1, 1, 31, 1, 1, 1, 2, 1, 1, 9];
-const percentOfSalesYear3 = [3, 6, 1, 1, 21, 1, 1, 1, 2, 1, 1, 9];
-const percentOfSalesYear5 = [3, 6, 1, 1, 19, 1, 1, 1, 2, 1, 1, 9];
-
-export default function OpexChartTabs() {
+export default function OpexChartTabs({ operatingCostsData }) {
     const [tabIndex, setTabIndex] = useState(0);
 
     const handleTabChange = (event, newValue) => {
@@ -14,9 +10,9 @@ export default function OpexChartTabs() {
     };
 
     const tabData = [
-        { label: 'Year 1', data: percentOfSalesYear1 },
-        { label: 'Year 3', data: percentOfSalesYear3 },
-        { label: 'Year 5', data: percentOfSalesYear5 },
+        { label: 'Year 1', data: operatingCostsData.map((item) => ({ category: item.category, data: item.year1 })) },
+        { label: 'Year 3', data: operatingCostsData.map((item) => ({ category: item.category, data: item.year3 })) },
+        { label: 'Year 5', data: operatingCostsData.map((item) => ({ category: item.category, data: item.year5 })) },
     ];
 
     return (
@@ -31,7 +27,7 @@ export default function OpexChartTabs() {
             <Box sx={{ mt: 2 }}>
                 {tabData.map((tab, index) => (
                     <Box key={index} role="tabpanel" hidden={tabIndex !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`}>
-                        {tabIndex === index && <OperatingExpensePieChart percentValues={tab.data} />}
+                        {tabIndex === index && <OperatingExpensePieChart operatingCostsData={tab.data} />}
                     </Box>
                 ))}
             </Box>

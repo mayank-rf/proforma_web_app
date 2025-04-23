@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Card, CardContent, Grid, Typography, Divider, Avatar } from '@mui/material';
+import { Box, Card, CardContent, Grid, Typography, Divider, Avatar, useTheme, useMediaQuery } from '@mui/material';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import PersonIcon from '@mui/icons-material/Person';
 import GroupIcon from '@mui/icons-material/Group';
@@ -26,6 +26,8 @@ export default function StaffingAndShifts() {
             burdenRate: 0,
         },
     });
+    const theme = useTheme();
+    const isTabletOrSmaller = useMediaQuery(theme.breakpoints.down('lg'));
 
     useEffect(function () {
         const data = JSON.parse(window.localStorage.getItem('proformaData'));
@@ -86,7 +88,13 @@ export default function StaffingAndShifts() {
                         <Grid item xs={12} sm={4} key={index}>
                             <Box display="flex" flexDirection="column" alignItems="center" gap={1}>
                                 <Avatar sx={{ bgcolor: 'transparent', color: 'primary.main' }}>{role.icon}</Avatar>
-                                <Typography variant="subtitle1" fontWeight="bold" align="center" fontSize={24} color="primary.main">
+                                <Typography
+                                    variant="subtitle1"
+                                    fontWeight="bold"
+                                    align="center"
+                                    fontSize={isTabletOrSmaller ? 18 : 24}
+                                    color="primary.main"
+                                >
                                     {role.title}
                                 </Typography>
 
@@ -94,7 +102,7 @@ export default function StaffingAndShifts() {
                                     <Typography variant="body2" color="text.secondary">
                                         Labor Hours / Week
                                     </Typography>
-                                    <Typography variant="body1" fontWeight="bolder" color="primary.main" fontSize={20}>
+                                    <Typography variant="body1" fontWeight="bolder" color="primary.main" fontSize={isTabletOrSmaller ? 18 : 20}>
                                         {role.hours}
                                     </Typography>
                                     {/* {role.subHours && (
@@ -108,7 +116,7 @@ export default function StaffingAndShifts() {
                                     <Typography variant="body2" color="text.secondary">
                                         Hourly Wages
                                     </Typography>
-                                    <Typography variant="body1" fontWeight="bolder" color="primary.main" fontSize={20}>
+                                    <Typography variant="body1" fontWeight="bolder" color="primary.main" fontSize={isTabletOrSmaller ? 18 : 20}>
                                         {role.wage}
                                     </Typography>
                                 </Box>
@@ -117,7 +125,7 @@ export default function StaffingAndShifts() {
                                     <Typography variant="body2" color="text.secondary">
                                         Burden Rate
                                     </Typography>
-                                    <Typography variant="body1" fontWeight="bolder" color="primary.main" fontSize={20}>
+                                    <Typography variant="body1" fontWeight="bolder" color="primary.main" fontSize={isTabletOrSmaller ? 18 : 20}>
                                         {role.burdenRate}
                                     </Typography>
                                 </Box>
@@ -127,7 +135,7 @@ export default function StaffingAndShifts() {
                                 <Typography variant="subtitle2" fontWeight="bold" color="primary.main">
                                     {role.title} Labor
                                 </Typography>
-                                <Typography variant="h6" color="primary">
+                                <Typography variant="h6" fontWeight="bold" color="primary">
                                     {role.total}
                                 </Typography>
                             </Box>

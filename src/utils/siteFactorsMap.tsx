@@ -30,14 +30,14 @@ export const siteFactorsMap: any = {
     entranceStackUpArea: {
         label: 'Entrance Stack Up Area',
         '0.15': 'More than 20 vehicles',
-        '0.125': '20-15 vehicles',
-        '0.075': '14-10 vehicles',
+        '0.125': '15-20 vehicles',
+        '0.075': '10-14 vehicles',
         '0.05': 'Less than 10 vehicles',
     },
     numberOfFreeVacuumSlots: {
         label: 'Number of Free Vacuum Slots',
         '0.15': 'More than 20 vehicles',
-        '0.10': '20-12 vehicles',
+        '0.10': '12-20 vehicles',
         '0.05': 'Less than 12 Vehicles',
         '-0.25': 'Coin or none',
     },

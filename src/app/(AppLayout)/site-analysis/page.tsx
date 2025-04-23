@@ -18,10 +18,10 @@ const defaultValues: ProformaInputs = {
     customerName: '',
     companyName: '',
     siteAddress: {
-        address: '',
-        city: '',
-        state: '',
-        zip_code: '',
+        address: '1273 Lexington Road',
+        city: 'Georgetown',
+        state: 'KY',
+        zip_code: '40324',
     },
     //
     weeklyHoursOfOperation: null,
@@ -141,68 +141,68 @@ const defaultValues: ProformaInputs = {
             termOfLoan: 0,
         },
     },
-    operationalExpenses :{
+    operationalExpenses: {
         advertisements: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         chemicalSupplies: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         customerClaims: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         insurance: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         labor: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         legalFees: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         licenses: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         miscellaneous: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         repairs: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         realEstateTaxes: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         refuseCollection: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
         utilities: {
-          percentOfSales: 0,
-          breakEven: 0,
-          year1: 0,
+            percentOfSales: 0,
+            breakEven: 0,
+            year1: 0,
         },
-      }
+    },
 };
 
 export default function SiteAnalysisPage() {
@@ -212,20 +212,20 @@ export default function SiteAnalysisPage() {
         control,
         handleSubmit,
         setValue,
-        formState: { errors, isValid},
+        formState: { errors, isValid },
     } = useForm<ProformaInputs>({
-        defaultValues: defaultValues,mode: 'onChange',
+        defaultValues: defaultValues,
+        mode: 'onChange',
     });
     const [isPending, startTransition] = useTransition();
 
     useEffect(() => {
-
         setValue('basicPackage', { price: 10, customerPercent: 45, chemicalCost: 0.48 });
         setValue('menuPackageOne', { price: 15, customerPercent: 30, chemicalCost: 0.89 });
         setValue('menuPackageTwo', { price: 22, customerPercent: 15, chemicalCost: 1.05 });
         setValue('menuPackageThree', { price: 27, customerPercent: 10, chemicalCost: 1.09 });
         setValue('menuPackageFour', { price: 30, customerPercent: 5, chemicalCost: 1.13 });
-        setValue('siteFactors',{
+        setValue('siteFactors', {
             areaProfile: '0.15',
             nearestCompetition: '0.125',
             typeOfSite: '0.125',
@@ -235,7 +235,7 @@ export default function SiteAnalysisPage() {
             numberOfFreeVacuumSlots: '0.10',
             numberOfPayStations: '0.10',
             trafficSpeed: '0.10',
-        },)
+        });
 
         const defaultAcquisitionBudget = {
             building: {
@@ -295,18 +295,18 @@ export default function SiteAnalysisPage() {
             },
         });
         setValue('operationalExpenses', {
-            advertisements: { percentOfSales: 3.0, breakEven: 2505.00, year1: 1200.36 },
+            advertisements: { percentOfSales: 3.0, breakEven: 2505.0, year1: 1200.36 },
             chemicalSupplies: { percentOfSales: 4.6, breakEven: 3836.99, year1: 1880.95 },
-            customerClaims: { percentOfSales: 1.0, breakEven: 835.00, year1: 400.12 },
-            insurance: { percentOfSales: 1.2, breakEven: 1000.00, year1: 1000.00 },
-            labor: { percentOfSales: 29.6, breakEven: 25298.00, year1: 25298.00 },
-            legalFees: { percentOfSales: 1.0, breakEven: 835.00, year1: 400.12 },
-            licenses: { percentOfSales: 1.0, breakEven: 835.00, year1: 400.12 },
-            miscellaneous: { percentOfSales: 1.5, breakEven: 1252.50, year1: 600.18 },
-            repairs: { percentOfSales: 1.0, breakEven: 835.00, year1: 400.12 },
-            realEstateTaxes: { percentOfSales: 2.3, breakEven: 2000.00, year1: 2000.00 },
-            refuseCollection: { percentOfSales: 1.0, breakEven: 835.00, year1: 400.12 },
-            utilities: { percentOfSales: 9.0, breakEven: 7515.01, year1: 3601.08 }
+            customerClaims: { percentOfSales: 1.0, breakEven: 835.0, year1: 400.12 },
+            insurance: { percentOfSales: 1.2, breakEven: 1000.0, year1: 1000.0 },
+            labor: { percentOfSales: 29.6, breakEven: 25298.0, year1: 25298.0 },
+            legalFees: { percentOfSales: 1.0, breakEven: 835.0, year1: 400.12 },
+            licenses: { percentOfSales: 1.0, breakEven: 835.0, year1: 400.12 },
+            miscellaneous: { percentOfSales: 1.5, breakEven: 1252.5, year1: 600.18 },
+            repairs: { percentOfSales: 1.0, breakEven: 835.0, year1: 400.12 },
+            realEstateTaxes: { percentOfSales: 2.3, breakEven: 2000.0, year1: 2000.0 },
+            refuseCollection: { percentOfSales: 1.0, breakEven: 835.0, year1: 400.12 },
+            utilities: { percentOfSales: 9.0, breakEven: 7515.01, year1: 3601.08 },
         });
     }, []);
 
@@ -322,26 +322,27 @@ export default function SiteAnalysisPage() {
         startTransition(async () => {
             const analysisResponse = await startAnalysis(data);
             console.log({ analysisResponse });
+            alert(JSON.stringify(analysisResponse));
             setShowAnalysis(true);
         });
 
         router.push('/pro-forma');
     }
 
-    const formValues = useWatch({ control });   
+    const formValues = useWatch({ control });
 
     const isObjectFullyFilled = (obj: any): boolean => {
         if (obj === null || obj === undefined || obj === '') return false;
         if (typeof obj === 'object') {
-          for (const key in obj) {
-            if (!isObjectFullyFilled(obj[key])) return false;
-          }
+            for (const key in obj) {
+                if (!isObjectFullyFilled(obj[key])) return false;
+            }
         }
         return true;
-      };
+    };
     // Check if all values in the object are filled
-      const allFilled = isObjectFullyFilled(formValues) && isValid;
-      
+    const allFilled = isObjectFullyFilled(formValues) && isValid;
+
     return (
         <Box sx={{ p: 4, maxWidth: 1200, margin: 'auto' }}>
             {/* Input Section */}
@@ -356,7 +357,7 @@ export default function SiteAnalysisPage() {
                             <CustomerInformation control={control} isValid={isValid} />
 
                             {/* Car Wash Working Hours */}
-                            <CarWashWorkingHours control={control} isValid={isValid}   />
+                            <CarWashWorkingHours control={control} isValid={isValid} />
 
                             {/* Labor Information */}
                             <LaborInformation control={control} isValid={isValid} />
@@ -368,8 +369,7 @@ export default function SiteAnalysisPage() {
                             <SiteFactors control={control} isValid={isValid} />
 
                             {/* Financial Input */}
-                            <FinancialInput control={control} isValid={isValid}/>
-
+                            <FinancialInput control={control} isValid={isValid} />
                         </Stack>
 
                         <Box sx={{ display: 'flex', justifyContent: 'center' }}>

@@ -6,37 +6,30 @@ import { Box, Stack } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
-const labels = [
-    'Advertisements & Promotions',
-    'Chemical Supplies',
-    'Consumables',
-    'Utilities',
-    'Labor',
-    'Repairs & Maintenance',
-    'Customer Claims',
-    'Legal & Professional Fees',
-    'Marketing & Miscellaneous',
+const backgroundColors = [
+    '#0B3C5D', // Deep Navy Blue
+    '#1D4E89', // Dark Royal Blue
+    '#23679D', // Base Blue
+    '#2C7AB5', // Strong Blue
+    '#3790CD', // Bold Sky Blue
+    '#46A7E7', // Medium Ice Blue
+    '#64CAFF', // Light Blue
+    '#A0D8F1', // Soft Sky Blue
+    '#C3E6FF', // Very Light Blue
+    '#1E5F74', // Teal-Blue
+    '#4C85A2', // Muted Blue-Gray
+    '#90B4D4', // Powdery Blue
 ];
 
-const backgroundColors = ['#27AE60', '#2D9CDB', '#F2994A', '#9B51E0', '#EB5757', '#2AD2C9', '#F2C94C', '#F5A623', '#7B5E57'];
+const OperatingExpensePieChart = ({ operatingCostsData }: any) => {
+    const labels = operatingCostsData.map((item) => item.category);
 
-const OperatingExpensePieChart = ({ percentValues }: any) => {
     const data: ChartData<'pie'> = {
-        labels: [
-            'Advertisements & Promotions',
-            'Chemical Supplies',
-            'Consumables',
-            'Utilities',
-            'Labor',
-            'Repairs & Maintenance',
-            'Customer Claims',
-            'Legal & Professional Fees',
-            'Marketing & Miscellaneous',
-        ],
+        labels,
         datasets: [
             {
-                data: percentValues,
-                backgroundColor: ['#27AE60', '#2D9CDB', '#F2994A', '#9B51E0', '#EB5757', '#2AD2C9', '#F2C94C', '#F5A623', '#7B5E57'],
+                data: operatingCostsData.map((item) => item.data.percentOfSales),
+                backgroundColor: backgroundColors,
                 borderWidth: 1,
                 clip: false,
             },
@@ -81,8 +74,18 @@ const OperatingExpensePieChart = ({ percentValues }: any) => {
                 callbacks: {
                     label: (context: any) => {
                         const label = context.label || '';
-                        const value = context.parsed;
-                        return `${label}: ${value.toFixed(1)}%`;
+                        const categoryMap = {};
+
+                        operatingCostsData.forEach((x) => (categoryMap[x.category] = x.data.amount));
+
+                        const amount = categoryMap[label] || 0;
+                        const formattedAmount = new Intl.NumberFormat('en-US', {
+                            style: 'currency',
+                            currency: 'USD',
+                            maximumFractionDigits: 0,
+                        }).format(amount);
+
+                        return `${label}: ${formattedAmount}`;
                     },
                 },
             },
@@ -104,7 +107,7 @@ const OperatingExpensePieChart = ({ percentValues }: any) => {
                             }}
                         />
                         <span style={{ fontSize: '14px' }}>
-                            {label} ({percentValues[index]}%)
+                            {label} ({operatingCostsData[index].data.percentOfSales}%)
                         </span>
                     </Box>
                 ))}

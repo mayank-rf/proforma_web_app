@@ -21,7 +21,8 @@ export default function InteractiveMap({ lat, lng }: { lat: number; lng: number 
     const [selectedLocation, setSelectedLocation] = useState<{ lat: number; lng: number } | null>({ lat, lng });
 
     const { isLoaded, loadError } = useJsApiLoader({
-        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
+        // googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '',
+        googleMapsApiKey: 'AIzaSyDfhETszo3IxVO5IY_-FOkrZC-hPNce-Fk',
     });
 
     const onMapClick = useCallback((event: google.maps.MapMouseEvent) => {

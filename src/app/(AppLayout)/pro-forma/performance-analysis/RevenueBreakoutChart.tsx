@@ -1,4 +1,4 @@
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Tooltip, Legend, ChartOptions } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import React from 'react';
 import { useMediaQuery, useTheme } from '@mui/material';
@@ -70,11 +70,19 @@ const RevenueBreakoutChart = () => {
         ],
     };
 
-    const options = {
+    const options: ChartOptions<'bar'> = {
         responsive: true,
         plugins: {
             legend: {
                 position: 'top' as const,
+                labels: {
+                    color: '#3A4F5F', // Match datalabels color
+                    font: {
+                        weight: 'bold',
+                        size: isTabletOrSmaller ? 10 : 18, // Match datalabels font size
+                    },
+                    padding: 20,
+                },
             },
             tooltip: {
                 callbacks: {
@@ -89,6 +97,13 @@ const RevenueBreakoutChart = () => {
             x: {
                 stacked: true,
                 grid: { drawOnChartArea: false },
+                ticks: {
+                    color: '#3A4F5F', // Match datalabels/legend color
+                    font: {
+                        weight: 'bold',
+                        size: isTabletOrSmaller ? 10 : 18, // Responsive size
+                    },
+                },
             },
             y: {
                 stacked: true,
