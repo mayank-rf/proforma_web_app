@@ -17,7 +17,7 @@ export default function CustomerInformation({ control, isValid }: any) {
     //     setAddress(addressHeader);
     // }, [address, city, state, zip_code, setAddress]);
 
-    const allFilled = !!customerName && !!companyName && !!city && !!state && !!zip_code && !!address && isValid;
+    const allFilled = !!customerName && !!companyName && !!city && !!state && !!zip_code && !!address;
 
     return (
         <InputAccordion title="Customer Information" completed={allFilled}>

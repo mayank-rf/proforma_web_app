@@ -4,7 +4,7 @@ import InputAccordion from './InputAccordion';
 
 export default function SiteFactors({ control, isValid }: any) {
     const siteFactors = useWatch({ control, name: 'siteFactors' });
-    const allFilled = Object.values(siteFactors).every((value) => value !== '') && isValid;
+    const allFilled = Object.values(siteFactors).every((value) => value !== '');
     // const { setSiteFactors } = useStore();
 
     // useEffect(() => {

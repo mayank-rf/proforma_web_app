@@ -12,7 +12,7 @@ export default function FinancialInput({ control, isValid}: any) {
     const bankDebtAllocationFilled = Object.entries(bankDebtAllocationData).every(([_,val]) => Object.values(val).every((item) => item !== ""  && item !== null && item !== undefined));
     const operationalExpensesFilled = Object.entries(operationalExpensesData).every(([_,val]) => Object.values(val).every((item) => item !== ""  && item !== null && item !== undefined));
  
-    const allFilled = acquisitionBudgetFilled && bankDebtAllocationFilled && operationalExpensesFilled && isValid;
+    const allFilled = acquisitionBudgetFilled && bankDebtAllocationFilled && operationalExpensesFilled;
 
     return (
         <InputAccordion title="Financial Inputs" completed={allFilled}>

@@ -37,7 +37,7 @@ export default function LaborInformation({ control, isValid }: any) {
     const isAssistantManagerFilled = Object.values(assistantManager).every(Boolean);
     const isAttendantsFilled = Object.values(attendants).every(Boolean);
 
-    const allFilled = isManagerFilled && isAssistantManagerFilled && isAttendantsFilled && isValid
+    const allFilled = isManagerFilled && isAssistantManagerFilled && isAttendantsFilled;
 
     const renderTextField = (name: string, label: string, type: any) => (
         <Controller

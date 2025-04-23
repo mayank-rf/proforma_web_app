@@ -7,7 +7,7 @@ export default function CarWashWorkingHours({ control, isValid }: any) {
     const weeklyHoursOfOperation = useWatch({ control, name: 'weeklyHoursOfOperation' });
     const averageDailyWashHours = useWatch({ control, name: 'averageDailyWashHours' });
 
-    const allFilled = !!weeklyHoursOfOperation && !!averageDailyWashHours && isValid;
+    const allFilled = !!weeklyHoursOfOperation && !!averageDailyWashHours;
 
     return (
         <InputAccordion title="Car Wash Working Hours" completed={allFilled}>

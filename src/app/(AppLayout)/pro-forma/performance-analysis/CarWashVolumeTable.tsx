@@ -3,11 +3,11 @@
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper } from '@mui/material';
 
 const data = [
-    { year: 'Year 1', retail: '[ ]', member: '[ ]' },
-    { year: 'Year 2', retail: '[ ]', member: '[ ]' },
-    { year: 'Year 3', retail: '[ ]', member: '[ ]' },
-    { year: 'Year 4', retail: '[ ]', member: '[ ]' },
-    { year: 'Year 5', retail: '[ ]', member: '[ ]' },
+    { year: 'Year 1', retail: '4678', member: '520' },
+    { year: 'Year 2', retail: '5832', member: '1030' },
+    { year: 'Year 3', retail: '6371', member: '1351' },
+    { year: 'Year 4', retail: '6184', member: '1744' },
+    { year: 'Year 5', retail: '6416', member: '2139' },
 ];
 
 export default function CarWashVolumeTableTransposed() {

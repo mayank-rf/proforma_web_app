@@ -43,7 +43,7 @@ export default function WashPackages({ control, isValid }: any) {
     const isMenuPackageFourFilled = Object.values(menuPackageFour).every(Boolean);
 
     const allFilled = isBasicPackageFilled && isMenuPackageOneFilled && isMenuPackageTwoFilled && 
-                      isMenuPackageThreeFilled && isMenuPackageFourFilled && isValid;
+                      isMenuPackageThreeFilled && isMenuPackageFourFilled 
 
     const renderTextField = (name: string, label: string, type: string) => (
         <Controller

@@ -64,7 +64,7 @@ export default function KPIAnalysis() {
             <Section title="Revenue Breakout">
                 <Grid container spacing={6}>
                     <Grid item xs={12} lg={3}>
-                        <Stack justifyContent="flex-start" alignItems="flex-start" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
+                        <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
                             <Typography sx={{ textAlign: 'left', p: 2 }}>
                                 <strong>Memberships Are the Growth Engine</strong>
                                 <br />
@@ -98,7 +98,7 @@ export default function KPIAnalysis() {
             <Section title="Car Wash Volume Estimates">
                 <Grid container spacing={6}>
                     <Grid item xs={12} lg={3}>
-                        <Stack justifyContent="flex-start" alignItems="flex-start" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
+                        <Stack justifyContent="center" alignItems="center" sx={{ height: '100%', boxShadow: '0 0 4px rgba(0, 0, 0, 0.2)' }}>
                             <Typography sx={{ textAlign: 'left', p: 2 }}>
                                 <strong>Scale Ops with Member Demand</strong>
                                 <br />
